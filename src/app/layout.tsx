@@ -29,7 +29,15 @@ export default function RootLayout({
       lang="en"
       className={`${orbitron.variable} ${rajdhani.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-zinc-950 text-zinc-100">{children}</body>
+      <body className="min-h-full bg-black text-zinc-100 pb-[30px] relative">
+        <div className="crt-noise"></div>
+        {children}
+        <div className="ticker-wrap flex items-center">
+          <div className="whitespace-nowrap animate-[scroll_20s_linear_infinite] inline-block">
+            // SYSTEM: ONLINE &middot; LATENCY: 7ms &middot; TERRITORY: GOA // AITD NODE ACTIVE &middot; TECHURJA 2K26 DIGITAL ARENA TERMINAL &middot; // SYSTEM: ONLINE &middot; LATENCY: 7ms &middot; TERRITORY: GOA // AITD NODE ACTIVE
+          </div>
+        </div>
+      </body>
     </html>
   );
 }
