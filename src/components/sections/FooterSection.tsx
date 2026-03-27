@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Code as Github, Camera as Instagram, Globe as Linkedin, MessageSquare as Twitter } from "lucide-react";
 
 const footerLinks = [
   {

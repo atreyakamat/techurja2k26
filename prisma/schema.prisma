@@ -8,15 +8,15 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model Event {
   id          Int            @id @default(autoincrement())
   slug        String         @unique
   name        String
-  description String         @db.Text
+  description String
   category    String
   level       String
   date        DateTime
