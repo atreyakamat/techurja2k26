@@ -86,7 +86,7 @@ export function TransmissionVenueSection() {
             className="terminal-panel neon-border group"
           >
             <p className="text-[10px] text-cyan-electric tracking-[0.2em] font-mono mb-1">TRANSMISSION NODE // AIR</p>
-            <h4 className="text-xl text-white font-bold uppercase">Manohar Int'l Airport (MOPA)</h4>
+            <h4 className="text-xl text-white font-bold uppercase">Manohar Int&apos;l Airport (MOPA)</h4>
             <p className="text-sm text-ink mt-2">North Goa air terminal. ~30 mins estimated transit to AITD campus.</p>
             
             <div className="mt-4 mb-4 flex gap-1">

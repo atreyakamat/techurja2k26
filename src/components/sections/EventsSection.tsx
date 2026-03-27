@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { events } from "@/lib/event-data";
 
 export function EventsSection() {
@@ -58,7 +59,7 @@ export function EventsSection() {
       </div>
       
       <div className="mt-10 flex justify-center">
-        <a href="/events" className="cyber-button text-sm">ACCESS ALL EVENTS MATRIX</a>
+        <Link href="/events" className="cyber-button text-sm">ACCESS ALL EVENTS MATRIX</Link>
       </div>
     </section>
   );

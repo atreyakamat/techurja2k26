@@ -26,7 +26,7 @@ export function RegistrationTerminalSection() {
         <div className="bg-cyan-electric/20 border-b border-cyan-electric p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="w-3 h-3 bg-green-500 rounded-full shadow-[0_0_8px_#22c55e] animate-pulse"></span>
-            <span className="font-mono text-xs text-cyan-electric tracking-widest">REGISTRATION TERMINAL // LOCK YOUR SLOT</span>
+            <span className="font-mono text-xs text-cyan-electric tracking-widest">REGISTRATION TERMINAL {"//"} LOCK YOUR SLOT</span>
           </div>
           <span className="font-mono text-xs text-zinc-500">v2.6.0</span>
         </div>
@@ -36,15 +36,14 @@ export function RegistrationTerminalSection() {
           
           {submitted ? (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center py-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-16"
             >
-              <h3 className="text-3xl text-green-400 font-bold mb-4 glitch-hover" data-text="ACCESS GRANTED">ACCESS GRANTED</h3>
-              <p className="text-yellow-nuclear font-mono mb-2">// SLOT LOCKED (SIMULATED)</p>
-              <p className="text-zinc-500 text-xs mt-8">Demo UI only – no actual data was transmitted.</p>
-            </motion.div>
-          ) : (
+            <h3 className="text-3xl text-green-400 font-bold mb-4 glitch-hover" data-text="ACCESS GRANTED">ACCESS GRANTED</h3>
+            <p className="text-yellow-nuclear font-mono mb-2">{"//"} SLOT LOCKED (SIMULATED)</p>
+            <p className="text-zinc-500 text-xs mt-8">Demo UI only – no actual data was transmitted.</p>
+            </motion.div>          ) : (
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">

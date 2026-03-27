@@ -6,16 +6,16 @@ import { useEffect, useState } from "react";
 
 export function HeroSection() {
   const [logs, setLogs] = useState<string[]>([]);
-  const initialLogs = [
-    "> BOOTSTRAP: DIGITAL ARENA v2.6.",
-    "> SECURE CONNECTION ESTABLISHED.",
-    "> LOADING COMBAT PROTOCOLS...",
-    "> EVENTS ONLINE: ROBO WARS / CODE SIEGE / NEURO PUZZLE RIFT",
-    "> AWAITING USER INPUT..."
-  ];
 
   useEffect(() => {
     let currentIndex = 0;
+    const initialLogs = [
+      "> BOOTSTRAP: DIGITAL ARENA v2.6.",
+      "> SECURE CONNECTION ESTABLISHED.",
+      "> LOADING COMBAT PROTOCOLS...",
+      "> EVENTS ONLINE: ROBO WARS / CODE SIEGE / NEURO PUZZLE RIFT",
+      "> AWAITING USER INPUT..."
+    ];
     const interval = setInterval(() => {
       if (currentIndex < initialLogs.length) {
         setLogs((prev) => [...prev, initialLogs[currentIndex]]);
@@ -55,7 +55,7 @@ export function HeroSection() {
           </h1>
           
           <p className="max-w-xl text-lg md:text-xl text-ink leading-relaxed border-l-2 border-magenta-cyber pl-4">
-            Agnel Institute of Technology & Design's high-octane cyberpunk tech festival. Hack, build, and battle through the grid.
+            Agnel Institute of Technology &amp; Design&apos;s high-octane cyberpunk tech festival. Hack, build, and battle through the grid.
           </p>
 
           <div className="flex flex-wrap gap-4 mt-4">

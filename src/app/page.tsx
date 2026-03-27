@@ -4,19 +4,25 @@ import { EventsSection } from "@/components/sections/EventsSection";
 import { TransmissionVenueSection } from "@/components/sections/TransmissionVenueSection";
 import { TimelineSection } from "@/components/sections/TimelineSection";
 import { RegistrationTerminalSection } from "@/components/sections/RegistrationTerminalSection";
+import { OpsFeedSection } from "@/components/sections/OpsFeedSection";
+import { FAQSection } from "@/components/sections/FAQSection";
+import { FooterSection } from "@/components/sections/FooterSection";
 
 export default function Home() {
   return (
-    <div className="relative overflow-x-clip font-sans">
+    <main className="relative min-h-screen bg-black text-slate-100">
       <Navbar />
 
-      <main className="flex w-full flex-col">
+      <div className="flex w-full flex-col">
         <HeroSection />
         <EventsSection />
         <TransmissionVenueSection />
         <TimelineSection />
         <RegistrationTerminalSection />
-      </main>
-    </div>
+        <OpsFeedSection />
+        <FAQSection />
+        <FooterSection />
+      </div>
+    </main>
   );
 }
