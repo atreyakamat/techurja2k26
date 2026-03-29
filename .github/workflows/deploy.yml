@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: Deploy to BigRock (FTP/Static)
 
 on:
@@ -25,12 +26,38 @@ jobs:
         run: npm run build
 
       - name: Upload via FTP
+=======
+name: Deploy to cPanel
+
+on:
+  push:
+    branches:
+      - main  # Or 'master'
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v4
+      
+      - name: Sync files
+>>>>>>> fbffe18224b880c066f706fba9a56ead8f5287bd
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+<<<<<<< HEAD
           local-dir: ./out/
           server-dir: ./public_html/
           # Be careful: delete-destination will wipe your server folder first
           delete-destination: false 
+=======
+          server-dir: / # Be careful with the trailing slash
+          exclude: |
+            **/.git*
+            **/.github*
+            README.md
+>>>>>>> fbffe18224b880c066f706fba9a56ead8f5287bd
