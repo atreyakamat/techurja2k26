@@ -28,10 +28,15 @@ export function RegisterForm({ event }: { event: EventRecord }) {
     setStatus(null);
 
     try {
-      const res = await fetch("/api/register", {
+      // Use the PHP endpoint for compatibility with shared hosting
+      const res = await fetch("/api/register.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, eventSlug: event.slug }),
+        body: JSON.stringify({ 
+          ...formData, 
+          eventSlug: event.slug,
+          eventName: event.name 
+        }),
       });
 
       const data = (await res.json()) as { message?: string };

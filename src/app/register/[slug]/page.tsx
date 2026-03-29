@@ -2,7 +2,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { RegisterForm } from "@/components/register-form";
-import { getEventBySlug } from "@/lib/event-data";
+import { getEventBySlug, events } from "@/lib/event-data";
+
+export async function generateStaticParams() {
+  return events.map((event) => ({
+    slug: event.slug,
+  }));
+}
 
 type RegisterPageProps = {
   params: Promise<{ slug: string }>;
