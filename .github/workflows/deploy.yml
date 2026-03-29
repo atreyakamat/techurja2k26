@@ -4,10 +4,6 @@ on:
   push:
     branches: [ main ]
 
-env:
-  # Opt into Node.js 24 to silence deprecation warnings
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -19,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24' # Upgraded to latest Node
+          node-version: '20'
           cache: 'npm'
 
       - name: Install Dependencies
@@ -36,6 +32,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
           server-dir: ./public_html/
-          # 'dangerous-clean-slate' is the correct name for deleting old files, 
-          # but we set it to false to be safe.
           dangerous-clean-slate: false 
