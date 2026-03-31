@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { SplineScene } from "@/components/SplineScene";
+
 export function HeroSection() {
   const [logs, setLogs] = useState<string[]>([]);
 
@@ -59,39 +61,35 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-wrap gap-4 mt-4">
-            <Link href="#register" className="cyber-button text-sm md:text-base glitch-hover" data-text="INITIATE REGISTRATION">
+            <Link href="/#register" className="cyber-button text-sm md:text-base glitch-hover" data-text="INITIATE REGISTRATION">
               INITIATE REGISTRATION
             </Link>
-            <Link href="#events" className="cyber-button-alt text-sm md:text-base">
+            <Link href="/events" className="cyber-button-alt text-sm md:text-base">
               VIEW COMBAT EVENTS
             </Link>
           </div>
         </motion.div>
 
-        {/* Right Column: Fake System Log */}
+        {/* Right Column: 3D Spline Scene */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="hidden lg:block terminal-panel font-mono text-sm text-cyan-electric h-64 overflow-hidden relative"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
+          className="hidden lg:block h-[500px] xl:h-[600px] relative"
         >
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-electric to-transparent opacity-50"></div>
-          <div className="flex flex-col gap-2">
-            {logs.map((log, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="whitespace-pre-wrap"
-              >
-                {log}
-              </motion.div>
-            ))}
-            <motion.div
-              animate={{ opacity: [1, 0] }}
-              transition={{ repeat: Infinity, duration: 0.8 }}
-              className="inline-block w-2 h-4 bg-cyan-electric mt-2"
-            />
+          {/* Decorative Corner Brackets */}
+          <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-cyan-electric/30"></div>
+          <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-cyan-electric/30"></div>
+          
+          <SplineScene />
+
+          {/* Mini overlay logs for aesthetic */}
+          <div className="absolute bottom-10 left-0 bg-black/60 backdrop-blur-md border border-cyan-electric/20 p-4 font-mono text-[10px] text-cyan-electric/70 max-w-[200px]">
+            <div className="flex flex-col gap-1">
+              {logs.slice(-3).map((log, i) => (
+                <div key={i} className="truncate">{log}</div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
