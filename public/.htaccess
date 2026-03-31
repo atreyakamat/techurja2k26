@@ -1,0 +1,20 @@
+# Handle Next.js Static Export clean URLs (Trailing Slashes)
+# This ensures that /events/ and /events/index.html are both reachable
+# and handles 404 pages using the exported 404.html.
+
+RewriteEngine On
+RewriteBase /
+
+# 1. Ensure any non-file request to a path that has an index.html works
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+)/$ $1/index.html [L]
+
+# 2. Redirect /page to /page/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !index.php
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ $1/ [L,R=301]
+
+# 3. Use 404.html for 404 errors
+ErrorDocument 404 /404/index.html
