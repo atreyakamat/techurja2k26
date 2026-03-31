@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 import type { EventRecord } from "@/lib/event-data";
 
 const levelLabel: Record<EventRecord["level"], string> = {
@@ -6,7 +7,7 @@ const levelLabel: Record<EventRecord["level"], string> = {
   school: "School",
 };
 
-export function EventCard({ event }: { event: EventRecord }) {
+export const EventCard = React.memo(function EventCard({ event }: { event: EventRecord }) {
   return (
     <article className="panel flex h-full flex-col gap-4 p-5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(255,0,122,0.35)] will-change-transform">
       <div className="flex items-center justify-between gap-3">
@@ -34,4 +35,4 @@ export function EventCard({ event }: { event: EventRecord }) {
       </Link>
     </article>
   );
-}
+});

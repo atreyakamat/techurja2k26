@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/navbar";
 import { teamMembers } from "@/lib/team-data";
@@ -71,7 +72,7 @@ export default function TeamPage() {
   );
 }
 
-function TeamCard({ member, index }: { member: any, index: number }) {
+const TeamCard = React.memo(function TeamCard({ member, index }: { member: any, index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
