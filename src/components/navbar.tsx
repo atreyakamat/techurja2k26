@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 const navItems = [
   { href: "/events", label: "Events" },
+  { href: "/team", label: "Team" },
   { href: "/#venue", label: "Venue" },
   { href: "/#schedule", label: "Schedule" },
   { href: "/#register", label: "Register" },

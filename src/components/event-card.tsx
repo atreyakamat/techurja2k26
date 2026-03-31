@@ -8,7 +8,7 @@ const levelLabel: Record<EventRecord["level"], string> = {
 
 export function EventCard({ event }: { event: EventRecord }) {
   return (
-    <article className="panel flex h-full flex-col gap-4 p-5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(255,0,122,0.35)]">
+    <article className="panel flex h-full flex-col gap-4 p-5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(255,0,122,0.35)] will-change-transform">
       <div className="flex items-center justify-between gap-3">
         <span className="border border-cyan-300 px-2 py-1 text-xs uppercase tracking-[0.12em] text-cyan-200">
           {event.category}
