@@ -29,11 +29,14 @@ model Event {
 model Registration {
   id          Int      @id @default(autoincrement())
   name        String
+  teamName    String?
   email       String
   phone       String
   institution String
   eventSlug   String
   eventName   String
+  transactionId String?
+  paymentScreenshot String?
   eventId     Int?
   event       Event?   @relation(fields: [eventId], references: [id], onDelete: SetNull)
   createdAt   DateTime @default(now())

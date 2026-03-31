@@ -3,18 +3,24 @@
 import { FormEvent, useState } from "react";
 import type { EventRecord } from "@/lib/event-data";
 
+import Image from "next/image";
+
 type FormState = {
   name: string;
+  teamName: string;
   email: string;
   phone: string;
   institution: string;
+  transactionId: string;
 };
 
 const initialState: FormState = {
   name: "",
+  teamName: "",
   email: "",
   phone: "",
   institution: "",
+  transactionId: "",
 };
 
 export function RegisterForm({ event }: { event: EventRecord }) {
@@ -22,20 +28,24 @@ export function RegisterForm({ event }: { event: EventRecord }) {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<{ ok: boolean; message: string } | null>(null);
 
+  const [screenshot, setScreenshot] = useState<File | null>(null);
+
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
 
     try {
-      // Use the PHP endpoint for compatibility with shared hosting
-      const res = await fetch("/api/register.php", {
+      // In a real app, you would upload to S3/Cloudinary here
+      // For now, we'll store the filename or a base64 string if small
+      const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
           ...formData, 
           eventSlug: event.slug,
-          eventName: event.name 
+          eventName: event.name,
+          paymentScreenshot: screenshot ? `pending_${Date.now()}_${screenshot.name}` : "NO_SCREENSHOT"
         }),
       });
 
@@ -70,6 +80,15 @@ export function RegisterForm({ event }: { event: EventRecord }) {
       </label>
 
       <label className="flex flex-col gap-2 text-sm text-zinc-200">
+        Team Name (If applicable)
+        <input
+          value={formData.teamName}
+          onChange={(e) => setFormData((prev) => ({ ...prev, teamName: e.target.value }))}
+          className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300"
+        />
+      </label>
+
+      <label className="flex flex-col gap-2 text-sm text-zinc-200">
         Email
         <input
           required
@@ -99,6 +118,52 @@ export function RegisterForm({ event }: { event: EventRecord }) {
           className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300"
         />
       </label>
+
+      {/* Payment Section */}
+      <div className="mt-8 border border-cyan-electric/30 bg-black/40 p-5 relative">
+        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyan-electric"></div>
+        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyan-electric"></div>
+        
+        <div className="flex flex-col md:flex-row gap-6 items-center">
+          <div className="w-40 h-40 bg-white p-1 rounded flex-shrink-0">
+            <Image 
+              src="/payment-techurja.jpeg" 
+              alt="Payment QR" 
+              width={160} 
+              height={160} 
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div className="flex-grow space-y-4">
+            <div>
+              <p className="text-xs text-magenta-cyber font-mono uppercase tracking-widest mb-1">Fee Required</p>
+              <p className="text-3xl text-white font-black font-display tracking-tight">₹{event.registrationFee}</p>
+            </div>
+            
+            <div className="space-y-2">
+              <label className="text-[10px] text-cyan-electric uppercase font-mono tracking-widest">Transaction ID / UTR</label>
+              <input
+                required
+                placeholder="ENTER_12_DIGIT_ID"
+                value={formData.transactionId}
+                onChange={(e) => setFormData((prev) => ({ ...prev, transactionId: e.target.value }))}
+                className="w-full border border-cyan-electric/30 bg-black/50 px-3 py-2 text-white font-mono text-xs outline-none focus:border-cyan-electric transition-all"
+              />
+              <p className="text-[9px] text-zinc-500 font-mono italic">{"//"} Upload screenshot in the next prompt (demo simulated)</p>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-[10px] text-cyan-electric uppercase font-mono tracking-widest">Payment Screenshot</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setScreenshot(e.target.files?.[0] || null)}
+                className="w-full text-[10px] text-zinc-400 file:mr-4 file:py-1 file:px-4 file:border-0 file:text-[10px] file:font-mono file:bg-cyan-electric/20 file:text-cyan-electric hover:file:bg-cyan-electric/30"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
       <button disabled={loading} className="cyber-button w-full px-4 py-3 text-sm disabled:opacity-60">
         {loading ? "Sending..." : "Submit Registration"}

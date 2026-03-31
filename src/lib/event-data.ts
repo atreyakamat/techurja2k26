@@ -12,6 +12,7 @@ export type EventRecord = {
   description: string;
   rules: string[];
   featured?: boolean;
+  registrationFee: number;
 };
 
 export const events: EventRecord[] = [
@@ -25,7 +26,8 @@ export const events: EventRecord[] = [
     shortDescription: "High-impact 15kg robot combat elimination.",
     description: "The ultimate showdown of 15kg robots in an elimination bracket.",
     rules: ["Weight limit: 15kg", "Matches last 3 minutes", "No fire or liquid weapons"],
-    featured: true
+    featured: true,
+    registrationFee: 1500
   },
   {
     slug: "robowar-8kgs",
@@ -37,6 +39,7 @@ export const events: EventRecord[] = [
     shortDescription: "Mid-weight robot combat battle.",
     description: "8kg robots face off in a test of engineering and driving skill.",
     rules: ["Weight limit: 8kg", "Standard arena rules apply"],
+    registrationFee: 1000
   },
   {
     slug: "robowar-3lbs",
@@ -48,6 +51,7 @@ export const events: EventRecord[] = [
     shortDescription: "Lightweight beetleweight robot combat.",
     description: "Small but fierce 3lbs robots clash in a high-speed arena.",
     rules: ["Weight limit: 3lbs", "Fast-paced elimination"],
+    registrationFee: 500
   },
   {
     slug: "robo-sumo",
@@ -59,6 +63,7 @@ export const events: EventRecord[] = [
     shortDescription: "Autonomous bots pushing each other out of the ring.",
     description: "A battle of strength and sensors where bots try to push opponents out of the circular arena.",
     rules: ["Autonomous bots only", "Standard sumo ring dimensions"],
+    registrationFee: 250
   },
   {
     slug: "robo-tug-of-war",
@@ -70,6 +75,7 @@ export const events: EventRecord[] = [
     shortDescription: "Test of raw torque and traction.",
     description: "Two robots linked by a rope try to pull the other across the center line.",
     rules: ["Maximum weight: 10kg", "No spiked wheels"],
+    registrationFee: 200
   },
   {
     slug: "fifa",
@@ -81,6 +87,7 @@ export const events: EventRecord[] = [
     shortDescription: "E-sports football tournament.",
     description: "Compete in the virtual arena for the ultimate football glory.",
     rules: ["Standard match time", "Group stages followed by knockouts"],
+    registrationFee: 100
   },
   {
     slug: "bridge-construction",
@@ -92,6 +99,7 @@ export const events: EventRecord[] = [
     shortDescription: "Structural engineering challenge.",
     description: "Build the strongest bridge using limited materials and test its load capacity.",
     rules: ["Materials provided", "Weight-to-load ratio judging"],
+    registrationFee: 150
   },
   {
     slug: "robo-soccer",
@@ -103,6 +111,7 @@ export const events: EventRecord[] = [
     shortDescription: "Remote-controlled robots playing football.",
     description: "Score goals against opponents in this mechanical adaptation of the beautiful game.",
     rules: ["3 vs 3 robots", "5-minute halves"],
+    registrationFee: 300
   },
   {
     slug: "coding-event",
@@ -114,7 +123,8 @@ export const events: EventRecord[] = [
     shortDescription: "Competitive programming marathon.",
     description: "Solve algorithmic challenges under time pressure.",
     rules: ["No internet usage", "Multiple language support"],
-    featured: true
+    featured: true,
+    registrationFee: 150
   },
   {
     slug: "clash-royal",
@@ -126,6 +136,7 @@ export const events: EventRecord[] = [
     shortDescription: "Mobile strategy gaming tournament.",
     description: "Battle it out in the arena with your best decks.",
     rules: ["Friendly battle levels", "Single elimination"],
+    registrationFee: 50
   },
   {
     slug: "capture-the-flag",
@@ -137,6 +148,7 @@ export const events: EventRecord[] = [
     shortDescription: "Cybersecurity hacking challenge.",
     description: "Find hidden flags by exploiting vulnerabilities in a controlled environment.",
     rules: ["Solo or team of 2", "Strict no-attack policy on servers"],
+    registrationFee: 200
   },
   {
     slug: "line-follower-robot",
@@ -148,6 +160,7 @@ export const events: EventRecord[] = [
     shortDescription: "Autonomous navigation on predefined paths.",
     description: "Fastest robot to complete the black line track wins.",
     rules: ["Standard track width", "Two trials allowed"],
+    registrationFee: 200
   },
   {
     slug: "treasure-hunt",
@@ -159,6 +172,7 @@ export const events: EventRecord[] = [
     shortDescription: "Clue-based campus scavenger hunt.",
     description: "Solve riddles and find items across the campus.",
     rules: ["Teams of 3", "Time-based completion"],
+    registrationFee: 150
   },
   {
     slug: "project-presentation",
@@ -170,6 +184,7 @@ export const events: EventRecord[] = [
     shortDescription: "Showcase your technical innovations.",
     description: "Present your research or projects to a panel of experts.",
     rules: ["10-minute presentation", "Q&A session"],
+    registrationFee: 150
   },
   {
     slug: "virtual-cricket",
@@ -181,6 +196,7 @@ export const events: EventRecord[] = [
     shortDescription: "E-sports cricket simulation.",
     description: "Show off your batting and bowling skills in the virtual world.",
     rules: ["5 overs per match", "Limited tournament slots"],
+    registrationFee: 100
   },
   {
     slug: "circuit-simulation",
@@ -192,6 +208,7 @@ export const events: EventRecord[] = [
     shortDescription: "Hardware logic and design challenge.",
     description: "Design and simulate complex electronic circuits under time constraints.",
     rules: ["Simulation software provided", "Accuracy and speed judging"],
+    registrationFee: 100
   },
   {
     slug: "business-pitch",
@@ -203,6 +220,7 @@ export const events: EventRecord[] = [
     shortDescription: "Startup idea and business plan showcase.",
     description: "Pitch your next big business idea to potential investors.",
     rules: ["Pitch deck required", "5-minute pitch duration"],
+    registrationFee: 150
   },
   {
     slug: "robo-maze-solver",
@@ -214,6 +232,7 @@ export const events: EventRecord[] = [
     shortDescription: "Autonomous navigation through complex mazes.",
     description: "Code your robot to find the exit in the shortest time possible.",
     rules: ["No manual override", "Maze mapping algorithm required"],
+    registrationFee: 250
   },
   {
     slug: "robo-race",
@@ -225,6 +244,7 @@ export const events: EventRecord[] = [
     shortDescription: "High-speed mechanical racing event.",
     description: "Race your robots through an obstacle-filled outdoor track.",
     rules: ["Remote controlled or autonomous", "Fastest lap wins"],
+    registrationFee: 300
   },
   {
     slug: "hackathon",
@@ -236,7 +256,8 @@ export const events: EventRecord[] = [
     shortDescription: "24-hour product buildathon.",
     description: "Build a working prototype for a real-world problem statement.",
     rules: ["24-hour duration", "Team size: 2-4", "Original code only"],
-    featured: true
+    featured: true,
+    registrationFee: 500
   },
   {
     slug: "symmetry-art",
@@ -248,6 +269,7 @@ export const events: EventRecord[] = [
     shortDescription: "Mathematical art competition.",
     description: "Create stunning visuals using geometric symmetry principles.",
     rules: ["Design on site", "Materials provided"],
+    registrationFee: 50
   },
   {
     slug: "structomat",
@@ -259,6 +281,7 @@ export const events: EventRecord[] = [
     shortDescription: "Mechanical modeling and design.",
     description: "Assemble or design a mechanical structure based on the prompt.",
     rules: ["Time-bound challenge", "Judging based on stability and design"],
+    registrationFee: 100
   }
 ];
 
