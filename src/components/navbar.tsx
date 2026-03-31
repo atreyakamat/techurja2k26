@@ -4,11 +4,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const navItems = [
-  { href: "#events", label: "Events" },
-  { href: "#venue", label: "Venue" },
-  { href: "#schedule", label: "Schedule" },
-  { href: "#register", label: "Register" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/events", label: "Events" },
+  { href: "/#venue", label: "Venue" },
+  { href: "/#schedule", label: "Schedule" },
+  { href: "/#register", label: "Register" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export function Navbar() {
@@ -44,7 +44,7 @@ export function Navbar() {
         </nav>
 
         {/* Right: CTA Button */}
-        <Link href="#register" className="cyber-button py-2 px-4 text-[10px] tracking-widest h-10 flex items-center">
+        <Link href="/#register" className="cyber-button py-2 px-4 text-[10px] tracking-widest h-10 flex items-center">
           ENTER TERMINAL
         </Link>
       </div>
