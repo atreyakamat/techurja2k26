@@ -36,6 +36,16 @@ h1, h2, h3, h4, h5, h6 {
 .terminal-panel {
   @apply relative border border-cyan-electric/30 bg-black/60 backdrop-blur-md p-6;
   box-shadow: inset 0 0 20px rgba(41, 244, 255, 0.05);
+  contain: content;
+}
+
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
+}
+
+section:first-of-type {
+  content-visibility: visible;
 }
 
 .neon-border {
