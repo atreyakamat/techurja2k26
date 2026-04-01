@@ -76,10 +76,37 @@ export function HeroSection() {
             TECHURJA 2K26 // DIGITAL ARENA TERMINAL
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter text-glow flex flex-col items-center">
-            <span className="block text-white opacity-90 text-[10px] md:text-sm tracking-[0.5em] font-mono mb-2">ENTER THE</span>
-            <span className="block text-yellow-nuclear glitch-hover drop-shadow-[0_0_25px_rgba(249,255,59,0.7)]" data-text="DIGITAL ARENA">DIGITAL ARENA</span>
-            <span className="block text-white/50 text-base md:text-4xl tracking-[0.4em] mt-2 font-mono uppercase">TERMINAL</span>
+          <h1 className="flex flex-col items-center gap-2 md:gap-4 mb-4">
+            <motion.span 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black leading-none tracking-tighter text-yellow-nuclear drop-shadow-[0_0_20px_rgba(249,255,59,0.8)] glitch-hover cursor-default" 
+              data-text="TECHURJA 2K26"
+            >
+              TECHURJA 2K26
+            </motion.span>
+            
+            <div className="flex flex-wrap justify-center font-mono uppercase font-bold tracking-[0.15em] md:tracking-[0.3em]">
+              {"ENTER THE DIGITAL ARENA".split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, filter: "blur(5px)" }}
+                  animate={{ opacity: 1, filter: "blur(0px)" }}
+                  transition={{ 
+                    delay: 1.0 + (i * 0.04),
+                    duration: 0.2
+                  }}
+                  className={`text-[10px] sm:text-xs md:text-xl lg:text-2xl ${
+                    i >= 10 // "ENTER THE " is 10 chars
+                    ? "text-cyan-electric drop-shadow-[0_0_10px_rgba(41,244,255,0.5)] animate-pulse" 
+                    : "text-white/50"
+                  }`}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+            </div>
           </h1>
 
           <div className="max-w-xl text-[10px] sm:text-xs md:text-base text-ink leading-relaxed font-mono py-4 px-6 bg-black/40 backdrop-blur-sm border-x border-cyan-electric/20 relative">

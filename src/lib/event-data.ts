@@ -37,18 +37,20 @@ export const events: EventRecord[] = [
     name: "ROBOWAR (15KG)",
     category: "Robotics",
     level: "college",
-    date: "29/30 April 2026",
+    date: "29-30 April 2026",
     time: "11AM ONWARDS",
-    venue: "ROBOWAR ARENA",
+    venue: "Robowars Arena AITD",
     shortDescription: "Heavyweight robot combat (15KG).",
     description: "The ultimate heavyweight battle in the arena. High-octane mechanical warfare.",
     rules: ["Weight limit: 15kg", "Matches last 3 minutes", "No fire or liquid weapons"],
     registrationFee: 1180,
-    prizePool: "₹2,00,000 Total",
+    prizePool: "₹2,00,000 (Combined)",
     featured: true,
     coordinators: [
       { name: "Yash Karekar", phone: "7498686247" },
-      { name: "Yash Sanikop", phone: "8177963886" }
+      { name: "Yash Sanikop", phone: "8177963886" },
+      { name: "Anay Govekar", phone: "8459341728" },
+      { name: "Vedansh Dhargalkar", phone: "7720907356" }
     ]
   },
   {
@@ -56,14 +58,17 @@ export const events: EventRecord[] = [
     name: "ROBOWAR (8KGS)",
     category: "Robotics",
     level: "college",
-    date: "29/30 April 2026",
+    date: "29-30 April 2026",
     time: "11AM ONWARDS",
-    venue: "ROBOWAR ARENA",
+    venue: "Robowars Arena AITD",
     shortDescription: "Mid-weight robot combat (8KG).",
     description: "Intense mid-weight mechanical showdown.",
     rules: ["Weight limit: 8kg", "Standard arena protocols apply"],
     registrationFee: 944,
+    prizePool: "₹2,00,000 (Combined)",
     coordinators: [
+      { name: "Yash Karekar", phone: "7498686247" },
+      { name: "Yash Sanikop", phone: "8177963886" },
       { name: "Anay Govekar", phone: "8459341728" },
       { name: "Vedansh Dhargalkar", phone: "7720907356" }
     ]
@@ -73,15 +78,19 @@ export const events: EventRecord[] = [
     name: "ROBOWAR (3LBS)",
     category: "Robotics",
     level: "college",
-    date: "29/30 April 2026",
+    date: "29-30 April 2026",
     time: "11AM ONWARDS",
-    venue: "ROBOWAR ARENA",
+    venue: "Robowars Arena AITD",
     shortDescription: "Beetleweight robot combat (3LBS).",
     description: "Fast-paced small-scale mechanical destruction.",
     rules: ["Weight limit: 3lbs", "High-speed combat sequences"],
     registrationFee: 590,
+    prizePool: "₹2,00,000 (Combined)",
     coordinators: [
-      { name: "Yash Karekar", phone: "7498686247" }
+      { name: "Yash Karekar", phone: "7498686247" },
+      { name: "Yash Sanikop", phone: "8177963886" },
+      { name: "Anay Govekar", phone: "8459341728" },
+      { name: "Vedansh Dhargalkar", phone: "7720907356" }
     ]
   },
   {
@@ -301,7 +310,7 @@ export const events: EventRecord[] = [
     shortDescription: "E-sports cricket simulation.",
     description: "Show off your batting and bowling skills in the virtual world.",
     rules: ["5-over matches", "Knockout format"],
-    registrationFee: 60,
+    registrationFee: 59,
     prizePool: "₹3,000",
     coordinators: [
       { name: "Soham Joshi", phone: "9922967609" },
