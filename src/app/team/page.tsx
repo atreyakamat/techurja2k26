@@ -1,14 +1,17 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/navbar";
-import { teamMembers } from "@/lib/team-data";
+import { teamMembers, TeamMember } from "@/lib/team-data";
 import { SplineScene } from "@/components/SplineScene";
+import { Copy, Check, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function TeamPage() {
   const faculty = teamMembers.filter(m => m.category === "Faculty");
-  const students = teamMembers.filter(m => m.category === "Student Coordinator");
+  const studentCouncil = teamMembers.filter(m => m.category === "Student Council");
+  const otherCouncils = teamMembers.filter(m => m.category === "Council" || m.category === "MBA" || m.category === "RoboClub");
 
   return (
     <main className="min-h-screen bg-deep-black">
@@ -40,30 +43,44 @@ export default function TeamPage() {
           </div>
         </header>
 
-        {/* Faculty Section */}
+        {/* Student Council Section */}
         <section className="mb-20">
+          <div className="flex items-center gap-4 mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-magenta-cyber tracking-widest uppercase">Student Council</h2>
+            <div className="h-[1px] flex-grow bg-gradient-to-r from-magenta-cyber/50 to-transparent"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            {studentCouncil.map((member, i) => (
+              <TeamCard key={member.number} member={member} index={i} />
+            ))}
+          </div>
+        </section>
+
+        {/* Department Councils Section */}
+        <section className="mb-20">
+          <div className="flex items-center gap-4 mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-yellow-nuclear tracking-widest uppercase">Council Leads</h2>
+            <div className="h-[1px] flex-grow bg-gradient-to-r from-yellow-nuclear/50 to-transparent"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {otherCouncils.map((member, i) => (
+              <TeamCard key={member.number} member={member} index={i} />
+            ))}
+          </div>
+        </section>
+
+        {/* Faculty Section */}
+        <section>
           <div className="flex items-center gap-4 mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-cyan-electric tracking-widest uppercase">Faculty Mentors</h2>
             <div className="h-[1px] flex-grow bg-gradient-to-r from-cyan-electric/50 to-transparent"></div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {faculty.map((member, i) => (
-              <TeamCard key={member.name} member={member} index={i} />
-            ))}
-          </div>
-        </section>
-
-        {/* Students Section */}
-        <section>
-          <div className="flex items-center gap-4 mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-yellow-nuclear tracking-widest uppercase">Student Coordinators</h2>
-            <div className="h-[1px] flex-grow bg-gradient-to-r from-yellow-nuclear/50 to-transparent"></div>
-          </div>
-          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {students.map((member, i) => (
-              <TeamCard key={member.name} member={member} index={i} />
+            {faculty.map((member, i) => (
+              <TeamCard key={member.number} member={member} index={i} />
             ))}
           </div>
         </section>
@@ -72,44 +89,100 @@ export default function TeamPage() {
   );
 }
 
-const TeamCard = React.memo(function TeamCard({ member, index }: { member: any, index: number }) {
+const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamMember, index: number }) {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(member.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      className="terminal-panel neon-border-magenta group hover:border-cyan-electric transition-colors duration-500 will-change-transform"
+      transition={{ delay: index * 0.05 }}
+      className="terminal-panel neon-border-magenta group hover:border-cyan-electric transition-all duration-500 overflow-hidden"
     >
-      <div className="relative z-10">
-        <div className="mb-4 flex justify-between items-start">
-          <div className="w-12 h-12 border border-magenta-cyber/30 bg-magenta-cyber/5 flex items-center justify-center font-mono text-magenta-cyber text-xs">
-            {String(index + 1).padStart(2, '0')}
+      <div className="relative z-10 flex flex-col h-full">
+        {/* Profile Image / Placeholder */}
+        <div className="relative w-full aspect-square mb-6 overflow-hidden border border-white/10 bg-zinc-900">
+           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+           {member.image ? (
+             <img 
+               src={member.image} 
+               alt={member.name}
+               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110"
+               onError={(e) => {
+                 (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=111&color=fff&size=512`;
+               }}
+             />
+           ) : (
+             <div className="w-full h-full flex items-center justify-center bg-zinc-900 text-zinc-700">
+               <span className="text-4xl font-black uppercase">{member.name.charAt(0)}</span>
+             </div>
+           )}
+           
+           <div className="absolute top-4 left-4 z-20 w-10 h-10 border border-magenta-cyber/30 bg-black/60 backdrop-blur-md flex items-center justify-center font-mono text-magenta-cyber text-xs">
+            {String(member.number).padStart(2, '0')}
           </div>
-          <div className="text-[8px] font-mono text-zinc-500 uppercase tracking-[0.2em]">
-            Status: Active
+
+          <div className="absolute bottom-4 left-4 right-4 z-20">
+             <div className="text-[8px] font-mono text-cyan-electric uppercase tracking-[0.2em] mb-1">
+               {member.council || 'STAFF'}
+             </div>
+             <h3 className="text-lg font-bold text-white leading-tight uppercase tracking-tighter group-hover:text-magenta-cyber transition-colors">
+               {member.name}
+             </h3>
           </div>
         </div>
-        
-        <h3 className="text-xl font-bold text-white mb-1 group-hover:text-cyan-electric transition-colors uppercase tracking-tight">
-          {member.name}
-        </h3>
-        <p className="text-magenta-cyber text-xs font-mono uppercase tracking-widest mb-4">
-          {member.role}
-        </p>
-        
-        {member.department && (
-          <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-2 text-[10px] text-zinc-500 font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-magenta-cyber/50"></span>
-            {member.department}
-          </div>
-        )}
+
+        <div className="px-1 flex-grow">
+          <p className="text-zinc-400 text-[10px] font-mono uppercase tracking-[0.2em] mb-6 min-h-[2.5em]">
+            {member.role}
+          </p>
+          
+          <button 
+            onClick={copyEmail}
+            className="w-full py-3 border border-magenta-cyber/20 bg-magenta-cyber/5 hover:bg-magenta-cyber/10 hover:border-magenta-cyber/50 flex items-center justify-center gap-3 transition-all duration-300 group/btn relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
+            
+            <AnimatePresence mode="wait">
+              {copied ? (
+                <motion.div 
+                  key="check"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.5 }}
+                  className="flex items-center gap-2 text-cyan-electric"
+                >
+                  <Check size={14} />
+                  <span className="text-[10px] font-mono uppercase tracking-widest">Copied</span>
+                </motion.div>
+              ) : (
+                <motion.div 
+                  key="mail"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.5 }}
+                  className="flex items-center gap-2 text-magenta-cyber"
+                >
+                  <Mail size={14} className="group-hover/btn:scale-110 transition-transform" />
+                  <span className="text-[10px] font-mono uppercase tracking-widest">Get Contact</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </button>
+        </div>
       </div>
       
-      {/* Decorative corner */}
-      <div className="absolute top-0 right-0 w-8 h-8 pointer-events-none overflow-hidden opacity-20">
-        <div className="absolute top-[-10px] right-[-10px] w-10 h-10 border border-magenta-cyber rotate-45"></div>
+      {/* Glitch Decorative Element */}
+      <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none overflow-hidden opacity-0 group-hover:opacity-10 transition-opacity">
+        <div className="absolute top-[-20px] right-[-20px] w-24 h-24 border-2 border-magenta-cyber rotate-45"></div>
       </div>
     </motion.div>
   );
-}
+});
