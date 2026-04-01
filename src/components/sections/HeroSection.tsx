@@ -128,6 +128,9 @@ export function HeroSection() {
             <Link href="/events" className="cyber-button-alt text-[10px] md:text-sm px-6 py-4 md:py-3 w-full sm:w-auto">
               VIEW COMBAT EVENTS
             </Link>
+            <a href="/rulebook.pdf" target="_blank" className="cyber-button-alt border-magenta-cyber text-magenta-cyber hover:bg-magenta-cyber/10 text-[10px] md:text-sm px-6 py-4 md:py-3 w-full sm:w-auto">
+              GENERAL RULEBOOK
+            </a>
           </div>
 
           {/* System logs centered bottom */}
