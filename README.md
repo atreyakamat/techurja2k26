@@ -39,7 +39,7 @@ npm install
 2. Configure environment
 
 ```bash
-DATABASE_URL="mysql://USER:PASSWORD@localhost:3306/techurja2k26"
+PROD_DATABASE_URL="mysql://USER:PASSWORD@localhost:3306/techurja2k26"
 ```
 
 3. Generate Prisma client and run migrations
