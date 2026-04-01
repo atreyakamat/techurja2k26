@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
-<<<<<<< HEAD
 import { motion } from "framer-motion";
-=======
-import React from "react";
->>>>>>> e93dc8dd5caed80f5d6325fec51321e70c3c69d2
 import type { EventRecord } from "@/lib/event-data";
-import { MapPin, Users, Zap, ArrowRight } from "lucide-react";
+import { MapPin, Zap, ArrowRight, Medal } from "lucide-react";
 
-<<<<<<< HEAD
+const flairColors = {
+  Gold: "text-yellow-400 border-yellow-400/50 bg-yellow-400/10 shadow-[0_0_10px_rgba(250,204,21,0.3)]",
+  Silver: "text-zinc-300 border-zinc-300/50 bg-zinc-300/10 shadow-[0_0_10px_rgba(212,212,216,0.3)]",
+  Bronze: "text-orange-400 border-orange-400/50 bg-orange-400/10 shadow-[0_0_10px_rgba(251,146,60,0.3)]",
+};
+
 export function EventCard({ event, index }: { event: EventRecord; index: number }) {
   return (
     <motion.div
@@ -39,27 +40,19 @@ export function EventCard({ event, index }: { event: EventRecord; index: number 
                 <div className="w-full h-full bg-[radial-gradient(circle,var(--electric-cyan)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
               </div>
               <Zap size={40} className="text-cyan-electric/20 group-hover:text-cyan-electric/50 transition-colors mb-2" />
-              <span className="text-[10px] font-mono text-zinc-700 tracking-[0.5em] uppercase">No_Signal // Data_Link_Required</span>
+              <span className="text-[10px] font-mono text-zinc-700 tracking-[0.5em] uppercase text-center px-4">DATA_LINK_ENCRYPTED</span>
             </div>
           )}
-=======
-const levelLabel: Record<EventRecord["level"], string> = {
-  college: "College",
-  school: "School",
-};
 
-export const EventCard = React.memo(function EventCard({ event }: { event: EventRecord }) {
-  return (
-    <article className="panel flex h-full flex-col gap-4 p-5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(255,0,122,0.35)] will-change-transform">
-      <div className="flex items-center justify-between gap-3">
-        <span className="border border-cyan-300 px-2 py-1 text-xs uppercase tracking-[0.12em] text-cyan-200">
-          {event.category}
-        </span>
-        <span className="border border-yellow-300/80 px-2 py-1 text-xs uppercase tracking-[0.12em] text-yellow-200">
-          {levelLabel[event.level]}
-        </span>
-      </div>
->>>>>>> e93dc8dd5caed80f5d6325fec51321e70c3c69d2
+          {/* Flair Badge */}
+          {event.flair && (
+            <div className={`absolute top-4 left-4 z-20 border px-2 py-1 flex items-center gap-1.5 backdrop-blur-md ${flairColors[event.flair]}`}>
+              <Medal size={10} />
+              <span className="text-[8px] font-mono font-black uppercase tracking-[0.2em]">
+                {event.flair} EVENT
+              </span>
+            </div>
+          )}
 
           {/* Category Tag */}
           <div className="absolute top-4 right-4 z-20 border border-cyan-electric/30 bg-black/60 backdrop-blur-md px-2 py-1 text-[8px] font-mono text-cyan-electric uppercase tracking-widest">
@@ -68,8 +61,8 @@ export const EventCard = React.memo(function EventCard({ event }: { event: Event
 
           {/* Level Badge */}
           <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-magenta-cyber animate-pulse"></div>
-            <span className="text-[10px] font-mono text-magenta-cyber uppercase tracking-widest font-bold">
+            <div className={`w-2 h-2 rounded-full ${event.level === 'higher secondary' ? 'bg-yellow-nuclear' : 'bg-magenta-cyber'} animate-pulse`}></div>
+            <span className={`text-[10px] font-mono uppercase tracking-widest font-bold ${event.level === 'higher secondary' ? 'text-yellow-nuclear' : 'text-magenta-cyber'}`}>
               {event.level}
             </span>
           </div>
@@ -94,7 +87,9 @@ export const EventCard = React.memo(function EventCard({ event }: { event: Event
               </div>
               <div className="flex items-center gap-1.5">
                 <Zap size={12} className="text-yellow-nuclear" />
-                <span className="text-white">₹{event.registrationFee}</span>
+                <span className="text-white">
+                  {typeof event.registrationFee === 'number' && event.registrationFee > 0 ? `₹${event.registrationFee}` : event.registrationFee}
+                </span>
               </div>
             </div>
 
@@ -109,4 +104,4 @@ export const EventCard = React.memo(function EventCard({ event }: { event: Event
       </Link>
     </motion.div>
   );
-});
+}

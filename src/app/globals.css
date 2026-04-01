@@ -88,6 +88,11 @@ section:first-of-type {
   100% { background-position: 0 40px; }
 }
 
+@keyframes grid-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 40px; }
+}
+
 @keyframes scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }

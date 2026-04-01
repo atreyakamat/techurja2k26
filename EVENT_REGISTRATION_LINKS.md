@@ -1,31 +1,29 @@
-# TECHURJA 2K26 - Event Registration Links
+# TECHURJA 2K26 - Official Event Links
 
-All registration links follow the format: `https://techurja.aitdgoa.edu.in/register/[slug]`
+All event links follow the format: `https://techurja.aitdgoa.edu.in/events/[slug]`
 
-| Event Name | Category | Registration Link |
+| Event Name | Category | Event Detail Link |
 | :--- | :--- | :--- |
-| **ROBOWAR (15KG)** | Robotics | https://techurja.aitdgoa.edu.in/register/robowar-15kg |
-| **ROBOWAR (8KGS)** | Robotics | https://techurja.aitdgoa.edu.in/register/robowar-8kgs |
-| **ROBOWAR (3LBS)** | Robotics | https://techurja.aitdgoa.edu.in/register/robowar-3lbs |
-| **ROBO SUMO** | Robotics | https://techurja.aitdgoa.edu.in/register/robo-sumo |
-| **ROBO TUG OF WAR** | Robotics | https://techurja.aitdgoa.edu.in/register/robo-tug-of-war |
-| **FIFA** | General | https://techurja.aitdgoa.edu.in/register/fifa |
-| **BRIDGE CONSTRUCTION** | Mechanical | https://techurja.aitdgoa.edu.in/register/bridge-construction |
-| **ROBO SOCCER** | Robotics | https://techurja.aitdgoa.edu.in/register/robo-soccer |
-| **CODING EVENT** | Computer Science | https://techurja.aitdgoa.edu.in/register/coding-event |
-| **CLASH ROYAL** | General | https://techurja.aitdgoa.edu.in/register/clash-royal |
-| **CAPTURE THE FLAG** | Computer Science | https://techurja.aitdgoa.edu.in/register/capture-the-flag |
-| **LINE FOLLOWER ROBOT** | Robotics | https://techurja.aitdgoa.edu.in/register/line-follower-robot |
-| **TREASURE HUNT** | General | https://techurja.aitdgoa.edu.in/register/treasure-hunt |
-| **PROJECT PRESENTATION** | General | https://techurja.aitdgoa.edu.in/register/project-presentation |
-| **VIRTUAL CRICKET** | General | https://techurja.aitdgoa.edu.in/register/virtual-cricket |
-| **CIRCUIT SIMULATION** | Computer Science | https://techurja.aitdgoa.edu.in/register/circuit-simulation |
-| **BUSINESS PITCH** | Management | https://techurja.aitdgoa.edu.in/register/business-pitch |
-| **ROBO MAZE SOLVER** | Robotics | https://techurja.aitdgoa.edu.in/register/robo-maze-solver |
-| **ROBO RACE** | Robotics | https://techurja.aitdgoa.edu.in/register/robo-race |
-| **HACKATHON** | Innovation | https://techurja.aitdgoa.edu.in/register/hackathon |
-| **SYMMETRY ART** | General | https://techurja.aitdgoa.edu.in/register/symmetry-art |
-| **STRUCTOMAT** | Mechanical | https://techurja.aitdgoa.edu.in/register/structomat |
+| **ROBOWARS** | Robotics | https://techurja.aitdgoa.edu.in/events/robowars |
+| **ROBO NEXUS** | Robotics | https://techurja.aitdgoa.edu.in/events/robo-nexus |
+| **CYBER STRIKE** | Robotics | https://techurja.aitdgoa.edu.in/events/cyber-strike |
+| **WAR ROOM PROTOCOL** | Management | https://techurja.aitdgoa.edu.in/events/war-room-protocol |
+| **TECHYOTHON** | Innovation | https://techurja.aitdgoa.edu.in/events/techyothon |
+| **CLASHPUNK** | General | https://techurja.aitdgoa.edu.in/events/clashpunk |
+| **NEON SPAN** | Mechanical | https://techurja.aitdgoa.edu.in/events/neon-span |
+| **SANTO DOMINGO RACE** | Robotics | https://techurja.aitdgoa.edu.in/events/santo-domingo-race |
+| **KABUKI ROUNDABOUT** | Robotics | https://techurja.aitdgoa.edu.in/events/kabuki-roundabout |
+| **GHOSTGRID** | Computer Science | https://techurja.aitdgoa.edu.in/events/ghostgrid |
+| **ESCAPE THE MATRIX** | Computer Science | https://techurja.aitdgoa.edu.in/events/escape-the-matrix |
+| **PIXEL PLAY** | General | https://techurja.aitdgoa.edu.in/events/pixel-play |
+| **STRUCTOMAT** | Mechanical | https://techurja.aitdgoa.edu.in/events/structomat |
+| **SYMMETRY ART** | General | https://techurja.aitdgoa.edu.in/events/symmetry-art |
+| **CIRCUIT BREACH** | Computer Science | https://techurja.aitdgoa.edu.in/events/circuit-breach |
+| **THE CYPHER HEIST** | General | https://techurja.aitdgoa.edu.in/events/the-cypher-heist |
+| **GRID RUNNER** | Robotics | https://techurja.aitdgoa.edu.in/events/grid-runner |
+| **CYBER SMASHERS** | General | https://techurja.aitdgoa.edu.in/events/cyber-smashers |
+| **INNOVIBE** | Innovation | https://techurja.aitdgoa.edu.in/events/innovibe |
+| **CYBER TUG** | Robotics | https://techurja.aitdgoa.edu.in/events/cyber-tug |
 
 ---
 **Domain:** `techurja.aitdgoa.edu.in`
