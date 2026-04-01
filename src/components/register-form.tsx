@@ -110,9 +110,10 @@ export function RegisterForm({ event }: { event: EventRecord }) {
       </label>
 
       <label className="flex flex-col gap-2 text-sm text-zinc-200">
-        College / School
+        College / School / Organisation
         <input
           required
+          placeholder="college/school/organisation"
           value={formData.institution}
           onChange={(e) => setFormData((prev) => ({ ...prev, institution: e.target.value }))}
           className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300"

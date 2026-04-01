@@ -135,7 +135,7 @@ export function RegistrationTerminalSection() {
                     <span className="absolute left-3 top-3 text-cyan-electric font-mono">&gt;</span>
                     <input required 
                       type="text" 
-                      placeholder="declare your faction (college/school)" 
+                      placeholder="declare your faction (college/school/organisation)" 
                       className="w-full bg-black/50 border border-cyan-electric/30 pl-8 pr-4 py-3 text-white font-mono focus:outline-none focus:border-cyan-electric focus:shadow-[inset_0_0_10px_rgba(41,244,255,0.2)] transition-all" 
                       value={formData.institution}
                       onChange={e => setFormData({...formData, institution: e.target.value})}
