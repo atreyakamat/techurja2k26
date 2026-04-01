@@ -76,7 +76,7 @@ export function Navbar() {
               className="cyber-button py-1.5 md:py-2 px-3 md:px-6 text-[8px] md:text-[10px] tracking-[0.1em] md:tracking-[0.2em] font-bold h-8 md:h-10 flex items-center gap-1 md:gap-2 group"
             >
               <Zap size={10} className="group-hover:animate-pulse" />
-              <span className="hidden xs:inline">REGISTER_NOW</span>
+              <span className="hidden xs:inline">REGISTER</span>
               <span className="xs:hidden">REG</span>
             </Link>
 
