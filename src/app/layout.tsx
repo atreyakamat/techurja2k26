@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${orbitron.variable} ${rajdhani.variable} h-full antialiased`}
+      className={`${orbitron.variable} ${rajdhani.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full bg-black text-zinc-100 pb-[30px] relative">
         <div className="crt-noise"></div>

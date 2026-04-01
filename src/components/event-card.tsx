@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { EventRecord } from "@/lib/event-data";
@@ -26,13 +27,12 @@ export function EventCard({ event, index }: { event: EventRecord; index: number 
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
           
           {event.image ? (
-            <img 
+            <Image 
               src={event.image} 
               alt={event.name}
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = `https://placehold.co/600x400/050505/29F4FF?text=${encodeURIComponent(event.name)}`;
-              }}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-900 relative">

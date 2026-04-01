@@ -42,12 +42,12 @@ export function Navbar() {
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6">
           {/* Left: Brand */}
-          <Link href="/" className="group flex items-center gap-0 shrink-0 -ml-4" onClick={closeMenu}>
+          <Link href="/" className="group flex items-center gap-0 shrink-0 -ml-2 sm:-ml-4" onClick={closeMenu}>
             <div className="flex flex-col leading-none">
-              <span className="font-display text-xl md:text-2xl tracking-[0.2em] text-white">
+              <span className="font-display text-base md:text-2xl tracking-[0.15em] md:tracking-[0.2em] text-white">
                 TECHURJA <span className="text-cyan-electric drop-shadow-[0_0_8px_rgba(41,244,255,0.4)]">2K26</span>
               </span>
-              <span className="text-[10px] md:text-xs font-mono text-yellow-nuclear tracking-[0.4em] uppercase mt-1.5 hidden sm:block drop-shadow-[0_0_5px_rgba(249,255,59,0.3)]">
+              <span className="text-[7px] md:text-xs font-mono text-yellow-nuclear tracking-[0.3em] md:tracking-[0.4em] uppercase mt-1 hidden xs:block drop-shadow-[0_0_5px_rgba(249,255,59,0.3)]">
                 AITD_ARENA // CONNECTED
               </span>
             </div>
@@ -69,22 +69,23 @@ export function Navbar() {
           </nav>
 
           {/* Right: Actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <Link 
               href="/#register" 
-              className="hidden sm:flex cyber-button py-2 px-6 text-[10px] tracking-[0.2em] font-bold h-10 items-center gap-2 group"
+              className="cyber-button py-1.5 md:py-2 px-3 md:px-6 text-[8px] md:text-[10px] tracking-[0.1em] md:tracking-[0.2em] font-bold h-8 md:h-10 flex items-center gap-1 md:gap-2 group"
             >
-              <Zap size={12} className="group-hover:animate-pulse" />
-              REGISTER_NOW
+              <Zap size={10} className="group-hover:animate-pulse" />
+              <span className="hidden xs:inline">REGISTER_NOW</span>
+              <span className="xs:hidden">REG</span>
             </Link>
 
             {/* Mobile Toggle */}
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 text-cyan-electric border border-cyan-electric/30 bg-cyan-electric/5 hover:bg-cyan-electric/20 transition-all rounded-none"
+              className="lg:hidden p-1.5 text-cyan-electric border border-cyan-electric/30 bg-cyan-electric/5 hover:bg-cyan-electric/20 transition-all rounded-none"
               aria-label="Toggle Menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>

@@ -18,6 +18,11 @@
   --font-display: 'Orbitron', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  @apply antialiased;
+}
+
 body {
   background: var(--deep-black);
   color: var(--ink);
@@ -25,6 +30,36 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+  /* Hardware acceleration for global smooth feel */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth motion base classes */
+.terminal-panel, .cyber-button, .cyber-button-alt, .neon-border {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Mobile Lite-Mode - Reduces heavy GPU effects on small screens */
+@media (max-width: 768px) {
+  .backdrop-blur-md, .backdrop-blur-xl, .backdrop-blur-sm {
+    backdrop-filter: none !important;
+    background-color: rgba(5, 5, 5, 0.95) !important;
+  }
+  
+  .neon-border, .neon-border-magenta {
+    box-shadow: none !important;
+  }
+
+  .animate-pulse {
+    animation: none !important;
+  }
+
+  .crt-noise {
+    display: none !important;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
