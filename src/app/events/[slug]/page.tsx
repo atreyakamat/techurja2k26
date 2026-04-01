@@ -217,7 +217,6 @@ export default async function EventDetailsPage({ params }: EventDetailsProps) {
               <div className="space-y-6">
                 {event.coordinators.map((coord, i) => (
                   <div key={i} className="group p-6 border border-white/5 bg-black/40 hover:border-magenta-cyber/50 transition-all duration-300">
-                    <p className="text-[10px] font-mono text-magenta-cyber uppercase tracking-widest mb-2 opacity-70 font-bold">ADMIN_UNIT_{i+1}</p>
                     <h4 className="text-2xl font-bold text-white mb-6 uppercase tracking-tighter group-hover:text-magenta-cyber transition-colors">{coord.name}</h4>
                     <a 
                       href={`tel:${coord.phone}`} 

@@ -123,10 +123,6 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
                <span className="text-5xl font-black uppercase">{member.name.charAt(0)}</span>
              </div>
            )}
-           
-           <div className="absolute top-4 left-4 z-20 w-12 h-12 border border-magenta-cyber/30 bg-black/60 backdrop-blur-md flex items-center justify-center font-mono text-magenta-cyber text-sm font-bold">
-            {String(member.number).padStart(2, '0')}
-          </div>
 
           <div className="absolute bottom-6 left-6 right-6 z-20">
              <div className="text-[10px] font-mono text-cyan-electric uppercase tracking-[0.3em] mb-2 font-bold">
