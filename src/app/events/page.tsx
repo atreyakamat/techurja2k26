@@ -37,24 +37,24 @@ function EventsContent() {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-6 pb-24 pt-24">
-      <header className="relative overflow-hidden terminal-panel border-cyan-electric/30 p-8 md:p-12">
+    <main className="mx-auto flex w-full max-w-7xl flex-col gap-8 md:gap-12 px-6 pb-24 pt-20 md:pt-24">
+      <header className="relative overflow-hidden terminal-panel border-cyan-electric/30 p-6 md:p-12">
         <div className="absolute inset-0 scanline-mask opacity-20 pointer-events-none"></div>
         
-        <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
-            <div className="inline-block border border-cyan-electric/50 bg-cyan-electric/10 px-3 py-1 text-[10px] tracking-[0.2em] text-cyan-electric uppercase mb-6 shadow-[0_0_10px_rgba(41,244,255,0.1)]">
+            <div className="inline-block border border-cyan-electric/50 bg-cyan-electric/10 px-3 py-1 text-[9px] md:text-[10px] tracking-[0.2em] text-cyan-electric uppercase mb-4 md:mb-6 shadow-[0_0_10px_rgba(41,244,255,0.1)]">
               PROTOCOL // EVENT_DATABASE_v2.6
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+            <h1 className="text-4xl md:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
               All <span className="text-cyan-electric drop-shadow-[0_0_10px_rgba(41,244,255,0.5)]">Events</span>
             </h1>
-            <p className="mt-8 max-w-xl text-lg text-zinc-400 leading-relaxed border-l-2 border-magenta-cyber pl-4 bg-black/20 py-2">
+            <p className="mt-6 md:mt-8 max-w-xl text-sm md:text-lg text-zinc-400 leading-relaxed border-l-2 border-magenta-cyber pl-4 bg-black/20 py-2">
               Filter by category and level, then drill down into event details before registration. 
               Each node in our grid represents a unique challenge for the digital arena.
             </p>
 
-            <form className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" onSubmit={handleFilter}>
+            <form className="mt-8 md:mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" onSubmit={handleFilter}>
               <div className="relative col-span-full lg:col-span-2">
                 <input
                   name="search"

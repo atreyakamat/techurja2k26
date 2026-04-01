@@ -215,12 +215,12 @@ export function RegistrationTerminalSection() {
                   <span className="text-white">TOTAL: ₹{totalFee}</span>
                 </h4>
                 <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
-                  <div className="w-48 h-48 bg-white p-2 rounded flex-shrink-0 relative overflow-hidden group">
+                  <div className="w-full max-w-[200px] aspect-square bg-white p-2 rounded flex-shrink-0 relative overflow-hidden group">
                     <Image src="/payment-techurja.jpeg" alt="Universal Payment QR" width={200} height={200} className="w-full h-full object-contain" />
                     <div className="absolute inset-0 bg-cyan-electric/10 pointer-events-none group-hover:bg-transparent transition-colors"></div>
                   </div>
                   <div className="space-y-4 flex-grow w-full">
-                    <p className="text-sm font-mono text-zinc-400">Scan the QR code to pay the total fee. All selections will be verified manually.</p>
+                    <p className="text-[10px] sm:text-sm font-mono text-zinc-400">Scan the QR code to pay the total fee. All selections will be verified manually.</p>
                     
                     <div className="space-y-2">
                       <label className="text-xs text-cyan-electric uppercase font-mono tracking-widest">Transaction ID (UTR)</label>
@@ -228,8 +228,8 @@ export function RegistrationTerminalSection() {
                         <span className="absolute left-3 top-3 text-cyan-electric font-mono">&gt;</span>
                         <input required 
                           type="text" 
-                          placeholder="Enter 12-digit UTR number" 
-                          className="w-full bg-black/50 border border-cyan-electric/30 pl-8 pr-4 py-3 text-white font-mono focus:outline-none focus:border-cyan-electric focus:shadow-[inset_0_0_10px_rgba(41,244,255,0.2)] transition-all" 
+                          placeholder="12-digit UTR" 
+                          className="w-full bg-black/50 border border-cyan-electric/30 pl-8 pr-4 py-3 text-white font-mono text-xs focus:outline-none focus:border-cyan-electric focus:shadow-[inset_0_0_10px_rgba(41,244,255,0.2)] transition-all" 
                           value={formData.transactionId}
                           onChange={e => setFormData({...formData, transactionId: e.target.value})}
                         />
@@ -243,7 +243,7 @@ export function RegistrationTerminalSection() {
                         type="file"
                         accept="image/*"
                         onChange={e => setScreenshot(e.target.files?.[0] || null)}
-                        className="w-full text-xs text-zinc-400 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-xs file:font-mono file:bg-cyan-electric/20 file:text-cyan-electric hover:file:bg-cyan-electric/30 transition-all"
+                        className="w-full text-[10px] sm:text-xs text-zinc-400 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-[10px] file:font-mono file:bg-cyan-electric/20 file:text-cyan-electric hover:file:bg-cyan-electric/30 transition-all"
                       />
                     </div>
                   </div>

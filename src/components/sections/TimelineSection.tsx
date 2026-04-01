@@ -29,45 +29,45 @@ export function TimelineSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="terminal-panel neon-border-yellow bg-black/80 backdrop-blur-xl p-12 md:p-20 text-center relative overflow-hidden group"
+          className="terminal-panel neon-border-yellow bg-black/80 backdrop-blur-xl p-8 md:p-20 text-center relative overflow-hidden group"
         >
           {/* Animated scanline inside the panel */}
           <div className="absolute inset-0 scanline-mask opacity-10 pointer-events-none"></div>
           
-          <div className="relative z-10 flex flex-col items-center gap-8">
+          <div className="relative z-10 flex flex-col items-center gap-6 md:gap-8">
             <div className="relative">
               <div className="absolute inset-0 bg-yellow-nuclear/20 blur-[40px] rounded-full animate-pulse"></div>
-              <Package size={80} className="text-yellow-nuclear relative animate-bounce" />
+              <Package size={60} className="text-yellow-nuclear relative animate-bounce md:w-20 md:h-20" />
             </div>
             
-            <div className="space-y-4">
-              <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">
+            <div className="space-y-3 md:space-y-4">
+              <h3 className="text-2xl md:text-5xl font-black text-white uppercase tracking-tighter">
                 Event Schedule
               </h3>
-              <div className="flex items-center justify-center gap-4 text-yellow-nuclear">
-                <ShieldAlert size={20} className="animate-pulse" />
-                <span className="text-xl md:text-2xl font-mono font-bold tracking-[0.2em] uppercase">
+              <div className="flex items-center justify-center gap-3 md:gap-4 text-yellow-nuclear">
+                <ShieldAlert size={16} className="animate-pulse md:w-5 md:h-5" />
+                <span className="text-sm md:text-2xl font-mono font-bold tracking-[0.1em] md:tracking-[0.2em] uppercase">
                   Package Dropping Soon
                 </span>
-                <ShieldAlert size={20} className="animate-pulse" />
+                <ShieldAlert size={16} className="animate-pulse md:w-5 md:h-5" />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 w-full max-w-4xl mt-8">
-              <div className="p-6 border border-yellow-nuclear/20 bg-yellow-nuclear/5 rounded-none group-hover:border-yellow-nuclear/40 transition-colors">
-                <Clock className="text-yellow-nuclear mb-4 mx-auto" size={24} />
-                <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-mono">Status</p>
-                <p className="text-white font-bold uppercase mt-1 tracking-tight">Compiling...</p>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full max-w-4xl mt-4 md:mt-8">
+              <div className="p-4 md:p-6 border border-yellow-nuclear/20 bg-yellow-nuclear/5 rounded-none group-hover:border-yellow-nuclear/40 transition-colors">
+                <Clock className="text-yellow-nuclear mb-2 md:mb-4 mx-auto" size={20} />
+                <p className="text-[8px] md:text-[10px] text-zinc-500 uppercase tracking-widest font-mono">Status</p>
+                <p className="text-white font-bold uppercase mt-1 text-xs md:text-base tracking-tight">Compiling...</p>
               </div>
-              <div className="p-6 border border-yellow-nuclear/20 bg-yellow-nuclear/5 rounded-none group-hover:border-yellow-nuclear/40 transition-colors">
-                <div className="w-6 h-6 border-2 border-yellow-nuclear border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-mono">Progress</p>
-                <p className="text-white font-bold uppercase mt-1 tracking-tight">87% Synchronized</p>
+              <div className="p-4 md:p-6 border border-yellow-nuclear/20 bg-yellow-nuclear/5 rounded-none group-hover:border-yellow-nuclear/40 transition-colors">
+                <div className="w-5 h-5 md:w-6 md:h-6 border-2 border-yellow-nuclear border-t-transparent rounded-full animate-spin mx-auto mb-2 md:mb-4"></div>
+                <p className="text-[8px] md:text-[10px] text-zinc-500 uppercase tracking-widest font-mono">Progress</p>
+                <p className="text-white font-bold uppercase mt-1 text-xs md:text-base tracking-tight">87% Synchronized</p>
               </div>
-              <div className="p-6 border border-yellow-nuclear/20 bg-yellow-nuclear/5 rounded-none group-hover:border-yellow-nuclear/40 transition-colors">
-                <Package className="text-yellow-nuclear mb-4 mx-auto opacity-50" size={24} />
-                <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-mono">Payload</p>
-                <p className="text-white font-bold uppercase mt-1 tracking-tight">Encrypted Bundle</p>
+              <div className="p-4 md:p-6 border border-yellow-nuclear/20 bg-yellow-nuclear/5 rounded-none group-hover:border-yellow-nuclear/40 transition-colors sm:col-span-2 md:col-span-1">
+                <Package className="text-yellow-nuclear mb-2 md:mb-4 mx-auto opacity-50" size={20} />
+                <p className="text-[8px] md:text-[10px] text-zinc-500 uppercase tracking-widest font-mono">Payload</p>
+                <p className="text-white font-bold uppercase mt-1 text-xs md:text-base tracking-tight">Encrypted Bundle</p>
               </div>
             </div>
           </div>

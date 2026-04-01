@@ -42,7 +42,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black py-20">
       {/* Background Layer */}
       <div className="absolute inset-0 z-0">
         {!isMobile ? (
@@ -70,25 +70,25 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col items-center gap-6"
+          className="flex flex-col items-center gap-4 md:gap-6"
         >
           <div className="inline-block border border-cyan-electric/50 bg-cyan-electric/10 px-3 py-1 text-[9px] md:text-[10px] tracking-[0.3em] text-cyan-electric uppercase shadow-[0_0_20px_rgba(41,244,255,0.2)] backdrop-blur-md">
             TECHURJA 2K26 // DIGITAL ARENA TERMINAL
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter text-glow flex flex-col items-center">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tighter text-glow flex flex-col items-center">
             <span className="block text-white opacity-90 text-[10px] md:text-sm tracking-[0.5em] font-mono mb-2">ENTER THE</span>
             <span className="block text-yellow-nuclear glitch-hover drop-shadow-[0_0_25px_rgba(249,255,59,0.7)]" data-text="DIGITAL ARENA">DIGITAL ARENA</span>
-            <span className="block text-white/50 text-xl md:text-4xl tracking-[0.4em] mt-2 font-mono uppercase">TERMINAL</span>
+            <span className="block text-white/50 text-base md:text-4xl tracking-[0.4em] mt-2 font-mono uppercase">TERMINAL</span>
           </h1>
 
-          <div className="max-w-xl text-xs md:text-base text-ink leading-relaxed font-mono py-4 px-6 bg-black/40 backdrop-blur-sm border-x border-cyan-electric/20 relative">
+          <div className="max-w-xl text-[10px] sm:text-xs md:text-base text-ink leading-relaxed font-mono py-4 px-6 bg-black/40 backdrop-blur-sm border-x border-cyan-electric/20 relative">
             <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-cyan-electric"></div>
             <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-cyan-electric"></div>
             Agnel Institute of Technology &amp; Design&apos;s high-octane cyberpunk tech festival. Hack, build, and battle through the grid.
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4 w-full sm:w-auto px-10 sm:px-0">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4 w-full sm:w-auto px-4 sm:px-0">
             <Link href="/#register" className="cyber-button text-[10px] md:text-sm px-6 py-4 md:py-3 glitch-hover w-full sm:w-auto" data-text="INITIATE REGISTRATION">
               INITIATE REGISTRATION
             </Link>
