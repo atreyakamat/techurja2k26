@@ -1,10 +1,15 @@
 "use client";
 
 import Link from "next/link";
+<<<<<<< HEAD
 import { motion } from "framer-motion";
+=======
+import React from "react";
+>>>>>>> e93dc8dd5caed80f5d6325fec51321e70c3c69d2
 import type { EventRecord } from "@/lib/event-data";
 import { MapPin, Users, Zap, ArrowRight } from "lucide-react";
 
+<<<<<<< HEAD
 export function EventCard({ event, index }: { event: EventRecord; index: number }) {
   return (
     <motion.div
@@ -37,6 +42,24 @@ export function EventCard({ event, index }: { event: EventRecord; index: number 
               <span className="text-[10px] font-mono text-zinc-700 tracking-[0.5em] uppercase">No_Signal // Data_Link_Required</span>
             </div>
           )}
+=======
+const levelLabel: Record<EventRecord["level"], string> = {
+  college: "College",
+  school: "School",
+};
+
+export const EventCard = React.memo(function EventCard({ event }: { event: EventRecord }) {
+  return (
+    <article className="panel flex h-full flex-col gap-4 p-5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(255,0,122,0.35)] will-change-transform">
+      <div className="flex items-center justify-between gap-3">
+        <span className="border border-cyan-300 px-2 py-1 text-xs uppercase tracking-[0.12em] text-cyan-200">
+          {event.category}
+        </span>
+        <span className="border border-yellow-300/80 px-2 py-1 text-xs uppercase tracking-[0.12em] text-yellow-200">
+          {levelLabel[event.level]}
+        </span>
+      </div>
+>>>>>>> e93dc8dd5caed80f5d6325fec51321e70c3c69d2
 
           {/* Category Tag */}
           <div className="absolute top-4 right-4 z-20 border border-cyan-electric/30 bg-black/60 backdrop-blur-md px-2 py-1 text-[8px] font-mono text-cyan-electric uppercase tracking-widest">
@@ -86,4 +109,4 @@ export function EventCard({ event, index }: { event: EventRecord; index: number 
       </Link>
     </motion.div>
   );
-}
+});

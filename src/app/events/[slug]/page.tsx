@@ -2,7 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { getEventBySlug, events } from "@/lib/event-data";
+<<<<<<< HEAD
 import { BookOpen, FileText } from "lucide-react";
+=======
+>>>>>>> e93dc8dd5caed80f5d6325fec51321e70c3c69d2
 
 export async function generateStaticParams() {
   return events.map((event) => ({
