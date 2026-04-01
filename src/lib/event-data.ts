@@ -32,6 +32,7 @@ export type EventRecord = {
 };
 
 export const events: EventRecord[] = [
+  // GOLD EVENTS
   {
     slug: "robowar-15kg",
     name: "ROBOWAR (15KG)",
@@ -46,6 +47,7 @@ export const events: EventRecord[] = [
     registrationFee: 1180,
     prizePool: "₹2,00,000 (Combined)",
     featured: true,
+    flair: "Gold",
     coordinators: [
       { name: "Yash Karekar", phone: "7498686247" },
       { name: "Yash Sanikop", phone: "8177963886" },
@@ -53,6 +55,237 @@ export const events: EventRecord[] = [
       { name: "Vedansh Dhargalkar", phone: "7720907356" }
     ]
   },
+  {
+    slug: "robo-sumo",
+    name: "ROBO SUMO",
+    category: "Robotics",
+    level: "college",
+    date: "30 April 2026",
+    time: "10AM ONWARDS",
+    venue: "AITD FOYER",
+    flair: "Gold",
+    shortDescription: "Autonomous Robo Sumo wrestling.",
+    description: "Push your opponent out of the ring in this high-tech sumo battle.",
+    rules: ["Autonomous bots only", "Standard sumo ring dimensions"],
+    registrationFee: 472,
+    prizePool: "₹30,000",
+    coordinators: [
+      { name: "Vedh Naik", phone: "8010362301" },
+      { name: "Saites Kalangutkar", phone: "7972524953" }
+    ]
+  },
+  {
+    slug: "robo-soccer",
+    name: "ROBO SOCCER",
+    category: "Robotics",
+    level: "college",
+    date: "29 April 2026",
+    time: "11AM ONWARDS",
+    venue: "AITD FOYER",
+    flair: "Gold",
+    shortDescription: "Remote-controlled robots playing football.",
+    description: "Score goals against opponents in this mechanical football match.",
+    rules: ["3 vs 3 format", "5-minute halves"],
+    registrationFee: 413,
+    prizePool: "₹20,000",
+    coordinators: [
+      { name: "Dia Saji", phone: "9699259703" },
+      { name: "Rohan Saikar", phone: "8007944512" }
+    ]
+  },
+  {
+    slug: "line-follower-robot",
+    name: "LINE FOLLOWER ROBOT",
+    category: "Robotics",
+    level: "college",
+    date: "29 April 2026",
+    time: "11AM ONWARDS",
+    venue: "LHE 2,3",
+    flair: "Gold",
+    shortDescription: "Autonomous navigation on predefined paths.",
+    description: "Fastest robot to complete the black line track wins.",
+    rules: ["Standard track width", "Two trials allowed"],
+    registrationFee: 295,
+    prizePool: "₹10,000",
+    coordinators: [
+      { name: "Dakshesh Verma", phone: "9272098752" },
+      { name: "Soham Polle", phone: "9307207645" }
+    ]
+  },
+  {
+    slug: "robo-race",
+    name: "ROBO RACE",
+    category: "Robotics",
+    level: "college",
+    date: "30 April 2026",
+    time: "10AM ONWARDS",
+    venue: "BASKETBALL COURT",
+    flair: "Gold",
+    shortDescription: "High-speed mechanical racing event.",
+    description: "Race your robots through an obstacle-filled track.",
+    rules: ["Fastest lap wins", "Max 2 trials allowed"],
+    registrationFee: 354,
+    prizePool: "₹15,000",
+    coordinators: [
+      { name: "Sanjana Vaday", phone: "9226013380" },
+      { name: "Tanisha Kolhar", phone: "8767254192" }
+    ]
+  },
+  // SILVER EVENTS
+  {
+    slug: "robo-tug-of-war",
+    name: "ROBO TUG OF WAR",
+    category: "Robotics",
+    level: "college",
+    date: "29/30 April 2026",
+    time: "11AM ONWARDS",
+    venue: "GYMKHANA",
+    flair: "Silver",
+    shortDescription: "Test of raw torque and traction.",
+    description: "Pull your opponent across the center line using pure mechanical force.",
+    rules: ["Maximum weight: 10kg", "No spiked wheels"],
+    registrationFee: 354,
+    prizePool: "₹15,000",
+    coordinators: [
+      { name: "Shreyas Manerikar", phone: "8830018722" },
+      { name: "Vilas Bhotane", phone: "8767526594" }
+    ]
+  },
+  {
+    slug: "coding-event",
+    name: "CODING EVENT",
+    category: "Computer Science",
+    level: "college",
+    date: "29 April 2026",
+    time: "11AM ONWARDS",
+    venue: "LBC5, LBC6",
+    flair: "Silver",
+    shortDescription: "Competitive programming marathon.",
+    description: "Solve algorithmic challenges under time pressure.",
+    rules: ["Individual participation", "No internet usage"],
+    registrationFee: 118,
+    prizePool: "₹10,000",
+    coordinators: [
+      { name: "Myron Dcruz", phone: "7378389612" },
+      { name: "Ashwith Shetty", phone: "7218694977" }
+    ]
+  },
+  {
+    slug: "project-presentation",
+    name: "PROJECT PRESENTATION",
+    category: "General",
+    level: "college",
+    date: "30 April 2026",
+    time: "10AM - 5PM",
+    venue: "SEMINAR HALL",
+    flair: "Silver",
+    shortDescription: "Showcase your technical innovations.",
+    description: "Present your research or projects to a panel of experts.",
+    rules: ["10-minute presentation", "Prototype demonstration"],
+    registrationFee: 236,
+    prizePool: "₹20,000",
+    coordinators: [
+      { name: "Joyce", phone: "8767179587" },
+      { name: "Rudra", phone: "9145450734" }
+    ]
+  },
+  {
+    slug: "robo-maze-solver",
+    name: "ROBO MAZE SOLVER",
+    category: "Robotics",
+    level: "college",
+    date: "29 April 2026",
+    time: "11AM ONWARDS",
+    venue: "LHC3, LHC2",
+    flair: "Silver",
+    shortDescription: "Autonomous navigation through complex mazes.",
+    description: "Code your robot to find the exit in the shortest time.",
+    rules: ["Time-based scoring", "No manual override"],
+    registrationFee: 354,
+    prizePool: "₹10,000",
+    coordinators: [
+      { name: "Deesh Naik", phone: "9146480787" },
+      { name: "Shourya Dhupkar", phone: "8010909892" }
+    ]
+  },
+  // BRONZE EVENTS
+  {
+    slug: "bridge-construction",
+    name: "BRIDGE CONSTRUCTION",
+    category: "Mechanical",
+    level: "college",
+    date: "29 April 2026",
+    time: "11AM ONWARDS",
+    venue: "DHM1",
+    flair: "Bronze",
+    shortDescription: "Structural engineering challenge.",
+    description: "Build the strongest bridge using limited materials.",
+    rules: ["Materials provided", "Weight-to-load ratio judging"],
+    registrationFee: 295,
+    prizePool: "₹8,000",
+    coordinators: [
+      { name: "Samuel Pinto", phone: "8830472562" },
+      { name: "Joaquim", phone: "8766596447" }
+    ]
+  },
+  {
+    slug: "capture-the-flag",
+    name: "CAPTURE THE FLAG",
+    category: "Computer Science",
+    level: "college",
+    date: "30 April 2026",
+    time: "10AM ONWARDS",
+    venue: "LBC4",
+    flair: "Bronze",
+    shortDescription: "Cybersecurity hacking challenge.",
+    description: "Find hidden flags by exploiting vulnerabilities.",
+    rules: ["Jeopardy style", "No DoS attacks allowed"],
+    registrationFee: 118,
+    prizePool: "₹10,000",
+    coordinators: [
+      { name: "Samson Sequeira", phone: "9607560849" },
+      { name: "Shrish Bordekar", phone: "9356826227" }
+    ]
+  },
+  {
+    slug: "circuit-simulation",
+    name: "CIRCUIT SIMULATION",
+    category: "Computer Science",
+    level: "college",
+    date: "30 April 2026",
+    time: "10AM - 5PM",
+    venue: "LBE 2,3,4,5,6",
+    flair: "Bronze",
+    shortDescription: "Hardware logic and design challenge.",
+    description: "Design and simulate complex electronic circuits.",
+    rules: ["Accuracy and speed metrics", "Standard gear provided"],
+    registrationFee: 236,
+    prizePool: "₹10,000",
+    coordinators: [
+      { name: "Joel", phone: "8605675478" },
+      { name: "Jaeden", phone: "9356320798" }
+    ]
+  },
+  {
+    slug: "business-pitch",
+    name: "BUSINESS PITCH",
+    category: "Management",
+    level: "college",
+    date: "29 April 2026",
+    time: "11AM ONWARDS",
+    venue: "FY MBA",
+    flair: "Bronze",
+    shortDescription: "Startup idea and business plan showcase.",
+    description: "Pitch your next big business idea to potential investors.",
+    rules: ["5-minute pitch duration", "Pitch deck required"],
+    registrationFee: 236,
+    prizePool: "₹8,000",
+    coordinators: [
+      { name: "Valora", phone: "9765953309" },
+      { name: "Brandon Lobo", phone: "9145523659" }
+    ]
+  },
+  // NO FLAIR EVENTS
   {
     slug: "robowar-8kgs",
     name: "ROBOWAR (8KGS)",
@@ -94,44 +327,6 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "robo-sumo",
-    name: "ROBO SUMO",
-    category: "Robotics",
-    level: "college",
-    date: "30 April 2026",
-    time: "10AM ONWARDS",
-    venue: "AITD FOYER",
-    flair: "Gold",
-    shortDescription: "Autonomous Robo Sumo wrestling.",
-    description: "Push your opponent out of the ring in this high-tech sumo battle.",
-    rules: ["Autonomous bots only", "Standard sumo ring dimensions"],
-    registrationFee: 472,
-    prizePool: "₹30,000",
-    coordinators: [
-      { name: "Vedh Naik", phone: "8010362301" },
-      { name: "Saites Kalangutkar", phone: "7972524953" }
-    ]
-  },
-  {
-    slug: "robo-tug-of-war",
-    name: "ROBO TUG OF WAR",
-    category: "Robotics",
-    level: "college",
-    date: "29/30 April 2026",
-    time: "11AM ONWARDS",
-    venue: "GYMKHANA",
-    flair: "Silver",
-    shortDescription: "Test of raw torque and traction.",
-    description: "Pull your opponent across the center line using pure mechanical force.",
-    rules: ["Maximum weight: 10kg", "No spiked wheels"],
-    registrationFee: 354,
-    prizePool: "₹15,000",
-    coordinators: [
-      { name: "Shreyas Manerikar", phone: "8830018722" },
-      { name: "Vilas Bhotane", phone: "8767526594" }
-    ]
-  },
-  {
     slug: "fifa",
     name: "FIFA",
     category: "General",
@@ -147,63 +342,6 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Aaryan Desai", phone: "8007249603" },
       { name: "Jaydeep Pane", phone: "7498965325" }
-    ]
-  },
-  {
-    slug: "bridge-construction",
-    name: "BRIDGE CONSTRUCTION",
-    category: "Mechanical",
-    level: "college",
-    date: "29 April 2026",
-    time: "11AM ONWARDS",
-    venue: "DHM1",
-    flair: "Bronze",
-    shortDescription: "Structural engineering challenge.",
-    description: "Build the strongest bridge using limited materials.",
-    rules: ["Materials provided", "Weight-to-load ratio judging"],
-    registrationFee: 295,
-    prizePool: "₹8,000",
-    coordinators: [
-      { name: "Samuel Pinto", phone: "8830472562" },
-      { name: "Joaquim", phone: "8766596447" }
-    ]
-  },
-  {
-    slug: "robo-soccer",
-    name: "ROBO SOCCER",
-    category: "Robotics",
-    level: "college",
-    date: "29 April 2026",
-    time: "11AM ONWARDS",
-    venue: "AITD FOYER",
-    flair: "Gold",
-    shortDescription: "Remote-controlled robots playing football.",
-    description: "Score goals against opponents in this mechanical football match.",
-    rules: ["3 vs 3 format", "5-minute halves"],
-    registrationFee: 413,
-    prizePool: "₹20,000",
-    coordinators: [
-      { name: "Dia Saji", phone: "9699259703" },
-      { name: "Rohan Saikar", phone: "8007944512" }
-    ]
-  },
-  {
-    slug: "coding-event",
-    name: "CODING EVENT",
-    category: "Computer Science",
-    level: "college",
-    date: "29 April 2026",
-    time: "11AM ONWARDS",
-    venue: "LBC5, LBC6",
-    flair: "Silver",
-    shortDescription: "Competitive programming marathon.",
-    description: "Solve algorithmic challenges under time pressure.",
-    rules: ["Individual participation", "No internet usage"],
-    registrationFee: 118,
-    prizePool: "₹10,000",
-    coordinators: [
-      { name: "Myron Dcruz", phone: "7378389612" },
-      { name: "Ashwith Shetty", phone: "7218694977" }
     ]
   },
   {
@@ -225,44 +363,6 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "capture-the-flag",
-    name: "CAPTURE THE FLAG",
-    category: "Computer Science",
-    level: "college",
-    date: "30 April 2026",
-    time: "10AM ONWARDS",
-    venue: "LBC4",
-    flair: "Bronze",
-    shortDescription: "Cybersecurity hacking challenge.",
-    description: "Find hidden flags by exploiting vulnerabilities.",
-    rules: ["Jeopardy style", "No DoS attacks allowed"],
-    registrationFee: 118,
-    prizePool: "₹10,000",
-    coordinators: [
-      { name: "Samson Sequeira", phone: "9607560849" },
-      { name: "Shrish Bordekar", phone: "9356826227" }
-    ]
-  },
-  {
-    slug: "line-follower-robot",
-    name: "LINE FOLLOWER ROBOT",
-    category: "Robotics",
-    level: "college",
-    date: "29 April 2026",
-    time: "11AM ONWARDS",
-    venue: "LHE 2,3",
-    flair: "Gold",
-    shortDescription: "Autonomous navigation on predefined paths.",
-    description: "Fastest robot to complete the black line track wins.",
-    rules: ["Standard track width", "Two trials allowed"],
-    registrationFee: 295,
-    prizePool: "₹10,000",
-    coordinators: [
-      { name: "Dakshesh Verma", phone: "9272098752" },
-      { name: "Soham Polle", phone: "9307207645" }
-    ]
-  },
-  {
     slug: "treasure-hunt",
     name: "TREASURE HUNT",
     category: "General",
@@ -281,25 +381,6 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "project-presentation",
-    name: "PROJECT PRESENTATION",
-    category: "General",
-    level: "college",
-    date: "30 April 2026",
-    time: "10AM - 5PM",
-    venue: "SEMINAR HALL",
-    flair: "Silver",
-    shortDescription: "Showcase your technical innovations.",
-    description: "Present your research or projects to a panel of experts.",
-    rules: ["10-minute presentation", "Prototype demonstration"],
-    registrationFee: 236,
-    prizePool: "₹20,000",
-    coordinators: [
-      { name: "Joyce", phone: "8767179587" },
-      { name: "Rudra", phone: "9145450734" }
-    ]
-  },
-  {
     slug: "virtual-cricket",
     name: "VIRTUAL CRICKET",
     category: "General",
@@ -315,82 +396,6 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Soham Joshi", phone: "9922967609" },
       { name: "Shuban", phone: "7414993238" }
-    ]
-  },
-  {
-    slug: "circuit-simulation",
-    name: "CIRCUIT SIMULATION",
-    category: "Computer Science",
-    level: "college",
-    date: "30 April 2026",
-    time: "10AM - 5PM",
-    venue: "LBE 2,3,4,5,6",
-    flair: "Bronze",
-    shortDescription: "Hardware logic and design challenge.",
-    description: "Design and simulate complex electronic circuits.",
-    rules: ["Accuracy and speed metrics", "Standard gear provided"],
-    registrationFee: 236,
-    prizePool: "₹10,000",
-    coordinators: [
-      { name: "Joel", phone: "8605675478" },
-      { name: "Jaeden", phone: "9356320798" }
-    ]
-  },
-  {
-    slug: "business-pitch",
-    name: "BUSINESS PITCH",
-    category: "Management",
-    level: "college",
-    date: "29 April 2026",
-    time: "11AM ONWARDS",
-    venue: "FY MBA",
-    flair: "Bronze",
-    shortDescription: "Startup idea and business plan showcase.",
-    description: "Pitch your next big business idea to potential investors.",
-    rules: ["5-minute pitch duration", "Pitch deck required"],
-    registrationFee: 236,
-    prizePool: "₹8,000",
-    coordinators: [
-      { name: "Valora", phone: "9765953309" },
-      { name: "Brandon Lobo", phone: "9145523659" }
-    ]
-  },
-  {
-    slug: "robo-maze-solver",
-    name: "ROBO MAZE SOLVER",
-    category: "Robotics",
-    level: "college",
-    date: "29 April 2026",
-    time: "11AM ONWARDS",
-    venue: "LHC3, LHC2",
-    flair: "Silver",
-    shortDescription: "Autonomous navigation through complex mazes.",
-    description: "Code your robot to find the exit in the shortest time.",
-    rules: ["Time-based scoring", "No manual override"],
-    registrationFee: 354,
-    prizePool: "₹10,000",
-    coordinators: [
-      { name: "Deesh Naik", phone: "9146480787" },
-      { name: "Shourya Dhupkar", phone: "8010909892" }
-    ]
-  },
-  {
-    slug: "robo-race",
-    name: "ROBO RACE",
-    category: "Robotics",
-    level: "college",
-    date: "30 April 2026",
-    time: "10AM ONWARDS",
-    venue: "BASKETBALL COURT",
-    flair: "Gold",
-    shortDescription: "High-speed mechanical racing event.",
-    description: "Race your robots through an obstacle-filled track.",
-    rules: ["Fastest lap wins", "Max 2 trials allowed"],
-    registrationFee: 354,
-    prizePool: "₹15,000",
-    coordinators: [
-      { name: "Sanjana Vaday", phone: "9226013380" },
-      { name: "Tanisha Kolhar", phone: "8767254192" }
     ]
   },
   {
@@ -497,7 +502,8 @@ export function getFilteredEvents(search = "", category = "all", level = "all"):
     const matchesSearch =
       term.length === 0 ||
       event.name.toLowerCase().includes(term) ||
-      event.shortDescription.toLowerCase().includes(term);
+      event.shortDescription.toLowerCase().includes(term) ||
+      (event.flair && event.flair.toLowerCase().includes(term));
 
     const matchesCategory = category === "all" || event.category === category;
     const matchesLevel = level === "all" || event.level === level;

@@ -8,9 +8,9 @@ import { Menu, X, ChevronRight, Zap } from "lucide-react";
 const navItems = [
   { href: "/events", label: "Events" },
   { href: "/team", label: "Team" },
+  { href: "/archives/2025", label: "Archives" },
   { href: "/#venue", label: "Venue" },
   { href: "/#schedule", label: "Schedule" },
-  { href: "/#faq", label: "FAQ" },
 ];
 
 export function Navbar() {

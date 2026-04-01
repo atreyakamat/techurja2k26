@@ -88,24 +88,30 @@ export function HeroSection() {
             </motion.span>
             
             <div className="flex flex-wrap justify-center font-mono uppercase font-bold tracking-[0.15em] md:tracking-[0.3em]">
-              {"ENTER THE DIGITAL ARENA".split("").map((char, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, filter: "blur(5px)" }}
-                  animate={{ opacity: 1, filter: "blur(0px)" }}
-                  transition={{ 
-                    delay: 1.0 + (i * 0.04),
-                    duration: 0.2
-                  }}
-                  className={`text-[10px] sm:text-xs md:text-xl lg:text-2xl ${
-                    i >= 10 // "ENTER THE " is 10 chars
-                    ? "text-cyan-electric drop-shadow-[0_0_10px_rgba(41,244,255,0.5)] animate-pulse" 
-                    : "text-white/50"
-                  }`}
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
+              {isMobile ? (
+                <span className="text-xs text-white/50">
+                  ENTER THE <span className="text-cyan-electric">DIGITAL ARENA</span>
+                </span>
+              ) : (
+                "ENTER THE DIGITAL ARENA".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, filter: "blur(5px)" }}
+                    animate={{ opacity: 1, filter: "blur(0px)" }}
+                    transition={{ 
+                      delay: 1.0 + (i * 0.04),
+                      duration: 0.2
+                    }}
+                    className={`text-[10px] sm:text-xs md:text-xl lg:text-2xl ${
+                      i >= 10 // "ENTER THE " is 10 chars
+                      ? "text-cyan-electric drop-shadow-[0_0_10px_rgba(41,244,255,0.5)] animate-pulse" 
+                      : "text-white/50"
+                    }`}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))
+              )}
             </div>
           </h1>
 

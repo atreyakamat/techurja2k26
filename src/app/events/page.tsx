@@ -54,50 +54,23 @@ function EventsContent() {
               Each node in our grid represents a unique challenge for the digital arena.
             </p>
 
-            <form className="mt-8 md:mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" onSubmit={handleFilter}>
-              <div className="relative col-span-full lg:col-span-2">
+            <form className="mt-8 md:mt-10 flex flex-col gap-4" onSubmit={handleFilter}>
+              <div className="relative w-full">
                 <input
                   name="search"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="SEARCH_QUERY"
-                  className="w-full border border-cyan-electric/30 bg-black px-4 py-3 text-white font-mono text-sm outline-none focus:border-cyan-electric focus:shadow-[0_0_15px_rgba(41,244,255,0.2)] transition-all"
+                  placeholder="SEARCH_ALL_EVENTS_MATRIX..."
+                  className="w-full border border-cyan-electric/30 bg-black/50 px-6 py-4 text-white font-mono text-sm md:text-base outline-none focus:border-cyan-electric focus:shadow-[0_0_20px_rgba(41,244,255,0.2)] transition-all placeholder:text-cyan-electric/30"
                 />
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-cyan-electric/50 font-mono text-[10px] hidden md:block">
+                  [PRESS_ENTER_TO_SYNC_URL]
+                </div>
               </div>
 
-              <div className="relative">
-                <select
-                  name="category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="w-full border border-cyan-electric/30 bg-black px-4 py-3 text-white font-mono text-sm outline-none focus:border-cyan-electric appearance-none cursor-pointer"
-                >
-                  <option value="all">ALL_CATEGORIES</option>
-                  {categories.map((item) => (
-                    <option key={item.title} value={item.title} className="bg-black">
-                      {item.title.toUpperCase()}
-                    </option>
-                  ))}
-                </select>
-                <span className="absolute right-4 top-3.5 pointer-events-none text-cyan-electric text-xs">▼</span>
-              </div>
-
-              <div className="relative">
-                <select
-                  name="level"
-                  value={level}
-                  onChange={(e) => setLevel(e.target.value)}
-                  className="w-full border border-cyan-electric/30 bg-black px-4 py-3 text-white font-mono text-sm outline-none focus:border-cyan-electric appearance-none cursor-pointer"
-                >
-                  <option value="all">ALL_LEVELS</option>
-                  <option value="college">COLLEGE</option>
-                  <option value="school">SCHOOL</option>
-                </select>
-                <span className="absolute right-4 top-3.5 pointer-events-none text-cyan-electric text-xs">▼</span>
-              </div>
-
-              <button type="submit" className="cyber-button py-3 text-xs col-span-full lg:col-span-4 mt-2 h-14 tracking-[0.2em]">
-                EXECUTE_GRID_QUERY
+              <button type="submit" className="cyber-button py-4 text-xs tracking-[0.3em] font-black group overflow-hidden relative">
+                <span className="relative z-10 group-hover:text-black transition-colors">SEARCH</span>
+                <div className="absolute inset-0 bg-cyan-electric translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
               </button>
             </form>
           </div>

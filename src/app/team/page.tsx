@@ -135,7 +135,7 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
         </div>
 
         <div className="p-6 flex flex-col flex-grow">
-          <p className="text-zinc-400 text-[11px] font-mono uppercase tracking-[0.2em] mb-8 min-h-[3em] leading-relaxed">
+          <p className="text-yellow-nuclear text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-8 min-h-[3em] leading-relaxed drop-shadow-[0_0_8px_rgba(249,255,59,0.4)]">
             {member.role}
           </p>
           
