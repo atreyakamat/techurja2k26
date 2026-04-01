@@ -36,21 +36,18 @@ export function Navbar() {
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 border-b ${
           scrolled 
-            ? "bg-black/90 backdrop-blur-xl border-cyan-electric/40 py-3" 
-            : "bg-black/60 backdrop-blur-md border-cyan-electric/20 py-5"
+            ? "bg-black/90 backdrop-blur-xl border-cyan-electric/40 py-2" 
+            : "bg-black/60 backdrop-blur-md border-cyan-electric/20 py-3"
         }`}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6">
-          {/* Left: Emblem */}
-          <Link href="/" className="group flex items-center gap-3 shrink-0" onClick={closeMenu}>
-            <div className="w-9 h-9 border-2 border-cyan-electric flex items-center justify-center rotate-45 group-hover:bg-cyan-electric transition-all duration-300 shadow-[0_0_15px_rgba(41,244,255,0.2)] group-hover:shadow-[0_0_20px_rgba(41,244,255,0.5)]">
-              <span className="text-xs font-black text-cyan-electric group-hover:text-black -rotate-45 transition-colors">T</span>
-            </div>
+          {/* Left: Brand */}
+          <Link href="/" className="group flex items-center gap-0 shrink-0 -ml-4" onClick={closeMenu}>
             <div className="flex flex-col leading-none">
-              <span className="font-display text-lg md:text-xl tracking-[0.2em] text-white">
+              <span className="font-display text-xl md:text-2xl tracking-[0.2em] text-white">
                 TECHURJA <span className="text-cyan-electric drop-shadow-[0_0_8px_rgba(41,244,255,0.4)]">2K26</span>
               </span>
-              <span className="text-[8px] font-mono text-zinc-500 tracking-[0.4em] uppercase mt-1 hidden sm:block">
+              <span className="text-[10px] md:text-xs font-mono text-yellow-nuclear tracking-[0.4em] uppercase mt-1.5 hidden sm:block drop-shadow-[0_0_5px_rgba(249,255,59,0.3)]">
                 AITD_ARENA // CONNECTED
               </span>
             </div>
