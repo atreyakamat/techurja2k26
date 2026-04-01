@@ -50,7 +50,7 @@ export default function TeamPage() {
             <div className="h-[1px] flex-grow bg-gradient-to-r from-magenta-cyber/50 to-transparent"></div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {studentCouncil.map((member, i) => (
               <TeamCard key={member.number} member={member} index={i} />
             ))}
@@ -64,7 +64,7 @@ export default function TeamPage() {
             <div className="h-[1px] flex-grow bg-gradient-to-r from-yellow-nuclear/50 to-transparent"></div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {otherCouncils.map((member, i) => (
               <TeamCard key={member.number} member={member} index={i} />
             ))}
@@ -78,7 +78,7 @@ export default function TeamPage() {
             <div className="h-[1px] flex-grow bg-gradient-to-r from-cyan-electric/50 to-transparent"></div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {faculty.map((member, i) => (
               <TeamCard key={member.number} member={member} index={i} />
             ))}
@@ -104,49 +104,49 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
-      className="terminal-panel neon-border-magenta group hover:border-cyan-electric transition-all duration-500 overflow-hidden"
+      className="terminal-panel neon-border-magenta group hover:border-cyan-electric transition-all duration-500 overflow-hidden p-0"
     >
       <div className="relative z-10 flex flex-col h-full">
         {/* Profile Image / Placeholder */}
-        <div className="relative w-full aspect-square mb-6 overflow-hidden border border-white/10 bg-zinc-900">
-           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+        <div className="relative w-full aspect-square overflow-hidden border-b border-white/10 bg-zinc-900">
+           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10"></div>
            {member.image ? (
              <img 
                src={member.image} 
                alt={member.name}
-               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110"
+               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
                onError={(e) => {
                  (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=111&color=fff&size=512`;
                }}
              />
            ) : (
              <div className="w-full h-full flex items-center justify-center bg-zinc-900 text-zinc-700">
-               <span className="text-4xl font-black uppercase">{member.name.charAt(0)}</span>
+               <span className="text-5xl font-black uppercase">{member.name.charAt(0)}</span>
              </div>
            )}
            
-           <div className="absolute top-4 left-4 z-20 w-10 h-10 border border-magenta-cyber/30 bg-black/60 backdrop-blur-md flex items-center justify-center font-mono text-magenta-cyber text-xs">
+           <div className="absolute top-4 left-4 z-20 w-12 h-12 border border-magenta-cyber/30 bg-black/60 backdrop-blur-md flex items-center justify-center font-mono text-magenta-cyber text-sm font-bold">
             {String(member.number).padStart(2, '0')}
           </div>
 
-          <div className="absolute bottom-4 left-4 right-4 z-20">
-             <div className="text-[8px] font-mono text-cyan-electric uppercase tracking-[0.2em] mb-1">
+          <div className="absolute bottom-6 left-6 right-6 z-20">
+             <div className="text-[10px] font-mono text-cyan-electric uppercase tracking-[0.3em] mb-2 font-bold">
                {member.council || 'STAFF'}
              </div>
-             <h3 className="text-lg font-bold text-white leading-tight uppercase tracking-tighter group-hover:text-magenta-cyber transition-colors">
+             <h3 className="text-2xl font-black text-white leading-tight uppercase tracking-tighter group-hover:text-magenta-cyber transition-colors drop-shadow-md">
                {member.name}
              </h3>
           </div>
         </div>
 
-        <div className="px-1 flex-grow">
-          <p className="text-zinc-400 text-[10px] font-mono uppercase tracking-[0.2em] mb-6 min-h-[2.5em]">
+        <div className="p-6 flex flex-col flex-grow">
+          <p className="text-zinc-400 text-[11px] font-mono uppercase tracking-[0.2em] mb-8 min-h-[3em] leading-relaxed">
             {member.role}
           </p>
           
           <button 
             onClick={copyEmail}
-            className="w-full py-3 border border-magenta-cyber/20 bg-magenta-cyber/5 hover:bg-magenta-cyber/10 hover:border-magenta-cyber/50 flex items-center justify-center gap-3 transition-all duration-300 group/btn relative overflow-hidden"
+            className="mt-auto w-full py-4 border border-magenta-cyber/20 bg-magenta-cyber/5 hover:bg-magenta-cyber/10 hover:border-magenta-cyber/50 flex items-center justify-center gap-3 transition-all duration-300 group/btn relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
             
@@ -157,10 +157,10 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.5 }}
-                  className="flex items-center gap-2 text-cyan-electric"
+                  className="flex items-center gap-3 text-cyan-electric"
                 >
-                  <Check size={14} />
-                  <span className="text-[10px] font-mono uppercase tracking-widest">Copied</span>
+                  <Check size={18} />
+                  <span className="text-[11px] font-mono uppercase tracking-[0.2em] font-bold">Copied</span>
                 </motion.div>
               ) : (
                 <motion.div 
@@ -168,10 +168,10 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.5 }}
-                  className="flex items-center gap-2 text-magenta-cyber"
+                  className="flex items-center gap-3 text-magenta-cyber"
                 >
-                  <Mail size={14} className="group-hover/btn:scale-110 transition-transform" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest">Get Contact</span>
+                  <Mail size={18} className="group-hover/btn:scale-110 transition-transform" />
+                  <span className="text-[11px] font-mono uppercase tracking-[0.2em] font-bold">Get Contact</span>
                 </motion.div>
               )}
             </AnimatePresence>

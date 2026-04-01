@@ -44,9 +44,12 @@ export function TransmissionVenueSection() {
             </ul>
           </div>
 
-          <div className="mt-8 border-t border-cyan-electric/20 pt-6">
-            <a href="https://www.google.com/maps/search/places+to+visit+near+Agnel+institute+of+technology+and+design,+goa/@15.6115311,73.7715448,25553m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI2MDMyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" className="cyber-button text-sm w-full md:w-auto">
+          <div className="mt-8 border-t border-cyan-electric/20 pt-6 flex flex-col sm:flex-row gap-4">
+            <a href="https://www.google.com/maps/place/Agnel+Institute+of+Technology+and+Design/@15.5949964,73.7924315,799m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bbfeb0074e556bd:0x8df5557f01b8a85!8m2!3d15.5949912!4d73.7950064!16s%2Fg%2F11h1vbjvly?entry=ttu&g_ep=EgoyMDI2MDMyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" className="cyber-button text-sm flex-1">
               OPEN ROUTE IN MAPS
+            </a>
+            <a href="https://www.google.com/maps/search/places+to+visit+near+Agnel+institute+of+technology+and+design,+goa/@15.6115311,73.7715448,25553m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI2MDMyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" className="cyber-button-alt text-sm flex-1">
+              NEARBY ATTRACTIONS
             </a>
           </div>
         </motion.div>

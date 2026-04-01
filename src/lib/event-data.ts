@@ -11,6 +11,8 @@ export type EventRecord = {
   shortDescription: string;
   description: string;
   rules: string[];
+  rulebookUrl?: string;
+  image?: string; // New field for event poster/image
   featured?: boolean;
   registrationFee: number;
 };
