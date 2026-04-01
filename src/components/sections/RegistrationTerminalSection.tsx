@@ -21,7 +21,8 @@ export function RegistrationTerminalSection() {
 
   const totalFee = selectedEvents.reduce((acc, slug) => {
     const event = events.find(e => e.slug === slug);
-    return acc + (event?.registrationFee || 0);
+    const fee = typeof event?.registrationFee === "number" ? event.registrationFee : 0;
+    return acc + fee;
   }, 0);
 
   const handleEventToggle = (slug: string) => {

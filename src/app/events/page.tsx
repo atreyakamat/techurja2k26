@@ -118,8 +118,8 @@ function EventsContent() {
         </section>
       ) : (
         <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {events.map((event) => (
-            <EventCard key={event.slug} event={event} />
+          {events.map((event, index) => (
+            <EventCard key={event.slug} event={event} index={index} />
           ))}
         </section>
       )}
