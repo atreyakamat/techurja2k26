@@ -17,6 +17,27 @@ export const metadata: Metadata = {
   title: "TECHURJA 2K26 | DIGITAL ARENA TERMINAL",
   description:
     "Agnel Institute of Technology & Design's high-octane cyberpunk tech festival. Hack, build, and battle through the grid.",
+  openGraph: {
+    title: "TECHURJA 2K26 | DIGITAL ARENA TERMINAL",
+    description: "ENTER THE DIGITAL ARENA. Agnel Institute of Technology & Design's high-octane tech festival.",
+    url: "https://techurja.aitdgoa.edu.in",
+    siteName: "TECHURJA 2K26",
+    images: [
+      {
+        url: "/og-image.jpg", // Make sure to add this image to public/
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TECHURJA 2K26 | DIGITAL ARENA TERMINAL",
+    description: "ENTER THE DIGITAL ARENA. Agnel Institute of Technology & Design's high-octane tech festival.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({

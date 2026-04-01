@@ -8,6 +8,8 @@ import { events } from "@/lib/event-data";
 export function RegistrationTerminalSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{ ok: boolean; message: string } | null>(null);
+  const [transmissionLogs, setTransmissionLogs] = useState<string[]>([]);
   const [selectedEvents, setSelectedEvents] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: "",
@@ -18,6 +20,30 @@ export function RegistrationTerminalSection() {
   });
 
   const [screenshot, setScreenshot] = useState<File | null>(null);
+
+  const startTransmission = async (isSuccess: boolean, finalMessage: string) => {
+    const logs = [
+      "> INITIATING_SECURE_HANDSHAKE...",
+      "> ENCRYPTING_DATA_PACKETS...",
+      "> UPLOADING_TO_GRID_NODE...",
+      "> VERIFYING_TRANSACTION_HASH..."
+    ];
+
+    setTransmissionLogs([]);
+    for (const log of logs) {
+      setTransmissionLogs(prev => [...prev, log]);
+      await new Promise(r => setTimeout(r, 600));
+    }
+
+    if (isSuccess) {
+      setTransmissionLogs(prev => [...prev, "> TRANSMISSION_COMPLETE", "> ACCESS_GRANTED"]);
+      setStatus({ ok: true, message: finalMessage });
+      setTimeout(() => setSubmitted(true), 1000);
+    } else {
+      setTransmissionLogs(prev => [...prev, "> TRANSMISSION_FAILED", "> NODE_REJECTED"]);
+      setStatus({ ok: false, message: finalMessage });
+    }
+  };
 
   const totalFee = selectedEvents.reduce((acc, slug) => {
     const event = events.find(e => e.slug === slug);
@@ -39,6 +65,8 @@ export function RegistrationTerminalSection() {
     }
     
     setLoading(true);
+    setStatus(null);
+    setTransmissionLogs(["> STANDBY: PREPARING_TRANSMISSION..."]);
 
     try {
       // Register each event separately in the DB for easier management
@@ -56,12 +84,13 @@ export function RegistrationTerminalSection() {
         });
       });
 
-      await Promise.all(promises);
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 8000);
+      const results = await Promise.all(promises);
+      const allOk = results.every(r => r.ok);
+      
+      await startTransmission(allOk, allOk ? "REGISTERED_SUCCESSFULLY" : "TRANSMISSION_PARTIAL_FAILURE");
     } catch (error) {
       console.error(error);
-      alert("Registration failed. Check connection.");
+      await startTransmission(false, "CONNECTION_ERROR: NODE_UNREACHABLE");
     } finally {
       setLoading(false);
     }
@@ -260,7 +289,55 @@ export function RegistrationTerminalSection() {
                   {loading ? "TRANSMITTING DATA..." : "SUBMIT UNIVERSAL REGISTRATION"}
                 </span>
               </button>
-            </form>
+              </form>
+              )}
+
+              {/* Transmission Terminal Display */}
+              {(loading || transmissionLogs.length > 0) && !submitted && (
+              <div className="mt-8 p-6 bg-black border border-cyan-electric/20 font-mono text-[10px] md:text-xs space-y-2 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-cyan-electric/10 animate-pulse"></div>
+              {transmissionLogs.map((log, i) => (
+                <div key={i} className={`${log.includes('FAILED') || log.includes('REJECTED') ? 'text-magenta-cyber' : 'text-cyan-electric'} flex items-center gap-3`}>
+                  <span className="opacity-50">[{new Date().toLocaleTimeString()}]</span>
+                  <span className="animate-pulse">{log}</span>
+                </div>
+              ))}
+              {loading && (
+                <div className="flex items-center gap-2 text-white/40 italic">
+                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce"></div>
+                  <span>WAITING_FOR_HANDSHAKE...</span>
+                </div>
+              )}
+              {status && (
+                <div className={`mt-4 p-3 border ${status.ok ? 'border-green-500/30 bg-green-500/5 text-green-400' : 'border-magenta-cyber/30 bg-magenta-cyber/5 text-magenta-cyber'} uppercase font-black tracking-widest text-center`}>
+                  {status.message}
+                </div>
+              )}
+              </div>
+              )}
+              </div>
+          {/* Transmission Terminal Display */}
+          {(loading || transmissionLogs.length > 0) && (
+            <div className="mt-8 p-6 bg-black border border-cyan-electric/20 font-mono text-[10px] md:text-xs space-y-2 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-cyan-electric/10 animate-pulse"></div>
+              {transmissionLogs.map((log, i) => (
+                <div key={i} className={`${log.includes('FAILED') || log.includes('REJECTED') ? 'text-magenta-cyber' : 'text-cyan-electric'} flex items-center gap-3`}>
+                  <span className="opacity-50">[{new Date().toLocaleTimeString()}]</span>
+                  <span className="animate-pulse">{log}</span>
+                </div>
+              ))}
+              {loading && (
+                <div className="flex items-center gap-2 text-white/40 italic">
+                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full animate-bounce"></div>
+                  <span>WAITING_FOR_HANDSHAKE...</span>
+                </div>
+              )}
+              {status && (
+                <div className={`mt-4 p-3 border ${status.ok ? 'border-green-500/30 bg-green-500/5 text-green-400' : 'border-magenta-cyber/30 bg-magenta-cyber/5 text-magenta-cyber'} uppercase font-black tracking-widest text-center`}>
+                  {status.message}
+                </div>
+              )}
+            </div>
           )}
         </div>
       </motion.div>

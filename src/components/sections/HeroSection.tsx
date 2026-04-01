@@ -9,6 +9,30 @@ import { SplineScene } from "@/components/SplineScene";
 export function HeroSection() {
   const [logs, setLogs] = useState<string[]>([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
+
+  useEffect(() => {
+    const targetDate = new Date("2026-04-29T09:00:00").getTime();
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        return;
+      }
+
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        mins: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        secs: Math.floor((distance % (1000 * 60)) / 1000),
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     // Check if mobile for Spline optimization
@@ -114,6 +138,23 @@ export function HeroSection() {
               )}
             </div>
           </h1>
+
+          {/* Countdown Timer */}
+          <div className="flex gap-4 md:gap-8 mb-8 font-mono">
+            {[
+              { label: "DAYS", value: timeLeft.days },
+              { label: "HRS", value: timeLeft.hours },
+              { label: "MINS", value: timeLeft.mins },
+              { label: "SECS", value: timeLeft.secs },
+            ].map((unit) => (
+              <div key={unit.label} className="flex flex-col items-center">
+                <div className="text-2xl md:text-4xl font-black text-white bg-white/5 border border-white/10 px-3 py-2 min-w-[60px] md:min-w-[80px] shadow-[inset_0_0_15px_rgba(255,255,255,0.05)]">
+                  {String(unit.value).padStart(2, '0')}
+                </div>
+                <span className="text-[8px] md:text-[10px] text-cyan-electric mt-2 tracking-[0.2em] font-bold">{unit.label}</span>
+              </div>
+            ))}
+          </div>
 
           <div className="max-w-xl text-[10px] sm:text-xs md:text-base text-ink leading-relaxed font-mono py-4 px-6 bg-black/40 backdrop-blur-sm border-x border-cyan-electric/20 relative">
             <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-cyan-electric"></div>
