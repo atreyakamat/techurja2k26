@@ -74,7 +74,7 @@ export function HeroSection() {
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-1000"
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/hero-video.mp4?v=2.6.1" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
         
