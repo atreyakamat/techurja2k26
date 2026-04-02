@@ -17,8 +17,8 @@ export default function Archives2025() {
 
   const stats = [
     { label: "PARTICIPANTS", value: "1500+", icon: Users, color: "text-cyan-electric" },
-    { label: "EVENTS", value: "25+", icon: Zap, color: "text-yellow-nuclear" },
-    { label: "PRIZE POOL", value: "₹2.5L+", icon: Trophy, color: "text-magenta-cyber" },
+    { label: "EVENTS", value: "20+", icon: Zap, color: "text-yellow-nuclear" },
+    { label: "PRIZE POOL", value: "₹4L+", icon: Trophy, color: "text-magenta-cyber" },
   ];
 
   return (
