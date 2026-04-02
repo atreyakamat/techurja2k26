@@ -198,7 +198,7 @@ export const events: EventRecord[] = [
     flair: "Silver",
     shortDescription: "Test of raw torque and traction.",
     description: "Pull your opponent across the center line using pure mechanical force.",
-    rules: ["Maximum weight: 10kg", "No spiked wheels"],
+    rules: ["Maximum weight: 5kg", "No spiked wheels"],
     registrationFee: 354,
     prizePool: "₹15,000",
     image: "/event-pics/Event pics/ROBO TUG OF WAR.jpg",
