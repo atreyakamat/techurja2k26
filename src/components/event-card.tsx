@@ -32,7 +32,7 @@ export function EventCard({ event, index }: { event: EventRecord; index: number 
               alt={event.name}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
+              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110 will-change-[filter,transform]"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-900 relative">
