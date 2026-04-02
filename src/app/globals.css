@@ -33,6 +33,7 @@ body {
   /* Hardware acceleration for global smooth feel */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  padding-bottom: 60px;
 }
 
 /* Smooth motion base classes */
@@ -211,4 +212,8 @@ section:first-of-type {
 /* Status Ticker */
 .ticker-wrap {
   @apply fixed bottom-0 w-full bg-cyan-electric/20 border-t border-cyan-electric/50 text-cyan-electric text-[10px] uppercase tracking-widest font-mono z-50 overflow-hidden py-1 backdrop-blur-md;
+}
+
+.ticker-wrap-magenta {
+  @apply fixed bottom-[20px] w-full bg-magenta-cyber/20 border-t border-magenta-cyber/50 text-magenta-cyber text-[10px] uppercase tracking-widest font-mono z-50 overflow-hidden py-1 backdrop-blur-md;
 }

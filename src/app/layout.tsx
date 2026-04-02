@@ -50,13 +50,24 @@ export default function RootLayout({
       lang="en"
       className={`${orbitron.variable} ${rajdhani.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full bg-black text-zinc-100 pb-[30px] relative">
+      <body className="min-h-full bg-black text-zinc-100 relative">
         <div className="crt-noise"></div>
-        
+
         {children}
 
-        {/* Bottom Status Ticker Bar */}
+        {/* Magenta Status Ticker Bar (Top) */}
+        <div className="ticker-wrap-magenta flex items-center">
+          <div className="whitespace-nowrap animate-[scroll_45s_linear_infinite] inline-block pr-12">
+            {"//"} NOTICE: THE PRIZE MONEY WILL BE TRANSFERRED TO THE WINNING TEAM’S BANK ACCOUNT VIA NEFT WITHIN 15 DAYS AFTER THE EVENT. &middot; PARTICIPANTS SHOULD CARRY THEIR VALID, ORIGINAL COLLEGE ID PROOFS. &middot; PARTICIPANTS ARE REQUESTED TO FURNISH THEIR BANKING PROOFS IN THE FORM OF EITHER CANCELLED CHEQUE OR A COPY OF THE FIRST PAGE OF THE BANK PASSBOOK FOR THE TRANSFER OF PRIZE MONEY. &middot; {"//"} NOTICE: THE PRIZE MONEY WILL BE TRANSFERRED TO THE WINNING TEAM’S BANK ACCOUNT VIA NEFT WITHIN 15 DAYS AFTER THE EVENT. &middot; PARTICIPANTS SHOULD CARRY THEIR VALID, ORIGINAL COLLEGE ID PROOFS. &middot; PARTICIPANTS ARE REQUESTED TO FURNISH THEIR BANKING PROOFS IN THE FORM OF EITHER CANCELLED CHEQUE OR A COPY OF THE FIRST PAGE OF THE BANK PASSBOOK FOR THE TRANSFER OF PRIZE MONEY. &middot;
+          </div>
+          <div className="whitespace-nowrap animate-[scroll_45s_linear_infinite] inline-block pr-12">
+            {"//"} NOTICE: THE PRIZE MONEY WILL BE TRANSFERRED TO THE WINNING TEAM’S BANK ACCOUNT VIA NEFT WITHIN 15 DAYS AFTER THE EVENT. &middot; PARTICIPANTS SHOULD CARRY THEIR VALID, ORIGINAL COLLEGE ID PROOFS. &middot; PARTICIPANTS ARE REQUESTED TO FURNISH THEIR BANKING PROOFS IN THE FORM OF EITHER CANCELLED CHEQUE OR A COPY OF THE FIRST PAGE OF THE BANK PASSBOOK FOR THE TRANSFER OF PRIZE MONEY. &middot; {"//"} NOTICE: THE PRIZE MONEY WILL BE TRANSFERRED TO THE WINNING TEAM’S BANK ACCOUNT VIA NEFT WITHIN 15 DAYS AFTER THE EVENT. &middot; PARTICIPANTS SHOULD CARRY THEIR VALID, ORIGINAL COLLEGE ID PROOFS. &middot; PARTICIPANTS ARE REQUESTED TO FURNISH THEIR BANKING PROOFS IN THE FORM OF EITHER CANCELLED CHEQUE OR A COPY OF THE FIRST PAGE OF THE BANK PASSBOOK FOR THE TRANSFER OF PRIZE MONEY. &middot;
+          </div>
+        </div>
+
+        {/* Bottom Status Ticker Bar (Cyan) */}
         <div className="ticker-wrap flex items-center">
+
           <div className="whitespace-nowrap animate-[scroll_30s_linear_infinite] inline-block pr-12">
             {"//"} SYSTEM: ONLINE &middot; TERRITORY: GOA // NODE: AITD ASSAGAO &middot; LATENCY: 7ms &middot; TECHURJA 2K26 DIGITAL ARENA TERMINAL &middot; {"//"} SYSTEM: ONLINE &middot; TERRITORY: GOA // NODE: AITD ASSAGAO &middot; LATENCY: 7ms &middot; TECHURJA 2K26 DIGITAL ARENA TERMINAL &middot; {"//"} SYSTEM: ONLINE &middot; TERRITORY: GOA // NODE: AITD ASSAGAO &middot; LATENCY: 7ms &middot; TECHURJA 2K26 DIGITAL ARENA TERMINAL &middot;
           </div>

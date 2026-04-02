@@ -35,7 +35,7 @@ export default function Archives2025() {
               LEGACY_DATA // ARCHIVE_2025
             </div>
             <h1 className="text-5xl md:text-8xl font-black text-white leading-[0.9] uppercase tracking-tighter mb-6">
-              Techurja <span className="text-cyan-electric">2025</span>
+              Techurja <span className="text-cyan-electric">2025 Highlights</span>
             </h1>
             <p className="max-w-2xl text-lg text-zinc-400 font-mono border-l-2 border-magenta-cyber pl-6 py-2">
               The revival of the digital arena. A milestone year that set the foundation for the high-octane 

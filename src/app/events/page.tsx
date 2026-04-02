@@ -6,6 +6,7 @@ import { Suspense, useEffect, useState } from "react";
 import { EventCard } from "@/components/event-card";
 import { Navbar } from "@/components/navbar";
 import { categories, getFilteredEvents } from "@/lib/event-data";
+import { Zap } from "lucide-react";
 
 import { SplineScene } from "@/components/SplineScene";
 
@@ -24,6 +25,8 @@ function EventsContent() {
   }, [searchParams]);
 
   const events = getFilteredEvents(search, category, level);
+  const hssEvents = events.filter(e => e.level === "higher secondary");
+  const regularEvents = events.filter(e => e.level !== "higher secondary");
 
   function handleFilter(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -90,11 +93,78 @@ function EventsContent() {
           </Link>
         </section>
       ) : (
-        <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {events.map((event, index) => (
-            <EventCard key={event.slug} event={event} index={index} />
-          ))}
-        </section>
+        <div className="space-y-16">
+          {/* Regular Events Section */}
+          {regularEvents.length > 0 && (
+            <section className="space-y-8">
+              <div className="flex items-center gap-4">
+                <h2 className="text-xl font-bold text-white uppercase tracking-[0.3em]">
+                  <span className="text-cyan-electric">/</span> Main Arena
+                </h2>
+                <div className="h-[1px] flex-grow bg-gradient-to-r from-cyan-electric/30 to-transparent"></div>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {regularEvents.map((event, index) => (
+                  <EventCard key={event.slug} event={event} index={index} />
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Higher Secondary Section - Separate Card/Section */}
+          {hssEvents.length > 0 && level === "all" && category === "all" && !search && (
+            <section className="terminal-panel border-yellow-nuclear/30 p-8 md:p-12 bg-yellow-nuclear/5 relative overflow-hidden group">
+              <div className="absolute inset-0 scanline-mask opacity-10 pointer-events-none"></div>
+              
+              <div className="relative z-10 flex flex-col lg:flex-row gap-12 items-center">
+                <div className="lg:w-1/3">
+                  <div className="inline-block border border-yellow-nuclear/50 bg-yellow-nuclear/10 px-3 py-1 text-[10px] tracking-[0.2em] text-yellow-nuclear uppercase mb-6 shadow-[0_0_10px_rgba(249,255,59,0.1)]">
+                    EXCLUSIVE_ACCESS // HSS_DIVISION
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-black text-white leading-[0.9] uppercase tracking-tighter mb-6">
+                    Higher <span className="text-yellow-nuclear drop-shadow-[0_0_10px_rgba(249,255,59,0.5)]">Secondary</span>
+                  </h2>
+                  <p className="text-zinc-400 font-mono text-sm border-l-2 border-yellow-nuclear pl-4 py-2 mb-8">
+                    Dedicated arena protocols for the next generation of engineers and artists. 
+                    Valid only for HSS students.
+                  </p>
+                  <div className="flex items-center gap-2 text-yellow-nuclear/60 text-[10px] font-mono uppercase tracking-widest">
+                    <div className="w-2 h-2 rounded-full bg-yellow-nuclear animate-pulse"></div>
+                    {hssEvents.length} Active Node{hssEvents.length !== 1 ? 's' : ''} Identified
+                  </div>
+                </div>
+
+                <div className="lg:w-2/3 w-full grid md:grid-cols-2 gap-6">
+                  {hssEvents.map((event, index) => (
+                    <EventCard key={event.slug} event={event} index={index} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Decorative corner */}
+              <div className="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none flex items-center justify-center -mr-8 -mt-8 rotate-12">
+                <Zap size={128} className="text-yellow-nuclear" />
+              </div>
+            </section>
+          )}
+
+          {/* Show HSS events in grid if filters are active */}
+          {(level !== "all" || category !== "all" || search) && hssEvents.length > 0 && (
+            <section className="space-y-8">
+              <div className="flex items-center gap-4">
+                <h2 className="text-xl font-bold text-white uppercase tracking-[0.3em]">
+                  <span className="text-yellow-nuclear">/</span> HSS Division
+                </h2>
+                <div className="h-[1px] flex-grow bg-gradient-to-r from-yellow-nuclear/30 to-transparent"></div>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {hssEvents.map((event, index) => (
+                  <EventCard key={event.slug} event={event} index={index} />
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
       )}
     </main>
   );
