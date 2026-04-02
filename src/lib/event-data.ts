@@ -56,13 +56,13 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "robo-sumo",
-    name: "ROBO SUMO",
+    slug: "robo-nexus",
+    name: "ROBO NEXUS",
     category: "Robotics",
     level: "college",
     date: "30 April 2026",
     time: "10AM ONWARDS",
-    venue: "AITD FOYER",
+    venue: "Admin Block AITD",
     flair: "Gold",
     shortDescription: "Autonomous Robo Sumo wrestling.",
     description: "Push your opponent out of the ring in this high-tech sumo battle.",
@@ -75,8 +75,8 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "robo-soccer",
-    name: "ROBO SOCCER",
+    slug: "cyber-strike",
+    name: "CYBER STRIKE",
     category: "Robotics",
     level: "college",
     date: "29 April 2026",
@@ -94,8 +94,8 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "line-follower-robot",
-    name: "LINE FOLLOWER ROBOT",
+    slug: "grid-runner",
+    name: "GRID RUNNER",
     category: "Robotics",
     level: "college",
     date: "29 April 2026",
@@ -107,24 +107,29 @@ export const events: EventRecord[] = [
     rules: ["Standard track width", "Two trials allowed"],
     registrationFee: 295,
     prizePool: "₹10,000",
+    prizes: {
+      first: "₹6,000",
+      second: "₹4,000"
+    },
     coordinators: [
       { name: "Dakshesh Verma", phone: "9272098752" },
       { name: "Soham Polle", phone: "9307207645" }
     ]
   },
   {
-    slug: "robo-race",
-    name: "ROBO RACE",
+    slug: "santo-domingo-race",
+    name: "SANTO DOMINGO RACE",
     category: "Robotics",
     level: "college",
     date: "30 April 2026",
     time: "10AM ONWARDS",
-    venue: "BASKETBALL COURT",
+    venue: "G-Block AITD",
     flair: "Gold",
     shortDescription: "High-speed mechanical racing event.",
     description: "Race your robots through an obstacle-filled track.",
     rules: ["Fastest lap wins", "Max 2 trials allowed"],
     registrationFee: 354,
+    feeDetails: "Re-entry: ₹177",
     prizePool: "₹15,000",
     coordinators: [
       { name: "Sanjana Vaday", phone: "9226013380" },
@@ -133,13 +138,13 @@ export const events: EventRecord[] = [
   },
   // SILVER EVENTS
   {
-    slug: "robo-tug-of-war",
-    name: "ROBO TUG OF WAR",
+    slug: "cyber-tug",
+    name: "CYBER TUG",
     category: "Robotics",
     level: "college",
-    date: "29/30 April 2026",
+    date: "29 April 2026",
     time: "11AM ONWARDS",
-    venue: "GYMKHANA",
+    venue: "Sport Gymkhana AITD",
     flair: "Silver",
     shortDescription: "Test of raw torque and traction.",
     description: "Pull your opponent across the center line using pure mechanical force.",
@@ -152,8 +157,8 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "coding-event",
-    name: "CODING EVENT",
+    slug: "escape-the-matrix",
+    name: "ESCAPE THE MATRIX",
     category: "Computer Science",
     level: "college",
     date: "29 April 2026",
@@ -171,37 +176,42 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "project-presentation",
-    name: "PROJECT PRESENTATION",
-    category: "General",
+    slug: "innovibe",
+    name: "INNOVIBE",
+    category: "Innovation",
     level: "college",
     date: "30 April 2026",
     time: "10AM - 5PM",
-    venue: "SEMINAR HALL",
+    venue: "Seminar Hall AITD",
     flair: "Silver",
     shortDescription: "Showcase your technical innovations.",
     description: "Present your research or projects to a panel of experts.",
     rules: ["10-minute presentation", "Prototype demonstration"],
     registrationFee: 236,
     prizePool: "₹20,000",
+    prizes: {
+      first: "₹12,000",
+      second: "₹8,000"
+    },
     coordinators: [
       { name: "Joyce", phone: "8767179587" },
       { name: "Rudra", phone: "9145450734" }
     ]
   },
   {
-    slug: "robo-maze-solver",
-    name: "ROBO MAZE SOLVER",
+    slug: "kabuki-roundabout",
+    name: "KABUKI ROUNDABOUT",
     category: "Robotics",
     level: "college",
     date: "29 April 2026",
     time: "11AM ONWARDS",
-    venue: "LHC3, LHC2",
+    venue: "LHC2, LHC3",
     flair: "Silver",
     shortDescription: "Autonomous navigation through complex mazes.",
     description: "Code your robot to find the exit in the shortest time.",
     rules: ["Time-based scoring", "No manual override"],
     registrationFee: 354,
+    feeDetails: "Re-entry: ₹177",
     prizePool: "₹10,000",
     coordinators: [
       { name: "Deesh Naik", phone: "9146480787" },
@@ -210,13 +220,13 @@ export const events: EventRecord[] = [
   },
   // BRONZE EVENTS
   {
-    slug: "bridge-construction",
-    name: "BRIDGE CONSTRUCTION",
+    slug: "neon-span",
+    name: "NEON SPAN",
     category: "Mechanical",
     level: "college",
     date: "29 April 2026",
     time: "11AM ONWARDS",
-    venue: "DHM1",
+    venue: "Thermal Lab AITD",
     flair: "Bronze",
     shortDescription: "Structural engineering challenge.",
     description: "Build the strongest bridge using limited materials.",
@@ -229,8 +239,8 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "capture-the-flag",
-    name: "CAPTURE THE FLAG",
+    slug: "ghostgrid",
+    name: "GHOSTGRID",
     category: "Computer Science",
     level: "college",
     date: "30 April 2026",
@@ -248,38 +258,46 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "circuit-simulation",
-    name: "CIRCUIT SIMULATION",
+    slug: "circuit-breach",
+    name: "CIRCUIT BREACH",
     category: "Computer Science",
     level: "college",
     date: "30 April 2026",
     time: "10AM - 5PM",
-    venue: "LBE 2,3,4,5,6",
+    venue: "LBE 2-6 AITD",
     flair: "Bronze",
     shortDescription: "Hardware logic and design challenge.",
     description: "Design and simulate complex electronic circuits.",
     rules: ["Accuracy and speed metrics", "Standard gear provided"],
     registrationFee: 236,
     prizePool: "₹10,000",
+    prizes: {
+      first: "₹6,000",
+      second: "₹4,000"
+    },
     coordinators: [
       { name: "Joel", phone: "8605675478" },
       { name: "Jaeden", phone: "9356320798" }
     ]
   },
   {
-    slug: "business-pitch",
-    name: "BUSINESS PITCH",
+    slug: "war-room-protocol",
+    name: "WAR ROOM PROTOCOL",
     category: "Management",
     level: "college",
     date: "29 April 2026",
     time: "11AM ONWARDS",
-    venue: "FY MBA",
+    venue: "FY MBA Classroom AITD",
     flair: "Bronze",
     shortDescription: "Startup idea and business plan showcase.",
     description: "Pitch your next big business idea to potential investors.",
     rules: ["5-minute pitch duration", "Pitch deck required"],
     registrationFee: 236,
     prizePool: "₹8,000",
+    prizes: {
+      first: "₹5,000",
+      second: "₹3,000"
+    },
     coordinators: [
       { name: "Valora", phone: "9765953309" },
       { name: "Brandon Lobo", phone: "9145523659" }
@@ -327,17 +345,18 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "fifa",
-    name: "FIFA",
+    slug: "pixel-play",
+    name: "PIXEL PLAY",
     category: "General",
     level: "college",
     date: "30 April 2026",
     time: "10AM ONWARDS",
-    venue: "SY MBA",
+    venue: "MBA AITD",
     shortDescription: "E-sports football tournament.",
     description: "Compete in the virtual pitch for the ultimate football glory.",
     rules: ["Standard match rules apply", "Knockout format"],
     registrationFee: 295,
+    feeDetails: "Re-entry: ₹236",
     prizePool: "₹8,000",
     coordinators: [
       { name: "Aaryan Desai", phone: "8007249603" },
@@ -345,13 +364,13 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "clash-royale",
-    name: "CLASH ROYALE",
+    slug: "clashpunk",
+    name: "CLASHPUNK",
     category: "General",
     level: "college",
     date: "30 April 2026",
     time: "10AM ONWARDS",
-    venue: "LHC4",
+    venue: "LHC4 AITD",
     shortDescription: "Mobile strategy gaming tournament.",
     description: "Battle it out in the arena with your best decks.",
     rules: ["Tournament standard levels", "Single elimination"],
@@ -363,31 +382,35 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "treasure-hunt",
-    name: "TREASURE HUNT",
+    slug: "the-cypher-heist",
+    name: "THE CYPHER HEIST",
     category: "General",
     level: "college",
     date: "29 April 2026",
     time: "10AM - 5PM",
-    venue: "ECE TUTORIAL HALL",
+    venue: "AITD (ECE Tutorial Hall)",
     shortDescription: "Clue-based campus scavenger hunt.",
     description: "Solve riddles and find items across the campus.",
     rules: ["Teams of 3", "Time-based completion"],
     registrationFee: 295,
     prizePool: "₹10,000",
+    prizes: {
+      first: "₹6,000",
+      second: "₹4,000"
+    },
     coordinators: [
       { name: "Arya Bandivadekar", phone: "9146973373" },
       { name: "Dikshit Kothankar", phone: "9579376865" }
     ]
   },
   {
-    slug: "virtual-cricket",
-    name: "VIRTUAL CRICKET",
+    slug: "cyber-smashers",
+    name: "CYBER SMASHERS",
     category: "General",
     level: "college",
-    date: "29/30 April 2026",
+    date: "29-30 April 2026",
     time: "10AM - 5PM",
-    venue: "LIBRARY",
+    venue: "Library AITD",
     shortDescription: "E-sports cricket simulation.",
     description: "Show off your batting and bowling skills in the virtual world.",
     rules: ["5-over matches", "Knockout format"],
@@ -399,13 +422,13 @@ export const events: EventRecord[] = [
     ]
   },
   {
-    slug: "hackathon",
-    name: "HACKATHON",
+    slug: "techyothon",
+    name: "TECHYOTHON",
     category: "Innovation",
     level: "college",
-    date: "29/30 April 2026",
+    date: "29-30 April 2026",
     time: "2PM-2PM(24HRS)",
-    venue: "MULTIPURPOSE HALL",
+    venue: "Multipurpose Hall AITD",
     shortDescription: "24-hour product buildathon.",
     description: "Build a working prototype for a real-world problem.",
     rules: ["24-hour duration", "Team size: 2-4"],
@@ -423,7 +446,7 @@ export const events: EventRecord[] = [
     level: "higher secondary",
     date: "29 April 2026",
     time: "10AM ONWARDS",
-    venue: "PHYSICS LAB",
+    venue: "DHM1 AITD",
     shortDescription: "Higher Secondary Abstract Art competition.",
     description: "Express the aesthetic of technology through art. Restricted to Higher Secondary students only.",
     rules: ["Restricted to Higher Secondary students", "College students cannot participate", "Materials provided"],
@@ -441,7 +464,7 @@ export const events: EventRecord[] = [
     level: "higher secondary",
     date: "29 April 2026",
     time: "10AM ONWARDS",
-    venue: "DHM2",
+    venue: "DHM2 AITD",
     shortDescription: "Higher Secondary Straw Structure Designing.",
     description: "Design complex models using straws. Restricted to Higher Secondary students only.",
     rules: ["Restricted to Higher Secondary students", "College students cannot participate", "Time-bound challenge"],
