@@ -35,9 +35,21 @@ export default function TeamPage() {
               </p>
             </div>
 
-            <div className="hidden md:block h-[300px] relative group">
-              <div className="absolute inset-0 bg-magenta-cyber/5 rounded-full blur-[80px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" />
+            <div className="hidden md:block h-[300px] relative group overflow-hidden border border-magenta-cyber/20 bg-magenta-cyber/5 backdrop-blur-sm">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700"
+              >
+                <source src="/architect-section.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
+              <div className="absolute bottom-4 right-4 font-mono text-[10px] text-magenta-cyber/40 uppercase tracking-[0.3em] z-10">
+                System_Status: SYNCHRONIZED
+              </div>
             </div>
           </div>
         </header>

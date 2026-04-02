@@ -36,8 +36,15 @@ export function RegisterForm({ event }: { event: EventRecord }) {
     setStatus(null);
 
     try {
-      // In a real app, you would upload to S3/Cloudinary here
-      // For now, we'll store the filename or a base64 string if small
+      let base64Image = "";
+      if (screenshot) {
+        base64Image = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.readAsDataURL(screenshot);
+        });
+      }
+
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -45,7 +52,8 @@ export function RegisterForm({ event }: { event: EventRecord }) {
           ...formData, 
           eventSlug: event.slug,
           eventName: event.name,
-          paymentScreenshot: screenshot ? `pending_${Date.now()}_${screenshot.name}` : "NO_SCREENSHOT"
+          paymentScreenshot: base64Image || "NO_SCREENSHOT",
+          screenshotName: screenshot?.name || "unknown.jpg"
         }),
       });
 

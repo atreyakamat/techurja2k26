@@ -69,6 +69,15 @@ export function RegistrationTerminalSection() {
     setTransmissionLogs(["> STANDBY: PREPARING_TRANSMISSION..."]);
 
     try {
+      let base64Image = "";
+      if (screenshot) {
+        base64Image = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.readAsDataURL(screenshot);
+        });
+      }
+
       // Register each event separately in the DB for easier management
       const promises = selectedEvents.map(slug => {
         const event = events.find(e => e.slug === slug);
@@ -79,7 +88,8 @@ export function RegistrationTerminalSection() {
             ...formData,
             eventSlug: slug,
             eventName: event?.name,
-            paymentScreenshot: screenshot ? `multi_${Date.now()}_${screenshot.name}` : "TERMINAL_MULTI_REG"
+            paymentScreenshot: base64Image || "NO_SCREENSHOT",
+            screenshotName: screenshot?.name || "terminal_upload.jpg"
           })
         });
       });
