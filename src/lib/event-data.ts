@@ -375,7 +375,7 @@ export const events: EventRecord[] = [
     image: "/event-pics/Event pics/FIFA.jpg",
     coordinators: [
       { name: "Aaryan Desai", phone: "8007249603" },
-      { name: "Jaydeep Pane", phone: "7498965325" }
+      { name: "Jaydeep Rane", phone: "7498965325" }
     ]
   },
   {
