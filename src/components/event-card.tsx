@@ -29,7 +29,7 @@ export function EventCard({ event, index }: { event: EventRecord; index: number 
           
           {event.image ? (
             <Image 
-              src={event.image} 
+              src={`${event.image}?v=2.6.2`} 
               alt={event.name}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -111,7 +111,7 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10"></div>
            {member.image ? (
              <img 
-               src={member.image} 
+               src={`${member.image}?v=2.6.2`} 
                alt={member.name}
                className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-700 scale-100"
                onError={(e) => {
