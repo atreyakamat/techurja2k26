@@ -18,6 +18,7 @@ const flairColors = {
   Gold: "text-yellow-400 border-yellow-400/50 bg-yellow-400/10 shadow-[0_0_20px_rgba(250,204,21,0.2)]",
   Silver: "text-zinc-300 border-zinc-300/50 bg-zinc-300/10 shadow-[0_0_20px_rgba(212,212,216,0.2)]",
   Bronze: "text-orange-400 border-orange-400/50 bg-orange-400/10 shadow-[0_0_20px_rgba(251,146,60,0.2)]",
+  Flagship: "text-red-500 border-red-500/50 bg-red-500/10 shadow-[0_0_20px_rgba(239,68,68,0.3)]",
 };
 
 export default async function EventDetailsPage({ params }: EventDetailsProps) {

@@ -23,7 +23,7 @@ export type EventRecord = {
   registrationFee: number | string;
   feeDetails?: string;
   prizePool?: string;
-  flair?: "Gold" | "Silver" | "Bronze";
+  flair?: "Gold" | "Silver" | "Bronze" | "Flagship";
   prizes?: {
     first?: string;
     second?: string;
@@ -32,7 +32,7 @@ export type EventRecord = {
 };
 
 export const events: EventRecord[] = [
-  // GOLD EVENTS
+  // FLAGSHIP EVENTS
   {
     slug: "robowar-15kg",
     name: "ROBOWAR (15KG)",
@@ -47,7 +47,7 @@ export const events: EventRecord[] = [
     registrationFee: 1180,
     prizePool: "₹2,00,000 (Combined)",
     featured: true,
-    flair: "Gold",
+    flair: "Flagship",
     image: "/event-pics/Event pics/ROBOWAR.jpg",
     coordinators: [
       { name: "Yash Karekar", phone: "7498686247" },
@@ -56,6 +56,51 @@ export const events: EventRecord[] = [
       { name: "Vedansh Dhargalkar", phone: "7720907356" }
     ]
   },
+  {
+    slug: "robowar-8kgs",
+    name: "ROBOWAR (8KGS)",
+    category: "Robotics",
+    level: "college",
+    date: "29-30 April 2026",
+    time: "11AM ONWARDS",
+    venue: "Robowars Arena AITD",
+    shortDescription: "Mid-weight robot combat (8KG).",
+    description: "Intense mid-weight mechanical showdown.",
+    rules: ["Weight limit: 8kg", "Standard arena protocols apply"],
+    registrationFee: 944,
+    prizePool: "₹2,00,000 (Combined)",
+    flair: "Flagship",
+    image: "/event-pics/Event pics/ROBOWAR.jpg",
+    coordinators: [
+      { name: "Yash Karekar", phone: "7498686247" },
+      { name: "Yash Sanikop", phone: "8177963886" },
+      { name: "Anay Govekar", phone: "8459341728" },
+      { name: "Vedansh Dhargalkar", phone: "7720907356" }
+    ]
+  },
+  {
+    slug: "robowar-3lbs",
+    name: "ROBOWAR (3LBS)",
+    category: "Robotics",
+    level: "college",
+    date: "29-30 April 2026",
+    time: "11AM ONWARDS",
+    venue: "Robowars Arena AITD",
+    shortDescription: "Beetleweight robot combat (3LBS).",
+    description: "Fast-paced small-scale mechanical destruction.",
+    rules: ["Weight limit: 3lbs", "High-speed combat sequences"],
+    registrationFee: 590,
+    prizePool: "₹2,00,000 (Combined)",
+    flair: "Flagship",
+    image: "/event-pics/Event pics/ROBOWAR.jpg",
+    coordinators: [
+      { name: "Yash Karekar", phone: "7498686247" },
+      { name: "Yash Sanikop", phone: "8177963886" },
+      { name: "Anay Govekar", phone: "8459341728" },
+      { name: "Vedansh Dhargalkar", phone: "7720907356" }
+    ]
+  },
+  // GOLD EVENTS
   {
     slug: "robo-nexus",
     name: "ROBO NEXUS",
@@ -317,48 +362,6 @@ export const events: EventRecord[] = [
   },
   // NO FLAIR EVENTS
   {
-    slug: "robowar-8kgs",
-    name: "ROBOWAR (8KGS)",
-    category: "Robotics",
-    level: "college",
-    date: "29-30 April 2026",
-    time: "11AM ONWARDS",
-    venue: "Robowars Arena AITD",
-    shortDescription: "Mid-weight robot combat (8KG).",
-    description: "Intense mid-weight mechanical showdown.",
-    rules: ["Weight limit: 8kg", "Standard arena protocols apply"],
-    registrationFee: 944,
-    prizePool: "₹2,00,000 (Combined)",
-    image: "/event-pics/Event pics/ROBOWAR.jpg",
-    coordinators: [
-      { name: "Yash Karekar", phone: "7498686247" },
-      { name: "Yash Sanikop", phone: "8177963886" },
-      { name: "Anay Govekar", phone: "8459341728" },
-      { name: "Vedansh Dhargalkar", phone: "7720907356" }
-    ]
-  },
-  {
-    slug: "robowar-3lbs",
-    name: "ROBOWAR (3LBS)",
-    category: "Robotics",
-    level: "college",
-    date: "29-30 April 2026",
-    time: "11AM ONWARDS",
-    venue: "Robowars Arena AITD",
-    shortDescription: "Beetleweight robot combat (3LBS).",
-    description: "Fast-paced small-scale mechanical destruction.",
-    rules: ["Weight limit: 3lbs", "High-speed combat sequences"],
-    registrationFee: 590,
-    prizePool: "₹2,00,000 (Combined)",
-    image: "/event-pics/Event pics/ROBOWAR.jpg",
-    coordinators: [
-      { name: "Yash Karekar", phone: "7498686247" },
-      { name: "Yash Sanikop", phone: "8177963886" },
-      { name: "Anay Govekar", phone: "8459341728" },
-      { name: "Vedansh Dhargalkar", phone: "7720907356" }
-    ]
-  },
-  {
     slug: "pixel-play",
     name: "PIXEL PLAY",
     category: "General",
@@ -417,7 +420,7 @@ export const events: EventRecord[] = [
     image: "/event-pics/Event pics/TREASURE HUNT.png",
     coordinators: [
       { name: "Arya Bandivadekar", phone: "9146973373" },
-      { name: "Dikshit Kothankar", phone: "9579376865" }
+      { name: "Dikshita Kothankar", phone: "9579376865" }
     ]
   },
   {

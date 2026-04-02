@@ -10,6 +10,7 @@ const flairColors = {
   Gold: "text-yellow-400 border-yellow-400/50 bg-yellow-400/10 shadow-[0_0_10px_rgba(250,204,21,0.3)]",
   Silver: "text-zinc-300 border-zinc-300/50 bg-zinc-300/10 shadow-[0_0_10px_rgba(212,212,216,0.3)]",
   Bronze: "text-orange-400 border-orange-400/50 bg-orange-400/10 shadow-[0_0_10px_rgba(251,146,60,0.3)]",
+  Flagship: "text-red-500 border-red-500/50 bg-red-500/10 shadow-[0_0_10px_rgba(239,68,68,0.4)]",
 };
 
 export function EventCard({ event, index }: { event: EventRecord; index: number }) {
