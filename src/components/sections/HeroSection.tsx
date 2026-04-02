@@ -141,7 +141,7 @@ export function HeroSection() {
           </h1>
 
           {/* Countdown Timer */}
-          <div className="flex gap-4 md:gap-8 mb-8 font-mono">
+          <div className="flex gap-4 md:gap-8 mb-8 font-display">
             {[
               { label: "DAYS", value: timeLeft.days },
               { label: "HRS", value: timeLeft.hours },
@@ -149,7 +149,7 @@ export function HeroSection() {
               { label: "SECS", value: timeLeft.secs },
             ].map((unit) => (
               <div key={unit.label} className="flex flex-col items-center">
-                <div className="text-2xl md:text-4xl font-black text-white bg-white/5 border border-white/10 px-3 py-2 min-w-[60px] md:min-w-[80px] shadow-[inset_0_0_15px_rgba(255,255,255,0.05)]">
+                <div className="text-2xl md:text-4xl font-black text-yellow-nuclear bg-yellow-nuclear/5 border border-yellow-nuclear/20 px-3 py-2 min-w-[60px] md:min-w-[80px] shadow-[inset_0_0_15px_rgba(249,255,59,0.1)] drop-shadow-[0_0_10px_rgba(249,255,59,0.3)]">
                   {String(unit.value).padStart(2, '0')}
                 </div>
                 <span className="text-[8px] md:text-[10px] text-cyan-electric mt-2 tracking-[0.2em] font-bold">{unit.label}</span>
@@ -179,9 +179,9 @@ export function HeroSection() {
           </div>
 
           {/* System logs centered bottom */}
-          <div className="mt-8 flex flex-col gap-1 items-center font-mono text-[8px] md:text-[9px] text-cyan-electric/50 uppercase tracking-widest min-h-[30px]">
+          <div className="mt-8 flex flex-col gap-1 items-center font-display text-[8px] md:text-[9px] text-yellow-nuclear/70 uppercase tracking-[0.3em] min-h-[30px]">
             {logs.slice(-2).map((log, i) => (
-              <div key={i} className="animate-pulse">{log}</div>
+              <div key={i} className="animate-pulse drop-shadow-[0_0_5px_rgba(249,255,59,0.3)]">{log}</div>
             ))}
           </div>
         </motion.div>
