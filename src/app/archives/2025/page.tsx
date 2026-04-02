@@ -1,9 +1,59 @@
 "use client";
 
 import { Navbar } from "@/components/navbar";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Trophy, Users, Zap, ExternalLink } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { Trophy, Users, Zap } from "lucide-react";
+
+function BentoItem({ id, span }: { id: number; span: string }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  const spotlightColor = "rgba(249, 255, 59, 0.15)"; // yellow-nuclear with low opacity
+
+  return (
+    <motion.div
+      key={id}
+      onMouseMove={handleMouseMove}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className={`relative group overflow-hidden border border-white/10 bg-zinc-950 ${span} transition-all duration-500 hover:border-yellow-nuclear/50`}
+    >
+      <div className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(600px circle at ${mouseX}px ${mouseY}px, ${spotlightColor}, transparent 40%)`
+        }}
+      />
+      
+      <img
+        src={`/techurja2025-highlights/${id}.jpg`}
+        alt={`Techurja 2025 Highlight ${id}`}
+        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-60 group-hover:opacity-100"
+        onError={(e) => {
+          (e.target as HTMLImageElement).style.display = 'none';
+        }}
+      />
+
+      {/* Placeholder background for missing images */}
+      <div className="absolute inset-0 -z-10 flex flex-col items-center justify-center p-4 text-center">
+        <div className="w-full h-full bg-[radial-gradient(circle,var(--nuclear-yellow)_1px,transparent_1px)] bg-[size:15px_15px] opacity-5 absolute inset-0"></div>
+        <Zap size={24} className="text-yellow-nuclear/10" />
+      </div>
+
+      {/* Decorative border corners */}
+      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-yellow-nuclear/40 opacity-0 group-hover:opacity-100 transition-opacity z-20"></div>
+      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-yellow-nuclear/40 opacity-0 group-hover:opacity-100 transition-opacity z-20"></div>
+    </motion.div>
+  );
+}
 
 export default function Archives2025() {
   const [isMobile, setIsMobile] = useState(false);
@@ -21,12 +71,22 @@ export default function Archives2025() {
     { label: "PRIZE POOL", value: "₹4L+", icon: Trophy, color: "text-magenta-cyber" },
   ];
 
+  const gridItems = [
+    { id: 1, span: "col-span-2 row-span-2" },
+    { id: 2, span: "col-span-1 row-span-1" },
+    { id: 3, span: "col-span-1 row-span-2" },
+    { id: 4, span: "col-span-1 row-span-1" },
+    { id: 5, span: "col-span-2 row-span-1" },
+    { id: 6, span: "col-span-1 row-span-1" },
+    { id: 7, span: "col-span-1 row-span-1" },
+  ];
+
   return (
     <div className="min-h-screen bg-black text-ink">
       <Navbar />
       
       <main className="mx-auto max-w-7xl px-6 pt-32 pb-24">
-        {/* Header - No animation on mobile */}
+        {/* Header */}
         <header className="relative overflow-hidden terminal-panel border-cyan-electric/30 p-8 md:p-16 mb-16 bg-cyan-electric/5">
           <div className="absolute inset-0 scanline-mask opacity-10 pointer-events-none"></div>
           
@@ -110,38 +170,8 @@ export default function Archives2025() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[150px] md:auto-rows-[200px]">
-            {[
-              { id: 1, span: "col-span-2 row-span-2", label: "ROBOWAR_FINALS" },
-              { id: 2, span: "col-span-1 row-span-1", label: "CODE_SIEGE" },
-              { id: 3, span: "col-span-1 row-span-2", label: "CROWD_PULSE" },
-              { id: 4, span: "col-span-1 row-span-1", label: "WINNERS_CIRCLE" },
-              { id: 5, span: "col-span-2 row-span-1", label: "INNOVATION_HUB" },
-            ].map((item) => (
-              <div 
-                key={item.id} 
-                className={`relative group overflow-hidden border border-white/10 bg-zinc-950 ${item.span} transition-all duration-500 hover:border-cyan-electric/50`}
-              >
-                <img 
-                  src={`/archives/2025/${item.id}.jpg`} 
-                  alt={item.label}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 opacity-40 group-hover:opacity-100"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
-                  }}
-                />
-                
-                {/* Overlay for missing images */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-0">
-                  <div className="w-full h-full bg-[radial-gradient(circle,var(--electric-cyan)_1px,transparent_1px)] bg-[size:15px_15px] opacity-10 absolute inset-0"></div>
-                  <Zap size={24} className="text-cyan-electric/20 mb-2" />
-                  <span className="text-[8px] md:text-[10px] font-mono text-zinc-600 uppercase tracking-[0.3em]">{item.label}</span>
-                  <span className="text-[7px] font-mono text-zinc-800 mt-1">ENCRYPTED_MEDIA_DATA</span>
-                </div>
-
-                {/* Decorative border corners */}
-                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyan-electric/40 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyan-electric/40 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </div>
+            {gridItems.map((item) => (
+              <BentoItem key={item.id} id={item.id} span={item.span} />
             ))}
           </div>
         </section>
