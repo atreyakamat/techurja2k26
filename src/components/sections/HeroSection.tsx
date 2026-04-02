@@ -162,16 +162,19 @@ export function HeroSection() {
             Agnel Institute of Technology &amp; Design&apos;s high-octane cyberpunk tech festival. Hack, build, and battle through the grid.
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4 w-full sm:w-auto px-4 sm:px-0">
-            <Link href="/#register" className="cyber-button text-[10px] md:text-sm px-6 py-4 md:py-3 glitch-hover w-full sm:w-auto" data-text="INITIATE REGISTRATION">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 w-full max-w-2xl px-4 sm:px-0">
+            <Link href="/#register" className="cyber-button text-[10px] md:text-sm px-6 py-4 md:py-3 glitch-hover w-full" data-text="INITIATE REGISTRATION">
               INITIATE REGISTRATION
             </Link>
-            <Link href="/events" className="cyber-button-alt text-[10px] md:text-sm px-6 py-4 md:py-3 w-full sm:w-auto">
+            <Link href="/events" className="cyber-button-alt text-[10px] md:text-sm px-6 py-4 md:py-3 w-full">
               VIEW COMBAT EVENTS
             </Link>
-            <a href="/rulebook.pdf" target="_blank" className="cyber-button-alt border-magenta-cyber text-magenta-cyber hover:bg-magenta-cyber/10 text-[10px] md:text-sm px-6 py-4 md:py-3 w-full sm:w-auto">
+            <a href="/rulebook.pdf" target="_blank" className="cyber-button-alt border-magenta-cyber text-magenta-cyber hover:bg-magenta-cyber/10 text-[10px] md:text-sm px-6 py-4 md:py-3 w-full">
               GENERAL RULEBOOK
             </a>
+            <Link href="/events/hss" className="cyber-button text-[10px] md:text-sm px-6 py-4 md:py-3 w-full border-yellow-nuclear text-yellow-nuclear bg-yellow-nuclear/10 hover:bg-yellow-nuclear hover:text-black shadow-[0_0_20px_rgba(249,255,59,0.3)]">
+              VIEW HSS EVENTS
+            </Link>
           </div>
 
           {/* System logs centered bottom */}
