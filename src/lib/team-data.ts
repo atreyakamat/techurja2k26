@@ -158,6 +158,15 @@ export const teamMembers: TeamMember[] = [
     image: "/coordinator_pics/14.jpg"
   },
   {
+    name: "Chaitali Karekar",
+    role: "Faculty Coordinator",
+    category: "Faculty",
+    council: "Staff",
+    email: "cha@aitdgoa.edu.in",
+    number: 23,
+    image: "/coordinator_pics/23.jpg"
+  },
+  {
     name: "Saish Rivankar",
     role: "Faculty Coordinator",
     category: "Faculty",
@@ -228,14 +237,5 @@ export const teamMembers: TeamMember[] = [
     email: "prb@aitdgoa.edu.in",
     number: 22,
     image: "/coordinator_pics/22.jpg"
-  },
-  {
-    name: "Chaitali Karekar",
-    role: "Faculty Coordinator",
-    category: "Faculty",
-    council: "Staff",
-    email: "cha@aitdgoa.edu.in",
-    number: 23,
-    image: "/coordinator_pics/23.jpg"
   },
 ];
