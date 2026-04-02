@@ -170,7 +170,7 @@ export function HeroSection() {
             <Link href="/events" className="cyber-button-alt text-[8px] sm:text-[10px] md:text-sm px-2 sm:px-6 py-4 md:py-3 w-full">
               VIEW COMBAT EVENTS
             </Link>
-            <a href="/rulebook.pdf" target="_blank" className="cyber-button-alt border-magenta-cyber text-magenta-cyber hover:bg-magenta-cyber/10 text-[8px] sm:text-[10px] md:text-sm px-2 sm:px-6 py-4 md:py-3 w-full">
+            <a href="https://drive.google.com/file/d/18w7REhdzLu3pvZyL3S1VbGHDHyA1Tu86/view?usp=drive_link" target="_blank" className="cyber-button-alt border-magenta-cyber text-magenta-cyber hover:bg-magenta-cyber/10 text-[8px] sm:text-[10px] md:text-sm px-2 sm:px-6 py-4 md:py-3 w-full">
               GENERAL RULEBOOK
             </a>
             <Link href="/events/hss" className="cyber-button text-[8px] sm:text-[10px] md:text-sm px-2 sm:px-6 py-4 md:py-3 w-full border-yellow-nuclear text-yellow-nuclear bg-yellow-nuclear/10 hover:bg-yellow-nuclear hover:text-black shadow-[0_0_20px_rgba(249,255,59,0.3)]">

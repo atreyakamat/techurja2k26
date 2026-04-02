@@ -172,7 +172,7 @@ export default function RulebookPage() {
         {/* Main Master Rulebook Button */}
         <div className="mb-20">
           <a 
-            href="/rulebook.pdf" 
+            href="https://drive.google.com/file/d/18w7REhdzLu3pvZyL3S1VbGHDHyA1Tu86/view?usp=drive_link" 
             target="_blank"
             className="w-full py-10 terminal-panel border-magenta-cyber/50 hover:border-magenta-cyber bg-magenta-cyber/5 hover:bg-magenta-cyber/10 transition-all flex flex-col items-center justify-center gap-4 group relative overflow-hidden shadow-[0_0_30px_rgba(255,44,222,0.1)]"
           >
