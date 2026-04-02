@@ -153,7 +153,7 @@ export const events: EventRecord[] = [
     prizePool: "₹15,000",
     coordinators: [
       { name: "Shreyas Manerikar", phone: "8830018722" },
-      { name: "Vilas Bhotane", phone: "8767526594" }
+      { name: "Vikas Ghotane", phone: "8767526594" }
     ]
   },
   {
