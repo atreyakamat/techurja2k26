@@ -6,7 +6,6 @@ import { TimelineSection } from "@/components/sections/TimelineSection";
 import { RegistrationTerminalSection } from "@/components/sections/RegistrationTerminalSection";
 import { OpsFeedSection } from "@/components/sections/OpsFeedSection";
 import { FAQSection } from "@/components/sections/FAQSection";
-import { FooterSection } from "@/components/sections/FooterSection";
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
         <RegistrationTerminalSection />
         {/* <OpsFeedSection /> */}
         <FAQSection />
-        <FooterSection />
       </div>
     </main>
   );

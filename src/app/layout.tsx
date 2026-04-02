@@ -42,6 +42,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { FooterSection } from "@/components/sections/FooterSection";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -56,6 +58,7 @@ export default function RootLayout({
         <div className="crt-noise"></div>
 
         {children}
+        <FooterSection />
 
         {/* Magenta Status Ticker Bar (Top) */}
         <div className="ticker-wrap-magenta flex items-center">
