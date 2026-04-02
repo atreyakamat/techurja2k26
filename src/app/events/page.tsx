@@ -8,8 +8,6 @@ import { Navbar } from "@/components/navbar";
 import { categories, getFilteredEvents } from "@/lib/event-data";
 import { Zap } from "lucide-react";
 
-import { SplineScene } from "@/components/SplineScene";
-
 function EventsContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -78,9 +76,20 @@ function EventsContent() {
             </form>
           </div>
 
-          <div className="hidden md:block h-[400px] relative group">
-            <div className="absolute inset-0 bg-cyan-electric/5 rounded-full blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
-            <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" />
+          <div className="hidden md:block h-[400px] relative group overflow-hidden border border-cyan-electric/20 bg-cyan-electric/5 backdrop-blur-sm">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--electric-cyan)_0%,transparent_70%)] opacity-10 animate-pulse"></div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative">
+                <Zap size={120} className="text-cyan-electric opacity-20 group-hover:opacity-40 transition-opacity" />
+                <div className="absolute inset-0 bg-cyan-electric/20 blur-[50px] animate-pulse"></div>
+              </div>
+            </div>
+            {/* Animated Scanning Line */}
+            <div className="absolute left-0 w-full h-[2px] bg-cyan-electric/40 shadow-[0_0_15px_var(--electric-cyan)] animate-[scan_3s_linear_infinite]"></div>
+            
+            <div className="absolute bottom-4 right-4 font-mono text-[10px] text-cyan-electric/40 uppercase tracking-[0.3em]">
+              Node_Status: ACTIVE
+            </div>
           </div>
         </div>
       </header>

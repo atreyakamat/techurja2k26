@@ -139,6 +139,13 @@ section:first-of-type {
   to { transform: scaleX(1); }
 }
 
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
 .neon-grid {
   background-image: 
     linear-gradient(rgba(41, 244, 255, 0.15) 1px, transparent 1px),

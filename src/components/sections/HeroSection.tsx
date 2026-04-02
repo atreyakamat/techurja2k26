@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { SplineScene } from "@/components/SplineScene";
-
 export function HeroSection() {
   const [logs, setLogs] = useState<string[]>([]);
   const [isMobile, setIsMobile] = useState(false);
@@ -35,7 +33,6 @@ export function HeroSection() {
   }, []);
 
   useEffect(() => {
-    // Check if mobile for Spline optimization
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -67,20 +64,23 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black py-20">
-      {/* Background Layer */}
+      {/* Background Layer - Video Background */}
       <div className="absolute inset-0 z-0">
-        {!isMobile ? (
-          // Desktop: Load Spline Scene
-          <div className="absolute inset-0 opacity-80 transition-opacity duration-1000">
-            <SplineScene />
-            <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
-          </div>
-        ) : (
-          // Mobile: Moving Grid Only (Optimized)
-          <div className="absolute inset-0 opacity-20 pointer-events-none">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#29F4FF_1px,transparent_1px),linear-gradient(to_bottom,#29F4FF_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] animate-[grid-move_20s_linear_infinite]"></div>
-          </div>
-        )}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
+        
+        {/* Optional: Add the moving grid overlay back if desired, but making it "light" might mean keeping it simple */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#29F4FF_1px,transparent_1px),linear-gradient(to_bottom,#29F4FF_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+        </div>
       </div>
 
       {/* Common Overlays */}
