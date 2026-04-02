@@ -38,6 +38,8 @@ model Registration {
   eventName   String
   transactionId String?
   paymentScreenshot String?
+  status      String   @default("pending")
+  adminNotes  String?
   eventId     Int?
   event       Event?   @relation(fields: [eventId], references: [id], onDelete: SetNull)
   createdAt   DateTime @default(now())
