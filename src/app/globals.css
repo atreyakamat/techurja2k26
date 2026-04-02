@@ -36,6 +36,15 @@ body {
   padding-bottom: 60px;
 }
 
+/* Scrollbar control */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Smooth motion base classes */
 .terminal-panel, .cyber-button, .cyber-button-alt, .neon-border {
   backface-visibility: hidden;
