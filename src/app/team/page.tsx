@@ -113,7 +113,7 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
              <img 
                src={member.image} 
                alt={member.name}
-               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
+               className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-700 scale-100"
                onError={(e) => {
                  (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=111&color=fff&size=512`;
                }}
