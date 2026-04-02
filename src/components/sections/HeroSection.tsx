@@ -71,7 +71,8 @@ export function HeroSection() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-1000"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>

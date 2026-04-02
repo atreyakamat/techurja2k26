@@ -31,9 +31,11 @@ body {
   position: relative;
   min-height: 100vh;
   /* Hardware acceleration for global smooth feel */
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   padding-bottom: 60px;
+  overscroll-behavior-y: none;
 }
 
 /* Scrollbar control */
@@ -143,6 +145,10 @@ section:first-of-type {
   to { transform: translateX(-50%); }
 }
 
+.animate-scroll {
+  will-change: transform;
+}
+
 @keyframes scaleX {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
@@ -212,6 +218,8 @@ section:first-of-type {
   background: transparent;
   overflow: hidden;
   animation: glitch-anim 0.3s infinite linear alternate-reverse;
+  will-change: clip-path, transform;
+  transform: translateZ(0);
 }
 .glitch-hover:hover::after {
   content: attr(data-text);
@@ -223,6 +231,8 @@ section:first-of-type {
   background: transparent;
   overflow: hidden;
   animation: glitch-anim 0.4s infinite linear alternate-reverse;
+  will-change: clip-path, transform;
+  transform: translateZ(0);
 }
 
 /* Status Ticker */
