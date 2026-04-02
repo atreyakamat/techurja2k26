@@ -49,6 +49,7 @@ export const events: EventRecord[] = [
     featured: true,
     flair: "Flagship",
     image: "/event-pics/Event pics/ROBOWAR.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1XPS_037_vhqvbRNxtHjZSAylT601gTvs/view?usp=drive_link",
     coordinators: [
       { name: "Yash Karekar", phone: "7498686247" },
       { name: "Yash Sanikop", phone: "8177963886" },
@@ -71,6 +72,7 @@ export const events: EventRecord[] = [
     prizePool: "₹2,00,000 (Combined)",
     flair: "Flagship",
     image: "/event-pics/Event pics/ROBOWAR.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1XPS_037_vhqvbRNxtHjZSAylT601gTvs/view?usp=drive_link",
     coordinators: [
       { name: "Yash Karekar", phone: "7498686247" },
       { name: "Yash Sanikop", phone: "8177963886" },
@@ -93,6 +95,7 @@ export const events: EventRecord[] = [
     prizePool: "₹2,00,000 (Combined)",
     flair: "Flagship",
     image: "/event-pics/Event pics/ROBOWAR.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1XPS_037_vhqvbRNxtHjZSAylT601gTvs/view?usp=drive_link",
     coordinators: [
       { name: "Yash Karekar", phone: "7498686247" },
       { name: "Yash Sanikop", phone: "8177963886" },
@@ -116,6 +119,7 @@ export const events: EventRecord[] = [
     registrationFee: 472,
     prizePool: "₹30,000",
     image: "/event-pics/Event pics/ROBO SUMO.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1dJXMtRVHhAv0Rgci5cJ-lmoRr9A_SYm3/view?usp=drive_link",
     coordinators: [
       { name: "Vedh Naik", phone: "8010362301" },
       { name: "Saitesh Kalangutkar", phone: "7972524953" }
@@ -134,8 +138,9 @@ export const events: EventRecord[] = [
     description: "Score goals against opponents in this mechanical football match.",
     rules: ["3 vs 3 format", "5-minute halves"],
     registrationFee: 413,
-    prizePool: "₹20,000",
+    prizePool: "₹2,00,000 (Combined)",
     image: "/event-pics/Event pics/ROBO SOCCER.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/12ti-eQ3F0D6y8c9wUu5_N4U51UZMQm3V/view?usp=drive_link",
     coordinators: [
       { name: "Dia Saji", phone: "9699259703" },
       { name: "Rohan Saikar", phone: "8007944512" }
@@ -160,6 +165,7 @@ export const events: EventRecord[] = [
       second: "₹4,000"
     },
     image: "/event-pics/Event pics/LINE FOLLOWER ROBOT.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1W66mGxViAOhifhpYGckMq9sFF7L-qmJQ/view?usp=drive_link",
     coordinators: [
       { name: "Dakshesh Verma", phone: "9272098752" },
       { name: "Soham Polle", phone: "9307207645" }
@@ -181,6 +187,7 @@ export const events: EventRecord[] = [
     feeDetails: "Re-entry: ₹177",
     prizePool: "₹15,000",
     image: "/event-pics/Event pics/ROBO RACE.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1hYVl98mLUTZ3QssM7LcQdxVDwXDVyD2Y/view?usp=drive_link",
     coordinators: [
       { name: "Sanjana Vaday", phone: "9226013380" },
       { name: "Tanisha Kolhar", phone: "8767254192" }
@@ -202,6 +209,7 @@ export const events: EventRecord[] = [
     registrationFee: 354,
     prizePool: "₹15,000",
     image: "/event-pics/Event pics/ROBO TUG OF WAR.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1aweeTCfdJ07CmuW0WNv11MbEYtY4AKei/view?usp=drive_link",
     coordinators: [
       { name: "Shreyas Manerikar", phone: "8830018722" },
       { name: "Vikas Ghotane", phone: "8767526594" }
@@ -222,6 +230,7 @@ export const events: EventRecord[] = [
     registrationFee: 118,
     prizePool: "₹10,000",
     image: "/event-pics/Event pics/CODING EVENT.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1yMHIsVTduOjoBDaCx4q6NLR4ndZiRVr4/view?usp=drive_link",
     coordinators: [
       { name: "Myron Dcruz", phone: "7378389612" },
       { name: "Ashwith Shetty", phone: "7218694977" }
@@ -246,6 +255,7 @@ export const events: EventRecord[] = [
       second: "₹8,000"
     },
     image: "/event-pics/Event pics/PROJECT PRESENTATION.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1f1GTzgGK7CRSUVHeIwlamDld3S0em-Xs/view?usp=drive_link",
     coordinators: [
       { name: "Joyce Martins", phone: "8767179587" },
       { name: "Rudra Malvankar", phone: "9145450734" }
@@ -267,6 +277,7 @@ export const events: EventRecord[] = [
     feeDetails: "Re-entry: ₹177",
     prizePool: "₹10,000",
     image: "/event-pics/Event pics/ROBO MAZE SOLVER.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1x0RhL2zKUPvrOcfGfN9dYqMjHADjIfHQ/view?usp=drive_link",
     coordinators: [
       { name: "Deesh Naik", phone: "9146480787" },
       { name: "Shourya Dhupkar", phone: "8010909892" }
@@ -288,6 +299,7 @@ export const events: EventRecord[] = [
     registrationFee: 295,
     prizePool: "₹8,000",
     image: "/event-pics/Event pics/BRIDGE CONSTRUCTION.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1DHHXEtVJsPdLk1XP8wM30hCi0SmXYhnA/view?usp=drive_link",
     coordinators: [
       { name: "Samuel Pinto", phone: "8830472562" },
       { name: "Joaquim", phone: "8766596447" }
@@ -308,6 +320,7 @@ export const events: EventRecord[] = [
     registrationFee: 118,
     prizePool: "₹10,000",
     image: "/event-pics/Event pics/CAPTURE THE FLAG.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1uC95XNA0QrunE9-R0UeFDnUYBwQ_No3b/view?usp=drive_link",
     coordinators: [
       { name: "Samson Sequeira", phone: "9607560849" },
       { name: "Shrish Bordekar", phone: "9356826227" }
@@ -332,6 +345,7 @@ export const events: EventRecord[] = [
       second: "₹4,000"
     },
     image: "/event-pics/Event pics/CIRCUIT SIMULATION.png",
+    rulebookUrl: "https://drive.google.com/file/d/1rm7bou5h7WdZKjx1I2e8cwQl6fT3D83l/view?usp=drive_link",
     coordinators: [
       { name: "Joel D'Lima", phone: "8605675478" },
       { name: "Jaedan", phone: "9356320798" }
@@ -356,6 +370,7 @@ export const events: EventRecord[] = [
       second: "₹3,000"
     },
     image: "/event-pics/Event pics/BUSINESS PITCH.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1os_PVFEhQxYh91D7bczSxSXysCz6j-mY/view?usp=drive_link",
     coordinators: [
       { name: "Valora Ferrao", phone: "9765953309" }
     ]
@@ -376,6 +391,7 @@ export const events: EventRecord[] = [
     feeDetails: "Re-entry: ₹236",
     prizePool: "₹8,000",
     image: "/event-pics/Event pics/FIFA.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/11JRb87sZshPqcO3nYzPm3Y-DXxXpPlzV/view?usp=drive_link",
     coordinators: [
       { name: "Aaryan Desai", phone: "8007249603" },
       { name: "Jaydeep Rane", phone: "7498965325" }
@@ -395,6 +411,7 @@ export const events: EventRecord[] = [
     registrationFee: 59,
     prizePool: "₹3,000",
     image: "/event-pics/Event pics/CLASH ROYALE.png",
+    rulebookUrl: "https://drive.google.com/file/d/1LIGLk4pOJPsvWeuRkp-Mkx4qCt2gH29b/view?usp=drive_link",
     coordinators: [
       { name: "Areeb Shaikh", phone: "9730405881" },
       { name: "Mukund Mahambrey", phone: "9405332300" }
@@ -418,6 +435,7 @@ export const events: EventRecord[] = [
       second: "₹4,000"
     },
     image: "/event-pics/Event pics/TREASURE HUNT.png",
+    rulebookUrl: "https://drive.google.com/file/d/10AUc8vzH4wolM3I6plRyrzYvOp_kSdjH/view?usp=drive_link",
     coordinators: [
       { name: "Arya Bandivadekar", phone: "9146973373" },
       { name: "Dikshita Kothankar", phone: "9579376865" }
@@ -437,6 +455,7 @@ export const events: EventRecord[] = [
     registrationFee: 59,
     prizePool: "₹3,000",
     image: "/event-pics/Event pics/VIRTUAL CRICKET.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1odzOBF6j_ENm5Hr30fyrTFCPFViSYtfg/view?usp=drive_link",
     coordinators: [
       { name: "Soham Joshi", phone: "9922967609" },
       { name: "Shuban", phone: "7414993238" }
@@ -457,6 +476,7 @@ export const events: EventRecord[] = [
     prizePool: "₹30,000",
     featured: true,
     image: "/event-pics/Event pics/HACKATHON.png",
+    rulebookUrl: "https://drive.google.com/file/d/1TVoT0c1R3zBNAZbxAPlAgAqh2SSUsLBO/view?usp=drive_link",
     coordinators: [
       { name: "Atreya Kamat", phone: "7744020601" }
     ]
@@ -475,6 +495,7 @@ export const events: EventRecord[] = [
     registrationFee: "Free",
     prizePool: "₹6,000",
     image: "/event-pics/Event pics/SYMMETRY ART.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1fx2x-0b5wWg_ap9-S3oJDQ6LAVBhTUpZ/view?usp=drive_link",
     coordinators: [
       { name: "Salmesh Calangutkar", phone: "9028064354" },
       { name: "Vedika Patil", phone: "9371862427" }
@@ -494,6 +515,7 @@ export const events: EventRecord[] = [
     registrationFee: "Free",
     prizePool: "₹6,000",
     image: "/event-pics/Event pics/STRUCTOMAT.jpg",
+    rulebookUrl: "https://drive.google.com/file/d/1mRmUyG5ZYtC8nn92v3H8Vwep2Gx7gcN5/view?usp=drive_link",
     coordinators: [
       { name: "Mihir Shirodkar", phone: "9130357440" },
       { name: "Harsh Mapsekar", phone: "9604107596" }
