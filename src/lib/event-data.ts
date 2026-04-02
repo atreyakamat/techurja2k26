@@ -71,7 +71,7 @@ export const events: EventRecord[] = [
     prizePool: "₹30,000",
     coordinators: [
       { name: "Vedh Naik", phone: "8010362301" },
-      { name: "Saites Kalangutkar", phone: "7972524953" }
+      { name: "Saitesh Kalangutkar", phone: "7972524953" }
     ]
   },
   {
