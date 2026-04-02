@@ -202,8 +202,8 @@ export const events: EventRecord[] = [
     },
     image: "/event-pics/Event pics/PROJECT PRESENTATION.jpg",
     coordinators: [
-      { name: "Joyce", phone: "8767179587" },
-      { name: "Rudra", phone: "9145450734" }
+      { name: "Joyce Martins", phone: "8767179587" },
+      { name: "Rudra Malvankar", phone: "9145450734" }
     ]
   },
   {
@@ -288,8 +288,8 @@ export const events: EventRecord[] = [
     },
     image: "/event-pics/Event pics/CIRCUIT SIMULATION.png",
     coordinators: [
-      { name: "Joel", phone: "8605675478" },
-      { name: "Jaeden", phone: "9356320798" }
+      { name: "Joel D'Lima", phone: "8605675478" },
+      { name: "Jaedan", phone: "9356320798" }
     ]
   },
   {
@@ -312,8 +312,7 @@ export const events: EventRecord[] = [
     },
     image: "/event-pics/Event pics/BUSINESS PITCH.jpg",
     coordinators: [
-      { name: "Valora", phone: "9765953309" },
-      { name: "Brandon Lobo", phone: "9145523659" }
+      { name: "Valora Ferrao", phone: "9765953309" }
     ]
   },
   // NO FLAIR EVENTS
