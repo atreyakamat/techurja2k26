@@ -13,6 +13,7 @@ export function RegistrationTerminalSection() {
   const [selectedEvents, setSelectedEvents] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: "",
+    participant2: "",
     email: "",
     phone: "",
     institution: "",
@@ -20,6 +21,11 @@ export function RegistrationTerminalSection() {
   });
 
   const [screenshot, setScreenshot] = useState<File | null>(null);
+
+  // Check if any selected event allows/requires a second participant
+  const hasTeamEvent = selectedEvents.some(slug => 
+    slug === "escape-the-matrix" || slug === "cyber-strike" || slug === "ghostgrid"
+  );
 
   const startTransmission = async (isSuccess: boolean, finalMessage: string) => {
     const logs = [
@@ -141,7 +147,7 @@ export function RegistrationTerminalSection() {
               <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-xs text-magenta-cyber uppercase font-mono tracking-widest">Operator Name</label>
+                    <label className="text-xs text-magenta-cyber uppercase font-mono tracking-widest">Operator Name (Lead)</label>
                     <div className="relative">
                       <span className="absolute left-3 top-3 text-cyan-electric font-mono">&gt;</span>
                       <input required 
@@ -153,6 +159,22 @@ export function RegistrationTerminalSection() {
                       />
                     </div>
                   </div>
+
+                  {hasTeamEvent && (
+                    <div className="space-y-2 animate-in fade-in slide-in-from-top-2">
+                      <label className="text-xs text-magenta-cyber uppercase font-mono tracking-widest text-glow-magenta">Operator 2 Name (Optional/Req for Team)</label>
+                      <div className="relative">
+                        <span className="absolute left-3 top-3 text-magenta-cyber font-mono">&gt;</span>
+                        <input 
+                          type="text" 
+                          placeholder="type second handle" 
+                          className="w-full bg-black/50 border border-magenta-cyber/30 pl-8 pr-4 py-3 text-white font-mono focus:outline-none focus:border-magenta-cyber focus:shadow-[inset_0_0_10px_rgba(255,44,222,0.1)] transition-all"
+                          value={formData.participant2}
+                          onChange={e => setFormData({...formData, participant2: e.target.value})}
+                        />
+                      </div>
+                    </div>
+                  )}
                   <div className="space-y-2">
                     <label className="text-xs text-magenta-cyber uppercase font-mono tracking-widest">Comm Link (Email)</label>
                     <div className="relative">

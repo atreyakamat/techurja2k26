@@ -6,7 +6,8 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { 
-      name, 
+      name,
+      participant2, 
       teamName, 
       email, 
       phone, 
@@ -26,6 +27,7 @@ export async function POST(request: NextRequest) {
     const registration = await prisma.registration.create({
       data: {
         name,
+        participant2: participant2 || "",
         teamName: teamName || "",
         email,
         phone: phone || "",
@@ -45,6 +47,7 @@ export async function POST(request: NextRequest) {
         const userData = {
           id: registration.id,
           name,
+          participant2: participant2 || "N/A",
           teamName,
           email,
           phone,

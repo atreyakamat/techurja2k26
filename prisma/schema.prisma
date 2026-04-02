@@ -30,6 +30,7 @@ model Event {
 model Registration {
   id          Int      @id @default(autoincrement())
   name        String
+  participant2 String?
   teamName    String?
   email       String
   phone       String

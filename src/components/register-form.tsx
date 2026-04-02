@@ -7,6 +7,7 @@ import Image from "next/image";
 
 type FormState = {
   name: string;
+  participant2: string;
   teamName: string;
   email: string;
   phone: string;
@@ -16,6 +17,7 @@ type FormState = {
 
 const initialState: FormState = {
   name: "",
+  participant2: "",
   teamName: "",
   email: "",
   phone: "",
@@ -29,6 +31,11 @@ export function RegisterForm({ event }: { event: EventRecord }) {
   const [status, setStatus] = useState<{ ok: boolean; message: string } | null>(null);
 
   const [screenshot, setScreenshot] = useState<File | null>(null);
+
+  // Events requiring 2 participants: Coding, Soccer. CTF is 1 or 2.
+  const isTeamOfTwo = event.slug === "escape-the-matrix" || event.slug === "cyber-strike";
+  const isCTF = event.slug === "ghostgrid";
+  const showSecondParticipant = isTeamOfTwo || isCTF;
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -78,7 +85,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
       <p className="text-sm uppercase tracking-[0.12em] text-cyan-200">Register For {event.name}</p>
 
       <label className="flex flex-col gap-2 text-sm text-zinc-200">
-        Name
+        Participant 1 Name
         <input
           required
           value={formData.name}
@@ -86,6 +93,18 @@ export function RegisterForm({ event }: { event: EventRecord }) {
           className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300"
         />
       </label>
+
+      {showSecondParticipant && (
+        <label className="flex flex-col gap-2 text-sm text-zinc-200 animate-in fade-in slide-in-from-left-2 duration-300">
+          Participant 2 Name {isTeamOfTwo && "(Required)"} {isCTF && "(Optional)"}
+          <input
+            required={isTeamOfTwo}
+            value={formData.participant2}
+            onChange={(e) => setFormData((prev) => ({ ...prev, participant2: e.target.value }))}
+            className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300"
+          />
+        </label>
+      )}
 
       <label className="flex flex-col gap-2 text-sm text-zinc-200">
         Team Name (If applicable)
