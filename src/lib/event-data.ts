@@ -48,6 +48,7 @@ export const events: EventRecord[] = [
     prizePool: "₹2,00,000 (Combined)",
     featured: true,
     flair: "Gold",
+    image: "/event-pics/Event pics/ROBOWAR.jpg",
     coordinators: [
       { name: "Yash Karekar", phone: "7498686247" },
       { name: "Yash Sanikop", phone: "8177963886" },
@@ -69,6 +70,7 @@ export const events: EventRecord[] = [
     rules: ["Autonomous bots only", "Standard sumo ring dimensions"],
     registrationFee: 472,
     prizePool: "₹30,000",
+    image: "/event-pics/Event pics/ROBO SUMO.jpg",
     coordinators: [
       { name: "Vedh Naik", phone: "8010362301" },
       { name: "Saitesh Kalangutkar", phone: "7972524953" }
@@ -88,6 +90,7 @@ export const events: EventRecord[] = [
     rules: ["3 vs 3 format", "5-minute halves"],
     registrationFee: 413,
     prizePool: "₹20,000",
+    image: "/event-pics/Event pics/ROBO SOCCER.jpg",
     coordinators: [
       { name: "Dia Saji", phone: "9699259703" },
       { name: "Rohan Saikar", phone: "8007944512" }
@@ -111,6 +114,7 @@ export const events: EventRecord[] = [
       first: "₹6,000",
       second: "₹4,000"
     },
+    image: "/event-pics/Event pics/LINE FOLLOWER ROBOT.jpg",
     coordinators: [
       { name: "Dakshesh Verma", phone: "9272098752" },
       { name: "Soham Polle", phone: "9307207645" }
@@ -131,6 +135,7 @@ export const events: EventRecord[] = [
     registrationFee: 354,
     feeDetails: "Re-entry: ₹177",
     prizePool: "₹15,000",
+    image: "/event-pics/Event pics/ROBO RACE.jpg",
     coordinators: [
       { name: "Sanjana Vaday", phone: "9226013380" },
       { name: "Tanisha Kolhar", phone: "8767254192" }
@@ -151,6 +156,7 @@ export const events: EventRecord[] = [
     rules: ["Maximum weight: 10kg", "No spiked wheels"],
     registrationFee: 354,
     prizePool: "₹15,000",
+    image: "/event-pics/Event pics/ROBO TUG OF WAR.jpg",
     coordinators: [
       { name: "Shreyas Manerikar", phone: "8830018722" },
       { name: "Vikas Ghotane", phone: "8767526594" }
@@ -170,6 +176,7 @@ export const events: EventRecord[] = [
     rules: ["Individual participation", "No internet usage"],
     registrationFee: 118,
     prizePool: "₹10,000",
+    image: "/event-pics/Event pics/CODING EVENT.jpg",
     coordinators: [
       { name: "Myron Dcruz", phone: "7378389612" },
       { name: "Ashwith Shetty", phone: "7218694977" }
@@ -193,6 +200,7 @@ export const events: EventRecord[] = [
       first: "₹12,000",
       second: "₹8,000"
     },
+    image: "/event-pics/Event pics/PROJECT PRESENTATION.jpg",
     coordinators: [
       { name: "Joyce", phone: "8767179587" },
       { name: "Rudra", phone: "9145450734" }
@@ -213,6 +221,7 @@ export const events: EventRecord[] = [
     registrationFee: 354,
     feeDetails: "Re-entry: ₹177",
     prizePool: "₹10,000",
+    image: "/event-pics/Event pics/ROBO MAZE SOLVER.jpg",
     coordinators: [
       { name: "Deesh Naik", phone: "9146480787" },
       { name: "Shourya Dhupkar", phone: "8010909892" }
@@ -233,6 +242,7 @@ export const events: EventRecord[] = [
     rules: ["Materials provided", "Weight-to-load ratio judging"],
     registrationFee: 295,
     prizePool: "₹8,000",
+    image: "/event-pics/Event pics/BRIDGE CONSTRUCTION.jpg",
     coordinators: [
       { name: "Samuel Pinto", phone: "8830472562" },
       { name: "Joaquim", phone: "8766596447" }
@@ -252,6 +262,7 @@ export const events: EventRecord[] = [
     rules: ["Jeopardy style", "No DoS attacks allowed"],
     registrationFee: 118,
     prizePool: "₹10,000",
+    image: "/event-pics/Event pics/CAPTURE THE FLAG.jpg",
     coordinators: [
       { name: "Samson Sequeira", phone: "9607560849" },
       { name: "Shrish Bordekar", phone: "9356826227" }
@@ -275,6 +286,7 @@ export const events: EventRecord[] = [
       first: "₹6,000",
       second: "₹4,000"
     },
+    image: "/event-pics/Event pics/CIRCUIT SIMULATION.png",
     coordinators: [
       { name: "Joel", phone: "8605675478" },
       { name: "Jaeden", phone: "9356320798" }
@@ -298,6 +310,7 @@ export const events: EventRecord[] = [
       first: "₹5,000",
       second: "₹3,000"
     },
+    image: "/event-pics/Event pics/BUSINESS PITCH.jpg",
     coordinators: [
       { name: "Valora", phone: "9765953309" },
       { name: "Brandon Lobo", phone: "9145523659" }
@@ -317,6 +330,7 @@ export const events: EventRecord[] = [
     rules: ["Weight limit: 8kg", "Standard arena protocols apply"],
     registrationFee: 944,
     prizePool: "₹2,00,000 (Combined)",
+    image: "/event-pics/Event pics/ROBOWAR.jpg",
     coordinators: [
       { name: "Yash Karekar", phone: "7498686247" },
       { name: "Yash Sanikop", phone: "8177963886" },
@@ -337,6 +351,7 @@ export const events: EventRecord[] = [
     rules: ["Weight limit: 3lbs", "High-speed combat sequences"],
     registrationFee: 590,
     prizePool: "₹2,00,000 (Combined)",
+    image: "/event-pics/Event pics/ROBOWAR.jpg",
     coordinators: [
       { name: "Yash Karekar", phone: "7498686247" },
       { name: "Yash Sanikop", phone: "8177963886" },
@@ -358,6 +373,7 @@ export const events: EventRecord[] = [
     registrationFee: 295,
     feeDetails: "Re-entry: ₹236",
     prizePool: "₹8,000",
+    image: "/event-pics/Event pics/FIFA.jpg",
     coordinators: [
       { name: "Aaryan Desai", phone: "8007249603" },
       { name: "Jaydeep Pane", phone: "7498965325" }
@@ -376,6 +392,7 @@ export const events: EventRecord[] = [
     rules: ["Tournament standard levels", "Single elimination"],
     registrationFee: 59,
     prizePool: "₹3,000",
+    image: "/event-pics/Event pics/CLASH ROYALE.png",
     coordinators: [
       { name: "Areeb Shaikh", phone: "9730405881" },
       { name: "Mukund Mahambrey", phone: "9405332300" }
@@ -398,6 +415,7 @@ export const events: EventRecord[] = [
       first: "₹6,000",
       second: "₹4,000"
     },
+    image: "/event-pics/Event pics/TREASURE HUNT.png",
     coordinators: [
       { name: "Arya Bandivadekar", phone: "9146973373" },
       { name: "Dikshit Kothankar", phone: "9579376865" }
@@ -416,6 +434,7 @@ export const events: EventRecord[] = [
     rules: ["5-over matches", "Knockout format"],
     registrationFee: 59,
     prizePool: "₹3,000",
+    image: "/event-pics/Event pics/VIRTUAL CRICKET.jpg",
     coordinators: [
       { name: "Soham Joshi", phone: "9922967609" },
       { name: "Shuban", phone: "7414993238" }
@@ -435,6 +454,7 @@ export const events: EventRecord[] = [
     registrationFee: 590,
     prizePool: "₹30,000",
     featured: true,
+    image: "/event-pics/Event pics/HACKATHON.png",
     coordinators: [
       { name: "Atreya Kamat", phone: "7744020601" }
     ]
@@ -452,6 +472,7 @@ export const events: EventRecord[] = [
     rules: ["Restricted to Higher Secondary students", "College students cannot participate", "Materials provided"],
     registrationFee: "Free",
     prizePool: "₹6,000",
+    image: "/event-pics/Event pics/SYMMETRY ART.jpg",
     coordinators: [
       { name: "Salmesh Calangutkar", phone: "9028064354" },
       { name: "Vedika Patil", phone: "9371862427" }
@@ -470,6 +491,7 @@ export const events: EventRecord[] = [
     rules: ["Restricted to Higher Secondary students", "College students cannot participate", "Time-bound challenge"],
     registrationFee: "Free",
     prizePool: "₹6,000",
+    image: "/event-pics/Event pics/STRUCTOMAT.jpg",
     coordinators: [
       { name: "Mihir Shirodkar", phone: "9130357440" },
       { name: "Harsh Mapsekar", phone: "9604107596" }
