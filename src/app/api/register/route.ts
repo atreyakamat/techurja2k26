@@ -6,36 +6,46 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { 
-      name,
-      participant2, 
+      name, email, phone,
+      participant2, email2, phone2,
+      participant3, email3, phone3,
+      participant4, email4, phone4,
       teamName, 
-      email, 
-      phone, 
       institution, 
       eventSlug, 
       eventName, 
       transactionId, 
       paymentScreenshot,
-      screenshotName 
+      screenshotName,
+      needsAccommodation
     } = body;
 
     if (!name || !email || !eventSlug) {
-      return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
+      return NextResponse.json({ message: "Missing required fields (Lead Name, Email, or Event)" }, { status: 400 });
     }
 
     // 1. Create registration record in DB
     const registration = await prisma.registration.create({
       data: {
         name,
-        participant2: participant2 || "",
-        teamName: teamName || "",
         email,
         phone: phone || "",
+        participant2: participant2 || "",
+        email2: email2 || "",
+        phone2: phone2 || "",
+        participant3: participant3 || "",
+        email3: email3 || "",
+        phone3: phone3 || "",
+        participant4: participant4 || "",
+        email4: email4 || "",
+        phone4: phone4 || "",
+        teamName: teamName || "",
         institution: institution || "",
         eventSlug,
         eventName: eventName || "",
         transactionId: transactionId || "",
-        paymentScreenshot: "PENDING_FTP", // Initial status
+        paymentScreenshot: "PENDING_FTP", 
+        needsAccommodation: !!needsAccommodation
       },
     });
 
@@ -46,15 +56,16 @@ export async function POST(request: NextRequest) {
         const fileName = screenshotName || `transaction_${Date.now()}.jpg`;
         const userData = {
           id: registration.id,
-          name,
-          participant2: participant2 || "N/A",
-          teamName,
-          email,
-          phone,
+          lead: { name, email, phone },
+          p2: { name: participant2, email: email2, phone: phone2 },
+          p3: { name: participant3, email: email3, phone: phone3 },
+          p4: { name: participant4, email: email4, phone: phone4 },
+          teamName: teamName || "N/A",
           institution,
           eventSlug,
           eventName,
-          transactionId,
+          transactionId: transactionId || "N/A",
+          needsAccommodation: !!needsAccommodation,
           timestamp: registration.createdAt.toISOString()
         };
 
@@ -73,13 +84,13 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ 
-      message: "Registration data transmitted successfully!",
+      message: "Registration successful! Data transmitted to secure terminal.",
       id: registration.id,
       ftp: ftpStatus
     }, { status: 200 });
 
   } catch (error) {
     console.error("Registration error:", error);
-    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
+    return NextResponse.json({ message: "Internal server error during data transmission." }, { status: 500 });
   }
 }

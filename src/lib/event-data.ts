@@ -6,6 +6,13 @@ export type Coordinator = {
   phone: string;
 };
 
+export type EventFormConfig = {
+  minParticipants: number;
+  maxParticipants: number;
+  hasTeamName?: boolean;
+  isRobowar?: boolean;
+};
+
 export type EventRecord = {
   slug: string;
   name: string;
@@ -29,6 +36,7 @@ export type EventRecord = {
     second?: string;
   };
   coordinators: Coordinator[];
+  formConfig?: EventFormConfig;
 };
 
 export const events: EventRecord[] = [
@@ -55,7 +63,8 @@ export const events: EventRecord[] = [
       { name: "Yash Sanikop", phone: "8177963886" },
       { name: "Anay Govekar", phone: "8459341728" },
       { name: "Vedansh Dhargalkar", phone: "7720907356" }
-    ]
+    ],
+    formConfig: { minParticipants: 1, maxParticipants: 4, hasTeamName: true, isRobowar: true }
   },
   {
     slug: "robowar-8kgs",
@@ -78,7 +87,8 @@ export const events: EventRecord[] = [
       { name: "Yash Sanikop", phone: "8177963886" },
       { name: "Anay Govekar", phone: "8459341728" },
       { name: "Vedansh Dhargalkar", phone: "7720907356" }
-    ]
+    ],
+    formConfig: { minParticipants: 1, maxParticipants: 4, hasTeamName: true, isRobowar: true }
   },
   {
     slug: "robowar-3lbs",
@@ -101,7 +111,8 @@ export const events: EventRecord[] = [
       { name: "Yash Sanikop", phone: "8177963886" },
       { name: "Anay Govekar", phone: "8459341728" },
       { name: "Vedansh Dhargalkar", phone: "7720907356" }
-    ]
+    ],
+    formConfig: { minParticipants: 1, maxParticipants: 4, hasTeamName: true, isRobowar: true }
   },
   // GOLD EVENTS
   {
@@ -123,7 +134,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Vedh Naik", phone: "8010362301" },
       { name: "Saitesh Kalangutkar", phone: "7972524953" }
-    ]
+    ],
+    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "cyber-strike",
@@ -144,7 +156,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Dia Saji", phone: "9699259703" },
       { name: "Rohan Saikar", phone: "8007944512" }
-    ]
+    ],
+    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "grid-runner",
@@ -169,7 +182,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Dakshesh Verma", phone: "9272098752" },
       { name: "Soham Polle", phone: "9307207645" }
-    ]
+    ],
+    formConfig: { minParticipants: 1, maxParticipants: 4, hasTeamName: true }
   },
   {
     slug: "santo-domingo-race",
@@ -191,7 +205,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Sanjana Vaday", phone: "9226013380" },
       { name: "Tanisha Kolhar", phone: "8767254192" }
-    ]
+    ],
+    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
   },
   // SILVER EVENTS
   {
@@ -213,7 +228,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Shreyas Manerikar", phone: "8830018722" },
       { name: "Vikas Ghotane", phone: "8767526594" }
-    ]
+    ],
+    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "escape-the-matrix",
@@ -234,7 +250,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Myron Dcruz", phone: "7378389612" },
       { name: "Ashwith Shetty", phone: "7218694977" }
-    ]
+    ],
+    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "innovibe",
@@ -259,7 +276,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Joyce Martins", phone: "8767179587" },
       { name: "Rudra Malvankar", phone: "9145450734" }
-    ]
+    ],
+    formConfig: { minParticipants: 4, maxParticipants: 4, hasTeamName: true }
   },
   {
     slug: "kabuki-roundabout",
@@ -281,7 +299,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Deesh Naik", phone: "9146480787" },
       { name: "Shourya Dhupkar", phone: "8010909892" }
-    ]
+    ],
+    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
   },
   // BRONZE EVENTS
   {
@@ -303,7 +322,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Samuel Pinto", phone: "8830472562" },
       { name: "Joaquim", phone: "8766596447" }
-    ]
+    ],
+    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "ghostgrid",
@@ -324,7 +344,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Samson Sequeira", phone: "9607560849" },
       { name: "Shrish Bordekar", phone: "9356826227" }
-    ]
+    ],
+    formConfig: { minParticipants: 1, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "circuit-breach",
@@ -349,7 +370,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Joel D'Lima", phone: "8605675478" },
       { name: "Jaedan", phone: "9356320798" }
-    ]
+    ],
+    formConfig: { minParticipants: 1, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "war-room-protocol",
@@ -373,7 +395,8 @@ export const events: EventRecord[] = [
     rulebookUrl: "https://drive.google.com/file/d/1os_PVFEhQxYh91D7bczSxSXysCz6j-mY/view?usp=drive_link",
     coordinators: [
       { name: "Valora Ferrao", phone: "9765953309" }
-    ]
+    ],
+    formConfig: { minParticipants: 3, maxParticipants: 3, hasTeamName: true }
   },
   // NO FLAIR EVENTS
   {
@@ -395,7 +418,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Aaryan Desai", phone: "8007249603" },
       { name: "Jaydeep Rane", phone: "7498965325" }
-    ]
+    ],
+    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: true }
   },
   {
     slug: "clashpunk",
@@ -415,7 +439,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Areeb Shaikh", phone: "9730405881" },
       { name: "Mukund Mahambrey", phone: "9405332300" }
-    ]
+    ],
+    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: true }
   },
   {
     slug: "the-cypher-heist",
@@ -439,7 +464,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Arya Bandivadekar", phone: "9146973373" },
       { name: "Dikshita Kothankar", phone: "9579376865" }
-    ]
+    ],
+    formConfig: { minParticipants: 3, maxParticipants: 4, hasTeamName: true }
   },
   {
     slug: "cyber-smashers",
@@ -459,7 +485,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Soham Joshi", phone: "9922967609" },
       { name: "Shuban", phone: "7414993238" }
-    ]
+    ],
+    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: true }
   },
   {
     slug: "techyothon",
@@ -479,7 +506,8 @@ export const events: EventRecord[] = [
     rulebookUrl: "https://drive.google.com/file/d/1TVoT0c1R3zBNAZbxAPlAgAqh2SSUsLBO/view?usp=drive_link",
     coordinators: [
       { name: "Atreya Kamat", phone: "7744020601" }
-    ]
+    ],
+    formConfig: { minParticipants: 2, maxParticipants: 4, hasTeamName: true }
   },
   {
     slug: "symmetry-art",
@@ -499,7 +527,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Salmesh Calangutkar", phone: "9028064354" },
       { name: "Vedika Patil", phone: "9371862427" }
-    ]
+    ],
+    formConfig: { minParticipants: 4, maxParticipants: 4, hasTeamName: true }
   },
   {
     slug: "structomat",
@@ -519,7 +548,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Mihir Shirodkar", phone: "9130357440" },
       { name: "Harsh Mapsekar", phone: "9604107596" }
-    ]
+    ],
+    formConfig: { minParticipants: 4, maxParticipants: 4, hasTeamName: true }
   }
 ];
 
