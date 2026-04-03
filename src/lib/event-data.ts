@@ -452,7 +452,7 @@ export const events: EventRecord[] = [
     venue: "AITD (ECE Tutorial Hall)",
     shortDescription: "Clue-based campus scavenger hunt.",
     description: "Solve riddles and find items across the campus.",
-    rules: ["Teams of 3", "Time-based completion"],
+    rules: ["Teams of 4", "Time-based completion"],
     registrationFee: 295,
     prizePool: "₹10,000",
     prizes: {
@@ -462,10 +462,10 @@ export const events: EventRecord[] = [
     image: "/event-pics/Event pics/TREASURE HUNT.png",
     rulebookUrl: "https://drive.google.com/file/d/10AUc8vzH4wolM3I6plRyrzYvOp_kSdjH/view?usp=drive_link",
     coordinators: [
-      { name: "Arya Bandivadekar", phone: "9146973373" },
+      { name: "Arya Bandiwadekar", phone: "9146973373" },
       { name: "Dikshita Kothankar", phone: "9579376865" }
     ],
-    formConfig: { minParticipants: 3, maxParticipants: 4, hasTeamName: true }
+    formConfig: { minParticipants: 4, maxParticipants: 4, hasTeamName: true }
   },
   {
     slug: "cyber-smashers",
