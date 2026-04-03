@@ -2,7 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { getEventBySlug, events } from "@/lib/event-data";
-import { BookOpen, FileText, Trophy, Phone, User, Info, Zap, Medal, ShieldAlert } from "lucide-react";
+import { BookOpen, FileText, Trophy, Phone, User, Zap, Medal, ShieldAlert } from "lucide-react";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   return events.map((event) => ({
@@ -41,9 +42,10 @@ export default async function EventDetailsPage({ params }: EventDetailsProps) {
           {/* Left: Visual */}
           <div className="relative aspect-[4/5] md:aspect-square border border-cyan-electric/30 bg-zinc-950 flex flex-col items-center justify-center group overflow-hidden shadow-[inset_0_0_30px_rgba(41,244,255,0.1)]">
             {event.image ? (
-              <img 
+              <Image 
                 src={`${event.image}?v=2.6.2`} 
                 alt={event.name}
+                fill
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
             ) : (

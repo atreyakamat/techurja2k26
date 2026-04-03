@@ -2,24 +2,36 @@
 
 import { Navbar } from "@/components/navbar";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, Suspense } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { FileText, ShieldAlert, AlertTriangle, Download, Info, Search, Zap, ArrowUpRight } from "lucide-react";
-import { events, categories, getFilteredEvents } from "@/lib/event-data";
+import { FileText, AlertTriangle, Download, Search, ArrowUpRight } from "lucide-react";
+import { categories, getFilteredEvents } from "@/lib/event-data";
 import Image from "next/image";
 
 function RulebookContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [search, setSearch] = useState(searchParams.get("search") ?? "");
-  const [category, setCategory] = useState(searchParams.get("category") ?? "all");
-  const [level, setLevel] = useState(searchParams.get("level") ?? "all");
 
-  useEffect(() => {
-    setSearch(searchParams.get("search") ?? "");
-    setCategory(searchParams.get("category") ?? "all");
-    setLevel(searchParams.get("level") ?? "all");
-  }, [searchParams]);
+  const urlSearch = searchParams.get("search") ?? "";
+  const urlCategory = searchParams.get("category") ?? "all";
+  const urlLevel = searchParams.get("level") ?? "all";
+
+  const [search, setSearch] = useState(urlSearch);
+  const [category, setCategory] = useState(urlCategory);
+  const [level, setLevel] = useState(urlLevel);
+
+  const [prevUrlSearch, setPrevUrlSearch] = useState(urlSearch);
+  const [prevUrlCategory, setPrevUrlCategory] = useState(urlCategory);
+  const [prevUrlLevel, setPrevUrlLevel] = useState(urlLevel);
+
+  if (urlSearch !== prevUrlSearch || urlCategory !== prevUrlCategory || urlLevel !== prevUrlLevel) {
+    setPrevUrlSearch(urlSearch);
+    setPrevUrlCategory(urlCategory);
+    setPrevUrlLevel(urlLevel);
+    setSearch(urlSearch);
+    setCategory(urlCategory);
+    setLevel(urlLevel);
+  }
 
   const filteredEvents = getFilteredEvents(search, category, level).filter(e => e.rulebookUrl);
 
@@ -85,7 +97,7 @@ function RulebookContent() {
       {/* Rulebook Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <AnimatePresence mode="popLayout">
-          {filteredEvents.map((event, idx) => (
+          {filteredEvents.map((event) => (
             <motion.a
               layout
               initial={{ opacity: 0, scale: 0.9 }}

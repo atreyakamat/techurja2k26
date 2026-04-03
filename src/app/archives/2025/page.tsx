@@ -1,14 +1,14 @@
 "use client";
 
 import { Navbar } from "@/components/navbar";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { Trophy, Users, Zap } from "lucide-react";
+import Image from "next/image";
 
 function BentoItem({ id, span }: { id: number; span: string }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
     const { left, top } = currentTarget.getBoundingClientRect();
@@ -33,13 +33,11 @@ function BentoItem({ id, span }: { id: number; span: string }) {
         }}
       />
       
-      <img
+      <Image
         src={`/techurja2025-highlights/${id}.jpg`}
         alt={`Techurja 2025 Highlight ${id}`}
+        fill
         className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-60 group-hover:opacity-100"
-        onError={(e) => {
-          (e.target as HTMLImageElement).style.display = 'none';
-        }}
       />
 
       {/* Placeholder background for missing images */}
@@ -56,15 +54,6 @@ function BentoItem({ id, span }: { id: number; span: string }) {
 }
 
 export default function Archives2025() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
   const stats = [
     { label: "PARTICIPANTS", value: "1500+", icon: Users, color: "text-cyan-electric" },
     { label: "EVENTS", value: "20+", icon: Zap, color: "text-yellow-nuclear" },
@@ -106,7 +95,7 @@ export default function Archives2025() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {stats.map((stat, i) => (
+          {stats.map((stat) => (
             <div 
               key={stat.label}
               className="terminal-panel border-white/10 p-8 flex flex-col items-center text-center group hover:border-cyan-electric/50 transition-colors"

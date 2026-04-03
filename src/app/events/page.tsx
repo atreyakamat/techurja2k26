@@ -2,27 +2,36 @@
 
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import { EventCard } from "@/components/event-card";
 import { Navbar } from "@/components/navbar";
-import { categories, getFilteredEvents } from "@/lib/event-data";
+import { getFilteredEvents } from "@/lib/event-data";
 import { Zap } from "lucide-react";
-
-import { SplineScene } from "@/components/SplineScene";
 
 function EventsContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const [search, setSearch] = useState(searchParams.get("search") ?? "");
-  const [category, setCategory] = useState(searchParams.get("category") ?? "all");
-  const [level, setLevel] = useState(searchParams.get("level") ?? "all");
+  const urlSearch = searchParams.get("search") ?? "";
+  const urlCategory = searchParams.get("category") ?? "all";
+  const urlLevel = searchParams.get("level") ?? "all";
 
-  useEffect(() => {
-    setSearch(searchParams.get("search") ?? "");
-    setCategory(searchParams.get("category") ?? "all");
-    setLevel(searchParams.get("level") ?? "all");
-  }, [searchParams]);
+  const [search, setSearch] = useState(urlSearch);
+  const [category, setCategory] = useState(urlCategory);
+  const [level, setLevel] = useState(urlLevel);
+
+  const [prevUrlSearch, setPrevUrlSearch] = useState(urlSearch);
+  const [prevUrlCategory, setPrevUrlCategory] = useState(urlCategory);
+  const [prevUrlLevel, setPrevUrlLevel] = useState(urlLevel);
+
+  if (urlSearch !== prevUrlSearch || urlCategory !== prevUrlCategory || urlLevel !== prevUrlLevel) {
+    setPrevUrlSearch(urlSearch);
+    setPrevUrlCategory(urlCategory);
+    setPrevUrlLevel(urlLevel);
+    setSearch(urlSearch);
+    setCategory(urlCategory);
+    setLevel(urlLevel);
+  }
 
   const events = getFilteredEvents(search, category, level);
   const hssEvents = events.filter(e => e.level === "higher secondary");

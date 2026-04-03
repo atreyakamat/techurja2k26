@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/navbar";
 import { teamMembers, TeamMember } from "@/lib/team-data";
-import { SplineScene } from "@/components/SplineScene";
-import { Copy, Check, Mail } from "lucide-react";
+import { Check, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function TeamPage() {
   const faculty = teamMembers.filter(m => m.category === "Faculty");
@@ -122,13 +122,11 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
         <div className="relative w-full aspect-square overflow-hidden border-b border-white/10 bg-zinc-900">
            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10"></div>
            {member.image ? (
-             <img 
+             <Image 
                src={`${member.image}?v=2.6.2`} 
                alt={member.name}
+               fill
                className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-700 scale-100"
-               onError={(e) => {
-                 (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=111&color=fff&size=512`;
-               }}
              />
            ) : (
              <div className="w-full h-full flex items-center justify-center bg-zinc-900 text-zinc-700">
