@@ -28,10 +28,10 @@ export function EventsSection() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
                 whileHover={{ scale: 1.02, rotateX: 2, rotateY: 2 }}
-                className="terminal-panel neon-border flex flex-col h-full justify-between group transition-colors hover:border-magenta-cyber hover:shadow-[0_0_15px_rgba(255,44,222,0.3)]"
+                className="terminal-panel neon-border flex flex-col h-full justify-between group transition-colors hover:border-magenta-cyber hover:shadow-[0_0_15px_rgba(255,44,222,0.3)] will-change-transform"
               >
                 <div>
                   <h3 className="text-xl text-yellow-nuclear font-bold uppercase glitch-hover" data-text={event.name}>

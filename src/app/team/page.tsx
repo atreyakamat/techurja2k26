@@ -113,9 +113,9 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-      className="terminal-panel neon-border-magenta group hover:border-cyan-electric transition-all duration-500 overflow-hidden p-0"
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.05 }}
+      className="terminal-panel neon-border-magenta group hover:border-cyan-electric transition-all duration-500 overflow-hidden p-0 will-change-transform"
     >
       <div className="relative z-10 flex flex-col h-full">
         {/* Profile Image / Placeholder */}

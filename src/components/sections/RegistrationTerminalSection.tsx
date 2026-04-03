@@ -118,8 +118,9 @@ export function RegistrationTerminalSection() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        className="terminal-panel neon-border p-0 overflow-hidden"
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="terminal-panel neon-border p-0 overflow-hidden will-change-transform"
       >
         <div className="bg-cyan-electric/20 border-b border-cyan-electric p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">

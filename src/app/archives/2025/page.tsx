@@ -23,8 +23,9 @@ function BentoItem({ id, span }: { id: number; span: string }) {
       onMouseMove={handleMouseMove}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className={`relative group overflow-hidden border border-white/10 bg-zinc-950 ${span} transition-all duration-500 hover:border-yellow-nuclear/50`}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative group overflow-hidden border border-white/10 bg-zinc-950 ${span} transition-all duration-500 hover:border-yellow-nuclear/50 will-change-transform`}
     >
       <div className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100"
         style={{

@@ -28,8 +28,9 @@ export function TimelineSection() {
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="terminal-panel neon-border-yellow bg-black/80 backdrop-blur-xl p-8 md:p-20 text-center relative overflow-hidden group"
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="terminal-panel neon-border-yellow bg-black/80 backdrop-blur-xl p-8 md:p-20 text-center relative overflow-hidden group will-change-transform"
         >
           {/* Animated scanline inside the panel */}
           <div className="absolute inset-0 scanline-mask opacity-10 pointer-events-none"></div>

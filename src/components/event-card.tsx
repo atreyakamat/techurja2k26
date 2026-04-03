@@ -18,9 +18,9 @@ export function EventCard({ event, index }: { event: EventRecord; index: number 
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-      className="terminal-panel neon-border group hover:border-magenta-cyber transition-all duration-500 overflow-hidden flex flex-col h-full p-0"
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.05 }}
+      className="terminal-panel neon-border group hover:border-magenta-cyber transition-all duration-500 overflow-hidden flex flex-col h-full p-0 will-change-transform"
     >
       <Link href={`/events/${event.slug}`} className="flex flex-col h-full">
         {/* Event Image / Placeholder */}

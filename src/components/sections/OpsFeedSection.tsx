@@ -29,9 +29,9 @@ export function OpsFeedSection() {
             key={feed.id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="terminal-panel neon-border p-0 group overflow-hidden"
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+            className="terminal-panel neon-border p-0 group overflow-hidden will-change-transform"
           >
             <div className="bg-black/80 border-b border-cyan-electric/20 p-2 flex justify-between items-center text-[10px] font-mono">
               <span className="text-white">{feed.id} {"//"} {feed.label}</span>

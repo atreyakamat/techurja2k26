@@ -40,9 +40,9 @@ export function FAQSection() {
             key={i}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className={`terminal-panel overflow-hidden transition-all duration-300 ${activeIndex === i ? 'border-cyan-electric shadow-[0_0_15px_rgba(41,244,255,0.2)]' : 'border-cyan-electric/20'}`}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+            className={`terminal-panel overflow-hidden transition-all duration-300 will-change-transform ${activeIndex === i ? 'border-cyan-electric shadow-[0_0_15px_rgba(41,244,255,0.2)]' : 'border-cyan-electric/20'}`}
           >
             <button
               onClick={() => setActiveIndex(activeIndex === i ? null : i)}

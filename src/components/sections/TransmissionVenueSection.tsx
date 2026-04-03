@@ -40,8 +40,9 @@ export function TransmissionVenueSection() {
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="terminal-panel neon-border flex flex-col justify-between"
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="terminal-panel neon-border flex flex-col justify-between will-change-transform"
         >
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -81,9 +82,9 @@ export function TransmissionVenueSection() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="terminal-panel neon-border-magenta group"
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="terminal-panel neon-border-magenta group will-change-transform"
           >
             <p className="text-[10px] text-magenta-cyber tracking-[0.2em] font-mono mb-1">TRANSMISSION NODE // RAIL</p>
             <h4 className="text-xl text-white font-bold uppercase">Thivim Railway Station</h4>
@@ -105,9 +106,9 @@ export function TransmissionVenueSection() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="terminal-panel neon-border group"
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="terminal-panel neon-border group will-change-transform"
           >
             <p className="text-[10px] text-cyan-electric tracking-[0.2em] font-mono mb-1">TRANSMISSION NODE // AIR</p>
             <h4 className="text-xl text-white font-bold uppercase">Manohar Int&apos;l Airport (MOPA)</h4>
@@ -129,9 +130,9 @@ export function TransmissionVenueSection() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-            className="terminal-panel neon-border-magenta group"
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ delay: 0.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="terminal-panel neon-border-magenta group will-change-transform"
           >
             <p className="text-[10px] text-magenta-cyber tracking-[0.2em] font-mono mb-1">TRANSMISSION NODE // SOUTH AIR</p>
             <h4 className="text-xl text-white font-bold uppercase">Goa Dabolim Airport</h4>

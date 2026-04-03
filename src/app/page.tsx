@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { EventsSection } from "@/components/sections/EventsSection";
+import { OpsFeedSection } from "@/components/sections/OpsFeedSection";
 import { TransmissionVenueSection } from "@/components/sections/TransmissionVenueSection";
 import { TimelineSection } from "@/components/sections/TimelineSection";
 import { RegistrationTerminalSection } from "@/components/sections/RegistrationTerminalSection";
@@ -14,6 +15,7 @@ export default function Home() {
       <div className="flex w-full flex-col">
         <HeroSection />
         <EventsSection />
+        <OpsFeedSection />
         <TransmissionVenueSection />
         <TimelineSection />
         <RegistrationTerminalSection />
