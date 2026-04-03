@@ -180,7 +180,7 @@ export const events: EventRecord[] = [
     image: "/event-pics/Event pics/LINE FOLLOWER ROBOT.jpg",
     rulebookUrl: "https://drive.google.com/file/d/1W66mGxViAOhifhpYGckMq9sFF7L-qmJQ/view?usp=drive_link",
     coordinators: [
-      { name: "Dakshesh Verma", phone: "9272098752" },
+      { name: "Dakshesh Verma", phone: "9834095981" },
       { name: "Soham Polle", phone: "9307207645" }
     ],
     formConfig: { minParticipants: 1, maxParticipants: 4, hasTeamName: true }
@@ -366,10 +366,10 @@ export const events: EventRecord[] = [
       second: "₹4,000"
     },
     image: "/event-pics/Event pics/CIRCUIT SIMULATION.png",
-    rulebookUrl: "https://drive.google.com/file/d/1rm7bou5h7WdZKjx1I2e8cwQl6fT3D83l/view?usp=drive_link",
+    rulebookUrl: "https://drive.google.com/file/d/1YliI8ogw5WXyXKSpXrUJ3De6g5kGQ6og/view?usp=sharing",
     coordinators: [
       { name: "Joel D'Lima", phone: "8605675478" },
-      { name: "Jaedan", phone: "9356320798" }
+      { name: "Jaeden", phone: "9356320798" }
     ],
     formConfig: { minParticipants: 1, maxParticipants: 2, hasTeamName: true }
   },
@@ -463,7 +463,7 @@ export const events: EventRecord[] = [
     rulebookUrl: "https://drive.google.com/file/d/10AUc8vzH4wolM3I6plRyrzYvOp_kSdjH/view?usp=drive_link",
     coordinators: [
       { name: "Arya Bandiwadekar", phone: "9146973373" },
-      { name: "Dikshita Kothankar", phone: "9579376865" }
+      { name: "Dikshita Kotharkar", phone: "9579376865" }
     ],
     formConfig: { minParticipants: 4, maxParticipants: 4, hasTeamName: true }
   },
@@ -475,8 +475,8 @@ export const events: EventRecord[] = [
     date: "29-30 April 2026",
     time: "10AM - 5PM",
     venue: "Library AITD",
-    shortDescription: "E-sports cricket simulation.",
-    description: "Show off your batting and bowling skills in the virtual world.",
+    shortDescription: "E-sports cricket simulation. (Only batting no bowling)",
+    description: "Show off your batting skills in the virtual world. (Only batting no bowling)",
     rules: ["5-over matches", "Knockout format"],
     registrationFee: 59,
     prizePool: "₹3,000",
