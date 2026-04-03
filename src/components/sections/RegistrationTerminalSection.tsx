@@ -177,7 +177,7 @@ export function RegistrationTerminalSection() {
                                     <input required={isLead}
                                         type="text" 
                                         className="w-full bg-black/50 border border-cyan-electric/30 px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-cyan-electric"
-                                        value={(formData as Record<string, string | boolean>)[nKey]}
+                                        value={(formData as Record<string, string | boolean>)[nKey] as string}
                                         onChange={e => setFormData({...formData, [nKey]: e.target.value})}
                                     />
                                 </div>
@@ -186,7 +186,7 @@ export function RegistrationTerminalSection() {
                                     <input required={isLead}
                                         type="email" 
                                         className="w-full bg-black/50 border border-cyan-electric/30 px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-cyan-electric"
-                                        value={(formData as Record<string, string | boolean>)[eKey]}
+                                        value={(formData as Record<string, string | boolean>)[eKey] as string}
                                         onChange={e => setFormData({...formData, [eKey]: e.target.value})}
                                     />
                                 </div>
@@ -195,7 +195,7 @@ export function RegistrationTerminalSection() {
                                     <input required={isLead}
                                         type="tel" 
                                         className="w-full bg-black/50 border border-cyan-electric/30 px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-cyan-electric"
-                                        value={(formData as Record<string, string | boolean>)[pKey]}
+                                        value={(formData as Record<string, string | boolean>)[pKey] as string}
                                         onChange={e => setFormData({...formData, [pKey]: e.target.value})}
                                     />
                                 </div>
