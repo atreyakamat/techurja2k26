@@ -2,7 +2,7 @@
 
 This setup is designed for **BigRock Shared Hosting** (PHP/MySQL). It uses a "Hybrid" approach:
 1. **Frontend:** Exported as static HTML/CSS (works on any server).
-2. **Backend:** A PHP script handles the registration form and saves to MySQL.
+2. **Backend:** A PHP script handles the registration form and saves to MySQL + uploads screenshots to FTP.
 3. **Automation:** GitHub Actions builds the site and uploads it via FTP on every push.
 
 ---
@@ -26,7 +26,7 @@ In your GitHub Repository, go to **Settings > Secrets and variables > Actions** 
 
 ---
 
-## Step 3: Run the Schema
+## Step 3: Run the Schema (v2.0)
 Since you are using PHP/MySQL without Prisma on the server, you need to create the `Registration` table manually once.
 1. Open **phpMyAdmin** in cPanel.
 2. Select your database.
@@ -37,17 +37,38 @@ CREATE TABLE Registration (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    phone VARCHAR(50) NOT NULL,
+    phone VARCHAR(50),
+    participant2 VARCHAR(255),
+    email2 VARCHAR(255),
+    phone2 VARCHAR(50),
+    participant3 VARCHAR(255),
+    email3 VARCHAR(255),
+    phone3 VARCHAR(50),
+    participant4 VARCHAR(255),
+    email4 VARCHAR(255),
+    phone4 VARCHAR(50),
+    teamName VARCHAR(255),
     institution VARCHAR(255) NOT NULL,
     eventSlug VARCHAR(255) NOT NULL,
     eventName VARCHAR(255) NOT NULL,
-    createdAt DATETIME NOT NULL
+    transactionId VARCHAR(255),
+    paymentScreenshot VARCHAR(255),
+    needsAccommodation TINYINT(1) DEFAULT 0,
+    createdAt DATETIME NOT NULL,
+    INDEX (eventSlug),
+    INDEX (email)
 );
 ```
 
 ---
 
-## Step 4: Launch!
+## Step 4: FTP Folder Permissions
+Ensure that your `public_html` folder (or the root where the site is deployed) has a folder named `registrations`.
+If it doesn't exist, the PHP script will try to create it, but ensure the parent directory has **755** or **777** permissions for the script to write files via FTP.
+
+---
+
+## Step 5: Launch!
 1. Commit your changes:
    ```bash
    git add .
@@ -68,3 +89,4 @@ CREATE TABLE Registration (
 - No Node.js is required on the server.
 - No SSH keys are required (uses standard FTP).
 - The PHP script bridges the gap between your React frontend and the MySQL database.
+- Screenshots are stored securely on the FTP drive, keeping the database light.
