@@ -27,7 +27,6 @@ export function RegistrationTerminalSection() {
   // Calculate max participants needed for the selected events
   const selectedEventDetails = selectedEvents.map(slug => events.find(e => e.slug === slug)).filter(Boolean);
   const maxNeeded = selectedEventDetails.reduce((max, ev) => Math.max(max, ev?.formConfig?.maxParticipants || 1), 1);
-  const needsTeamName = true; // All events now require team name
   const isAnyRobowar = selectedEventDetails.some(ev => ev?.formConfig?.isRobowar);
 
   const startTransmission = async (isSuccess: boolean, finalMessage: string) => {
@@ -178,7 +177,7 @@ export function RegistrationTerminalSection() {
                                     <input required={isLead}
                                         type="text" 
                                         className="w-full bg-black/50 border border-cyan-electric/30 px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-cyan-electric"
-                                        value={(formData as any)[nKey]}
+                                        value={(formData as Record<string, string | boolean>)[nKey]}
                                         onChange={e => setFormData({...formData, [nKey]: e.target.value})}
                                     />
                                 </div>
@@ -187,7 +186,7 @@ export function RegistrationTerminalSection() {
                                     <input required={isLead}
                                         type="email" 
                                         className="w-full bg-black/50 border border-cyan-electric/30 px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-cyan-electric"
-                                        value={(formData as any)[eKey]}
+                                        value={(formData as Record<string, string | boolean>)[eKey]}
                                         onChange={e => setFormData({...formData, [eKey]: e.target.value})}
                                     />
                                 </div>
@@ -196,7 +195,7 @@ export function RegistrationTerminalSection() {
                                     <input required={isLead}
                                         type="tel" 
                                         className="w-full bg-black/50 border border-cyan-electric/30 px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-cyan-electric"
-                                        value={(formData as any)[pKey]}
+                                        value={(formData as Record<string, string | boolean>)[pKey]}
                                         onChange={e => setFormData({...formData, [pKey]: e.target.value})}
                                     />
                                 </div>

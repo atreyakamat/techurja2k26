@@ -1,7 +1,7 @@
 import * as ftp from "basic-ftp";
 import { Readable } from "stream";
 
-export async function uploadToFtp(registrationId: string, imageData: Buffer | string, fileName: string, userData: any) {
+export async function uploadToFtp(registrationId: string, imageData: Buffer | string, fileName: string, userData: Record<string, unknown>) {
   const client = new ftp.Client();
   client.ftp.verbose = false;
 

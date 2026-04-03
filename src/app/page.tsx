@@ -4,7 +4,6 @@ import { EventsSection } from "@/components/sections/EventsSection";
 import { TransmissionVenueSection } from "@/components/sections/TransmissionVenueSection";
 import { TimelineSection } from "@/components/sections/TimelineSection";
 import { RegistrationTerminalSection } from "@/components/sections/RegistrationTerminalSection";
-import { OpsFeedSection } from "@/components/sections/OpsFeedSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
         <TransmissionVenueSection />
         <TimelineSection />
         <RegistrationTerminalSection />
-        {/* <OpsFeedSection /> */}
         <FAQSection />
       </div>
     </main>

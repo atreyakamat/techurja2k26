@@ -2,7 +2,6 @@
 
 import { Navbar } from "@/components/navbar";
 import { motion, useMotionValue } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
 import { Trophy, Users, Zap } from "lucide-react";
 import Image from "next/image";
 

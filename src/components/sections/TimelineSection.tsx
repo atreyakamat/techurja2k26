@@ -20,8 +20,8 @@ export function TimelineSection() {
             GRID FLOW <span className="text-yellow-nuclear drop-shadow-[0_0_15px_rgba(249,255,59,0.5)]">OPERATIONS</span>
           </h2>
           <p className="text-ink mt-8 max-w-2xl font-mono text-sm tracking-wide border-l-2 border-yellow-nuclear pl-6 py-2 bg-yellow-nuclear/5">
-            // OPERATIONAL TIMELINE CURRENTLY ENCRYPTED. <br/>
-            // CORE PROCESSORS ARE FINALIZING EVENT SEQUENCES.
+            {"//"} OPERATIONAL TIMELINE CURRENTLY ENCRYPTED. <br/>
+            {"//"} CORE PROCESSORS ARE FINALIZING EVENT SEQUENCES.
           </p>
         </div>
 
