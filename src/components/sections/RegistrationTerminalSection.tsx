@@ -167,10 +167,14 @@ export function RegistrationTerminalSection() {
                     const eKey = isLead ? "email" : `email${num}`;
                     const pKey = isLead ? "phone" : `phone${num}`;
 
+                    const label = isAnyRobowar 
+                        ? `Node Operator ${num} ${isLead ? "(Lead)" : ""}`
+                        : `Participant ${num} ${isLead ? "(Team Lead)" : ""}`;
+
                     return (
                         <div key={num} className="space-y-4 p-4 border border-cyan-electric/20 bg-black/40 relative group animate-in fade-in slide-in-from-top-2">
                             <div className="absolute -top-2 left-4 bg-black px-2 text-[10px] text-magenta-cyber font-mono tracking-widest uppercase">
-                                Node Operator {num} {isLead && "(Lead)"}
+                                {label}
                             </div>
                             <div className="grid md:grid-cols-3 gap-4">
                                 <div className="space-y-1">

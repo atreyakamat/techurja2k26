@@ -112,10 +112,15 @@ export function RegisterForm({ event }: { event: EventRecord }) {
         const phoneField = isLead ? "phone" : `phone${num}` as keyof FormState;
         const isRequired = num <= config.minParticipants;
         
+        // Use generic labels unless it is Robowar
+        const participantLabel = config.isRobowar 
+            ? `Node Operator ${num} ${isLead ? "(Lead)" : ""}`
+            : `Participant ${num} ${isLead ? "(Team Lead)" : ""}`;
+
         return (
           <div key={num} className="space-y-4 p-4 border border-cyan-electric/10 bg-cyan-electric/5 animate-in fade-in slide-in-from-left-2 duration-300">
              <p className="text-[10px] text-magenta-cyber uppercase font-mono tracking-widest">
-                Participant {num} {isLead && "(Lead Operator)"} {isRequired ? "[Required]" : "[Optional]"}
+                {participantLabel} {isRequired ? "[Required]" : "[Optional]"}
              </p>
              <div className="grid md:grid-cols-3 gap-4">
                 <label className="flex flex-col gap-2 text-xs text-zinc-300">

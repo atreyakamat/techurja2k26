@@ -345,7 +345,7 @@ export const events: EventRecord[] = [
       { name: "Samson Sequeira", phone: "9607560849" },
       { name: "Shrish Bordekar", phone: "9356826227" }
     ],
-    formConfig: { minParticipants: 1, maxParticipants: 2, hasTeamName: true }
+    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: true }
   },
   {
     slug: "circuit-breach",
