@@ -33,7 +33,7 @@ Since you are using PHP/MySQL without Prisma on the server, you need to create t
 3. Click the **SQL** tab and run this command:
 
 ```sql
-CREATE TABLE Registration (
+CREATE TABLE registrations (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,

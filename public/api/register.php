@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Prepare extended SQL to match Prisma schema v2.0
-        $sql = "INSERT INTO Registration (
+        $sql = "INSERT INTO registrations (
             name, email, phone, 
             participant2, email2, phone2, 
             participant3, email3, phone3, 
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ftp_close($conn_id);
 
                 // Update DB with final FTP status
-                $updateStmt = $pdo->prepare("UPDATE Registration SET paymentScreenshot = ? WHERE id = ?");
+                $updateStmt = $pdo->prepare("UPDATE registrations SET paymentScreenshot = ? WHERE id = ?");
                 $updateStmt->execute([$ftpStatus, $registrationId]);
             }
         }

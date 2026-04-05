@@ -25,6 +25,8 @@ model Event {
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
   registrations Registration[]
+
+  @@map("events")
 }
 
 model Registration {
@@ -56,4 +58,6 @@ model Registration {
 
   @@index([eventSlug])
   @@index([email])
+
+  @@map("registrations")
 }
