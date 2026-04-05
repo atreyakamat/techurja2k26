@@ -54,18 +54,28 @@ export async function POST(request: NextRequest) {
     if (paymentScreenshot && paymentScreenshot !== "NO_SCREENSHOT") {
       try {
         const fileName = screenshotName || `transaction_${Date.now()}.jpg`;
+        
+        // Flattened object for the CSV backup on FTP
         const userData = {
-          id: registration.id,
-          lead: { name, email, phone },
-          p2: { name: participant2, email: email2, phone: phone2 },
-          p3: { name: participant3, email: email3, phone: phone3 },
-          p4: { name: participant4, email: email4, phone: phone4 },
-          teamName: teamName || "N/A",
-          institution,
-          eventSlug,
-          eventName,
-          transactionId: transactionId || "N/A",
-          needsAccommodation: !!needsAccommodation,
+          registration_id: registration.id,
+          event_name: eventName,
+          event_slug: eventSlug,
+          team_name: teamName || "N/A",
+          institution: institution,
+          transaction_id: transactionId || "N/A",
+          needs_accommodation: needsAccommodation ? "YES" : "NO",
+          lead_name: name,
+          lead_email: email,
+          lead_phone: phone || "N/A",
+          p2_name: participant2 || "N/A",
+          p2_email: email2 || "N/A",
+          p2_phone: phone2 || "N/A",
+          p3_name: participant3 || "N/A",
+          p3_email: email3 || "N/A",
+          p3_phone: phone3 || "N/A",
+          p4_name: participant4 || "N/A",
+          p4_email: email4 || "N/A",
+          p4_phone: phone4 || "N/A",
           timestamp: registration.createdAt.toISOString()
         };
 
