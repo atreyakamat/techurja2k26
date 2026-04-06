@@ -120,7 +120,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
         return (
           <div key={num} className="space-y-4 p-4 border border-cyan-electric/10 bg-cyan-electric/5 animate-in fade-in slide-in-from-left-2 duration-300">
              <p className="text-[10px] text-magenta-cyber uppercase font-mono tracking-widest">
-                {participantLabel} {isRequired ? "[Required]" : "[Optional]"}
+                {participantLabel}
              </p>
              <div className="grid md:grid-cols-3 gap-4">
                 <label className="flex flex-col gap-2 text-xs text-zinc-300">
