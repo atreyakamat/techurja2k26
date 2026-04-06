@@ -3,9 +3,8 @@
 
 generator client {
   provider = "prisma-client-js"
-  // Force library engine and include Netlify/Linux targets
-  engineType = "library"
-  binaryTargets = ["native", "rhel-openssl-1.0.x", "rhel-openssl-3.0.x", "debian-openssl-3.0.x"]
+  // Letting the generator handle binary targets for Netlify's Linux environment
+  binaryTargets = ["native", "debian-openssl-3.0.x", "rhel-openssl-1.0.x", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
