@@ -3,16 +3,16 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-// CONFIGURATION - Update with your BigRock DB details
-$host = "119.18.54.49"; 
-$db   = "aitdgki7_techurja";
-$user = "aitdgki7_techurja";
-$pass = "AitdTech@2026";
+// CONFIGURATION - Using environment variables for security
+$host = getenv('DB_HOST') ?: "119.18.54.49"; 
+$db   = getenv('DB_NAME') ?: "aitdgki7_techurja";
+$user = getenv('DB_USER') ?: "aitdgki7_techurja";
+$pass = getenv('DB_PASSWORD') ?: "";
 
 // FTP CONFIGURATION
-$ftp_host = "119.18.54.49"; // Usually same as DB host or ftp.domain.com
-$ftp_user = "aitdgki7_techurja";
-$ftp_pass = "AitdTech@2026";
+$ftp_host = getenv('FTP_HOST') ?: "119.18.54.49";
+$ftp_user = getenv('FTP_USER') ?: "aitdgki7_techurja";
+$ftp_pass = getenv('FTP_PASSWORD') ?: "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
