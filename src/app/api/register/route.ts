@@ -2,9 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { registerToFtp } from "@/lib/ftp";
 
 export const dynamic = 'force-dynamic';
+// Increasing the limit for large image uploads (base64)
+export const maxDuration = 60; 
 
 export async function POST(request: NextRequest) {
   try {
+    // 1. Parse JSON body
     const body = await request.json();
     const { 
       name, email, phone,
@@ -21,14 +24,14 @@ export async function POST(request: NextRequest) {
       needsAccommodation
     } = body;
 
+    // 2. Immediate Validation
     if (!name || !email || !eventSlug) {
       return NextResponse.json({ 
-        message: "Node transmission rejected: Data packet incomplete.",
-        error: "NODE_INPUT_INVALID"
+        message: "Missing required fields.",
+        error: "INVALID_INPUT"
       }, { status: 400 });
     }
 
-    // Prepare full data payload for the CSV backup
     const userData = {
       name, email, phone: phone || "N/A",
       team_name: teamName || "N/A",
@@ -49,30 +52,35 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString()
     };
 
-    // Store directly to FTP (Database-less architecture)
+    // 3. FTP Storage Execution
     try {
       const fileName = screenshotName || `receipt_${Date.now()}.jpg`;
+      
+      // We pass the data to our robust FTP handler
       const result = await registerToFtp(paymentScreenshot, fileName, userData);
 
       return NextResponse.json({ 
-        message: "Data transmission successful. Registration logged on secure FTP terminal.",
+        message: "Registration successful.",
         registrationId: result.id,
         path: result.path
       }, { status: 200 });
 
     } catch (ftpError: any) {
-      console.error("Critical Storage Failure:", ftpError);
+      console.error("FTP Handler Error:", ftpError);
       return NextResponse.json({ 
-        message: "System encountered a write error. Transmission suspended.",
-        error: ftpError.message || "FTP_UNREACHABLE"
+        message: "FTP Storage Failure. Check credentials or disk space.",
+        error: ftpError.message || "FTP_ERROR",
+        code: ftpError.code || "UNKNOWN"
       }, { status: 500 });
     }
 
   } catch (globalError: any) {
-    console.error("Critical Runtime Failure:", globalError);
+    console.error("Critical API Crash:", globalError);
     return NextResponse.json({ 
-      message: "An internal critical error occurred.",
-      error: globalError.message || "NODE_CRASH"
+      message: "Critical Server Error.",
+      error: globalError.message || "CRASH",
+      // Returning stack in response briefly to help you debug the exact line
+      details: globalError.toString()
     }, { status: 500 });
   }
 }
