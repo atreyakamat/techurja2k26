@@ -98,18 +98,17 @@ export function RegisterForm({ event }: { event: EventRecord }) {
         });
       }
 
-      const res = await fetch("/api/register", {
+      const res = await fetch("/api/register/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          ...formData, 
+        body: JSON.stringify({
+          ...formData,
           eventSlug: event.slug,
           eventName: event.name,
           paymentScreenshot: base64Image || "NO_SCREENSHOT",
           screenshotName: screenshot?.name || "unknown.jpg"
         }),
       });
-
       const data = (await res.json()) as { message?: string };
 
       if (!res.ok) {

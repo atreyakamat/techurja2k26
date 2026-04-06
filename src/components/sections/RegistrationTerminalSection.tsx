@@ -88,7 +88,7 @@ export function RegistrationTerminalSection() {
 
       const promises = selectedEvents.map(slug => {
         const event = events.find(e => e.slug === slug);
-        return fetch("/api/register", {
+        return fetch("/api/register/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
