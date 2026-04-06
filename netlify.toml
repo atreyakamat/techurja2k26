@@ -10,5 +10,3 @@
 
 [functions]
   node_bundler = "esbuild"
-  # Timeout removed to resolve Netlify config parsing error.
-  # The application code now handles timeouts internally.
