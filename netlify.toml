@@ -1,9 +1,11 @@
 [build]
-  command = "npm run build"
+  command = "prisma generate && next build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
+  # This forces Prisma to generate a standard client, NOT a proxy client
+  PRISMA_GENERATE_DATAPROXY = "false"
   PRISMA_SKIP_POSTINSTALL_GENERATE = "true"
 
 [[plugins]]
@@ -12,5 +14,6 @@
 [functions]
   node_bundler = "esbuild"
   external_node_modules = ["@prisma/client", "prisma"]
+  # Explicitly including the library engines for Linux (Netlify's OS)
   included_files = ["node_modules/.prisma/client/*.node", "prisma/schema.prisma"]
-  timeout = 26 # Increasing timeout to handle FTP uploads
+  timeout = 26
