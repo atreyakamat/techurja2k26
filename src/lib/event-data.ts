@@ -196,7 +196,7 @@ export const events: EventRecord[] = [
     flair: "Gold",
     shortDescription: "High-speed mechanical racing event.",
     description: "Race your robots through an obstacle-filled track.",
-    rules: ["Fastest lap wins", "Max 2 trials allowed"],
+    rules: ["Fastest lap wins"],
     registrationFee: 354,
     feeDetails: "Re-entry: ₹177",
     prizePool: "₹15,000",
