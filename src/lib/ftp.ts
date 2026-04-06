@@ -16,10 +16,15 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
   try {
     const rawPassword = process.env.FTP_PASSWORD ? decodeURIComponent(process.env.FTP_PASSWORD) : "";
 
+    // Validate required environment variables
+    if (!process.env.FTP_HOST || !process.env.FTP_USER || !process.env.FTP_PASSWORD) {
+      throw new Error("Missing FTP credentials. Please set FTP_HOST, FTP_USER, and FTP_PASSWORD environment variables.");
+    }
+
     console.log(`[FTP] Connecting to ${process.env.FTP_HOST}...`);
     await client.access({
-      host: process.env.FTP_HOST || "ftp.aitdgoa.edu.in",
-      user: process.env.FTP_USER || "techurja_folder@aitdgoa.edu.in",
+      host: process.env.FTP_HOST,
+      user: process.env.FTP_USER,
       password: rawPassword,
       secure: false,
       port: 21, // Explicitly using port 21

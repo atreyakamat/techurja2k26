@@ -1,15 +1,27 @@
 const ftp = require('basic-ftp');
+require('dotenv').config();
 
 async function verifyUpload() {
   const client = new ftp.Client();
   client.ftp.verbose = true;
   
+  // Load credentials from environment variables
+  const FTP_HOST = process.env.FTP_HOST;
+  const FTP_USER = process.env.FTP_USER;
+  const FTP_PASSWORD = process.env.FTP_PASSWORD;
+
+  if (!FTP_HOST || !FTP_USER || !FTP_PASSWORD) {
+    console.error("ERROR: Missing FTP credentials in .env file");
+    console.error("Please set FTP_HOST, FTP_USER, and FTP_PASSWORD in your .env file");
+    process.exit(1);
+  }
+  
   try {
     console.log("> Connecting to FTP server...");
     await client.access({
-      host: 'ftp.aitdgoa.edu.in',
-      user: 'techurja_folder@aitdgoa.edu.in',
-      password: process.env.FTP_PASSWORD,
+      host: FTP_HOST,
+      user: FTP_USER,
+      password: FTP_PASSWORD,
       port: 21,
       secure: false
     });

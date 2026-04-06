@@ -11,10 +11,12 @@
 ### 1. Environment Variables (Critical)
 Add these to Netlify Environment Variables:
 ```
-FTP_HOST=ftp.aitdgoa.edu.in
-FTP_USER=techurja_folder@aitdgoa.edu.in
-FTP_PASSWORD=AitdTech@2026
+FTP_HOST=<your-ftp-host>
+FTP_USER=<your-ftp-username>
+FTP_PASSWORD=<your-ftp-password>
 ```
+
+**Get the actual values from your .env file (not committed to git)**
 
 **How to add in Netlify:**
 1. Go to your site dashboard on Netlify

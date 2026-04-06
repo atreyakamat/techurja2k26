@@ -47,12 +47,18 @@ await client.uploadFrom(stream, "test.txt"); // CORRECT - relative path
   - `/registrations/REG_1775473527696_72/image/test_screenshot.png` (70 bytes)
 
 ## Environment Configuration
-FTP credentials are properly configured in `.env`:
+FTP credentials must be configured in `.env` file (local development) or in Netlify Environment Variables (production):
+
 ```env
-FTP_HOST="ftp.aitdgoa.edu.in"
-FTP_USER="techurja_folder@aitdgoa.edu.in"
-FTP_PASSWORD="[REDACTED]"
+FTP_HOST=<your-ftp-host>
+FTP_USER=<your-ftp-username>
+FTP_PASSWORD=<your-ftp-password>
 ```
+
+**Important**: 
+- Never commit the `.env` file to git (it's already in `.gitignore`)
+- Get the actual values from your local `.env` file
+- Set these same values in Netlify dashboard for production
 
 ## API Endpoint
 - **URL**: `http://localhost:3001/api/register/` (trailing slash required)
