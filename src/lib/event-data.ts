@@ -336,7 +336,7 @@ export const events: EventRecord[] = [
     flair: "Bronze",
     shortDescription: "Cybersecurity hacking challenge.",
     description: "Find hidden flags by exploiting vulnerabilities.",
-    rules: ["Jeopardy style", "No DoS attacks allowed"],
+    rules: ["Teams of two participants", "No DoS attacks allowed"],
     registrationFee: 118,
     prizePool: "₹10,000",
     image: "/event-pics/Event pics/CAPTURE THE FLAG.jpg",
@@ -345,7 +345,7 @@ export const events: EventRecord[] = [
       { name: "Samson Sequeira", phone: "9607560849" },
       { name: "Shrish Bordekar", phone: "9356826227" }
     ],
-    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: true }
+    formConfig: { minParticipants: 1, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "circuit-breach",
@@ -419,7 +419,7 @@ export const events: EventRecord[] = [
       { name: "Aaryan Desai", phone: "8007249603" },
       { name: "Jaydeep Rane", phone: "7498965325" }
     ],
-    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: true }
+    formConfig: { minParticipants: 1, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "clashpunk",
@@ -440,7 +440,7 @@ export const events: EventRecord[] = [
       { name: "Areeb Shaikh", phone: "9730405881" },
       { name: "Mukund Mahambrey", phone: "9405332300" }
     ],
-    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: true }
+    formConfig: { minParticipants: 1, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "the-cypher-heist",
@@ -486,7 +486,7 @@ export const events: EventRecord[] = [
       { name: "Soham Joshi", phone: "9922967609" },
       { name: "Shuban", phone: "7414993238" }
     ],
-    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: true }
+    formConfig: { minParticipants: 1, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "techyothon",
