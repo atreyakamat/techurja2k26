@@ -1,6 +1,5 @@
 import * as ftp from "basic-ftp";
 import { Readable } from "stream";
-import path from "path";
 
 /**
  * PRODUCTION-GRADE FTP HANDLER
@@ -8,8 +7,6 @@ import path from "path";
  */
 export async function registerToFtp(imageData: Buffer | string, fileName: string, userData: Record<string, any>) {
   const client = new ftp.Client();
-  // Set a timeout to prevent hanging connections
-  client.ftp.timeout = 30000; 
   client.ftp.verbose = false; // Disable verbose logging for production
 
   const registrationId = `REG_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
@@ -68,9 +65,8 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
       }
       
       // CRITICAL: Sanitize filename to prevent 553 errors from path components
-      // Using path.basename ensures we only have the filename, not a subpath
-      // We also replace non-alphanumeric characters with underscores
-      const safeFileName = path.basename(fileName).replace(/[^a-zA-Z0-9._-]/g, '_');
+      // Extract just the filename and sanitize it
+      const safeFileName = fileName.replace(/[^a-zA-Z0-9._-]/g, '_').split('/').pop() || 'screenshot.jpg';
       
       console.log(`[FTP] Uploading image: ${safeFileName} (${buffer.length} bytes)...`);
       // Uploading to current directory (registrations/ID/image)
