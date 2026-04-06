@@ -61,7 +61,7 @@ export default function TeamPage() {
             <div className="h-[1px] flex-grow bg-gradient-to-r from-magenta-cyber/50 to-transparent"></div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {studentCouncil.map((member, i) => (
               <TeamCard key={member.number} member={member} index={i} />
             ))}

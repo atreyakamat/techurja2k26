@@ -242,7 +242,7 @@ export const events: EventRecord[] = [
     flair: "Silver",
     shortDescription: "Competitive programming marathon.",
     description: "Solve algorithmic challenges under time pressure.",
-    rules: ["Individual participation", "No internet usage"],
+    rules: ["Teams of two participants", "No internet usage"],
     registrationFee: 118,
     prizePool: "₹10,000",
     image: "/event-pics/Event pics/CODING EVENT.jpg",
