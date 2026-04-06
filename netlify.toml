@@ -10,4 +10,5 @@
 
 [functions]
   node_bundler = "esbuild"
-  timeout = 30 # Ensuring enough time for image uploads
+  # Timeout removed to resolve Netlify config parsing error.
+  # The application code now handles timeouts internally.
