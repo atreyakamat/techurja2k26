@@ -1,22 +1,13 @@
 [build]
-  command = "prisma generate && next build"
+  command = "npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
-  PRISMA_SKIP_POSTINSTALL_GENERATE = "true"
-  # This is the "kill switch" for the Data Proxy - forces direct MySQL
-  PRISMA_GENERATE_DATAPROXY = "false"
-  # Explicitly using the library engine (binary)
-  PRISMA_CLIENT_ENGINE_TYPE = "library"
-  # Ensure the engine is for a Linux serverless environment
-  PRISMA_CLI_QUERY_ENGINE_TYPE = "library"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["@prisma/client", "prisma"]
-  # Forcing Netlify to include the generated engine file
-  included_files = ["node_modules/.prisma/client/*.node", "prisma/schema.prisma"]
+  timeout = 30 # Ensuring enough time for image uploads
