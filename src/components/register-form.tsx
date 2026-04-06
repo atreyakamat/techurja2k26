@@ -50,6 +50,32 @@ export function RegisterForm({ event }: { event: EventRecord }) {
 
   const [screenshot, setScreenshot] = useState<File | null>(null);
 
+  // Persistence logic
+  const storageKey = `techurja_draft_${event.slug}`;
+
+  // Load draft on mount
+  useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(storageKey);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          // Only merge if it's not the initial state (primitive check)
+          setFormData(prev => ({ ...prev, ...parsed }));
+        } catch (e) {
+          console.error("Failed to parse draft", e);
+        }
+      }
+    }
+  });
+
+  // Save draft on change
+  const updateForm = (updates: Partial<FormState>) => {
+    const next = { ...formData, ...updates };
+    setFormData(next);
+    localStorage.setItem(storageKey, JSON.stringify(next));
+  };
+
   const config = event.formConfig || { minParticipants: 1, maxParticipants: 1, hasTeamName: true };
   
   const participantNums = [];
@@ -92,6 +118,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
       }
 
       setStatus({ ok: true, message: data.message ?? "Registered successfully." });
+      localStorage.removeItem(storageKey);
       setFormData(initialState);
       setScreenshot(null);
     } catch {
@@ -128,7 +155,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
                     <input
                     required={isRequired}
                     value={formData[nameField] as string}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, [nameField]: e.target.value }))}
+                    onChange={(e) => updateForm({ [nameField]: e.target.value })}
                     className="border border-cyan-300/40 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
                     />
                 </label>
@@ -138,7 +165,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
                     required={isRequired}
                     type="email"
                     value={formData[emailField] as string}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, [emailField]: e.target.value }))}
+                    onChange={(e) => updateForm({ [emailField]: e.target.value })}
                     className="border border-cyan-300/40 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
                     />
                 </label>
@@ -147,7 +174,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
                     <input
                     required={isRequired}
                     value={formData[phoneField] as string}
-                    onChange={(e) => setFormData((prev) => ({ ...prev, [phoneField]: e.target.value }))}
+                    onChange={(e) => updateForm({ [phoneField]: e.target.value })}
                     className="border border-cyan-300/40 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
                     />
                 </label>
@@ -163,7 +190,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
             required
             placeholder="unique team identifier"
             value={formData.teamName}
-            onChange={(e) => setFormData((prev) => ({ ...prev, teamName: e.target.value }))}
+            onChange={(e) => updateForm({ teamName: e.target.value })}
             className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
           />
         </label>
@@ -174,7 +201,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
             required
             placeholder="e.g. AITD, Goa"
             value={formData.institution}
-            onChange={(e) => setFormData((prev) => ({ ...prev, institution: e.target.value }))}
+            onChange={(e) => updateForm({ institution: e.target.value })}
             className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
           />
         </label>
@@ -186,14 +213,14 @@ export function RegisterForm({ event }: { event: EventRecord }) {
             <div className="flex gap-4">
                 <button 
                     type="button"
-                    onClick={() => setFormData(prev => ({ ...prev, needsAccommodation: true }))}
+                    onClick={() => updateForm({ needsAccommodation: true })}
                     className={`flex-1 py-2 border font-mono text-xs transition-all ${formData.needsAccommodation ? 'bg-yellow-500 text-black border-yellow-500' : 'border-yellow-500/40 text-yellow-500 hover:bg-yellow-500/10'}`}
                 >
                     YES_PLEASE
                 </button>
                 <button 
                     type="button"
-                    onClick={() => setFormData(prev => ({ ...prev, needsAccommodation: false }))}
+                    onClick={() => updateForm({ needsAccommodation: false })}
                     className={`flex-1 py-2 border font-mono text-xs transition-all ${!formData.needsAccommodation ? 'bg-zinc-700 text-white border-zinc-600' : 'border-zinc-700 text-zinc-500 hover:bg-zinc-700/20'}`}
                 >
                     NO_NEED
@@ -232,7 +259,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
                 required={event.registrationFee !== "Free"}
                 placeholder="ENTER_12_DIGIT_ID"
                 value={formData.transactionId}
-                onChange={(e) => setFormData((prev) => ({ ...prev, transactionId: e.target.value }))}
+                onChange={(e) => updateForm({ transactionId: e.target.value })}
                 className="w-full border border-cyan-electric/30 bg-black/50 px-3 py-2 text-white font-mono text-xs outline-none focus:border-cyan-electric transition-all"
               />
             </div>

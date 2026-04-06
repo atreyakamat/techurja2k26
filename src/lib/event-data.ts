@@ -203,7 +203,7 @@ export const events: EventRecord[] = [
     image: "/event-pics/Event pics/ROBO RACE.jpg",
     rulebookUrl: "https://drive.google.com/file/d/1hYVl98mLUTZ3QssM7LcQdxVDwXDVyD2Y/view?usp=drive_link",
     coordinators: [
-      { name: "Sanjana Vaday", phone: "9226013380" },
+      { name: "Sanjana Yadav", phone: "9226013380" },
       { name: "Tanisha Kolhar", phone: "8767254192" }
     ],
     formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }

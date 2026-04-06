@@ -1,54 +1,65 @@
 # PRD: Techurja 2K26 Admin Verification Platform
 
 ## 1. Product Vision
-To provide a secure, high-performance dashboard for Techurja organizers to verify user payments, manage multi-participant registrations, and synchronize data between the MySQL database and the FTP storage nodes.
+To provide a secure, high-performance dashboard for Techurja organizers to verify user registrations, validate payments against FTP-stored receipts, and manage the lifecycle of event participants. The platform serves as the bridge between raw registration data and confirmed event entry.
 
 ## 2. Core Functional Requirements
 
 ### 2.1 Live Registration Feed
-*   **Data Sourcing**: Pull all records from the `Registration` table, including expanded team details.
-*   **Team Composition**: The dashboard must display all participants (up to 4) with their respective names, emails, and phone numbers.
-*   **Sync Mechanism**: A prominent **"REFRESH_GRID"** button that re-fetches the latest data from the database without a full page reload.
-*   **Special Indicators**:
-    *   **Accommodation**: A clear flag for Robowar teams that have requested accommodation (`needsAccommodation` field).
-    *   **Team Handle**: Display the mandatory team name for all events.
-*   **Status Badges**:
-    *   `PENDING`: Payment not yet checked.
-    *   `VERIFIED`: Admin confirmed payment matches UTR.
-    *   `REJECTED`: Invalid screenshot or fake UTR.
+*   **Data Sourcing**: Pull all records from the `Registration` table.
+*   **Verification Status**: 
+    *   `isAccepted`: An integer field (`0` for pending, `1` for accepted).
+    *   `status`: A string field for descriptive state (e.g., "pending", "rejected", "verified").
+*   **Team Composition**: Display all participants (1-4) with their respective names, emails, and phone numbers.
+*   **Sync Mechanism**: A "REFRESH_GRID" button that re-fetches the latest data from the database.
 
-### 2.2 Payment Verification Interface
-*   **Image Sourcing**: For each selected registration, the platform must fetch the image from the FTP directory `/registrations/{id}/`.
-*   **Side-by-Side View**: Display the user's submitted Transaction ID (UTR) next to the actual uploaded screenshot for quick comparison.
-*   **One-Click Verification**: A simple "APPROVE" or "REJECT" toggle that updates the database status instantly.
+### 2.2 Payment & ID Verification Workflow
+*   **FTP-DB Synchronization**: 
+    1.  The platform fetches a registration record with `ID`.
+    2.  The backend proxy connects to FTP and looks for the directory `/registrations/{ID}/`.
+    3.  It fetches the `paymentScreenshot` (e.g., `transaction_1740000000.jpg`) and the `details.csv` backup.
+*   **Side-by-Side Verification**: 
+    *   Display the user-submitted `transactionId` (UTR) from the DB next to the actual screenshot from FTP.
+    *   Admins manually compare the UTR in the image with the text field.
+*   **Write Verification (Approval)**: 
+    *   When an admin clicks "APPROVE", the system must:
+        1.  Update `isAccepted = 1` in the database.
+        2.  Update `status = "verified"`.
+        3.  Provide immediate visual confirmation that the write was successful.
+*   **Rejection Logic**: Update `status = "rejected"` and allow adding `adminNotes` for the user/coordinator to see.
 
 ### 2.3 Data Export & Synchronization
-*   **Expanded CSV Preview**: Ability to view the `details.csv` stored on FTP directly in the admin browser, including full contact info for all members.
-*   **Batch Export**: A button to trigger a server-side script that zips an entire category's FTP folders or generates a comprehensive master Excel/CSV sheet for coordinators.
+*   **Master Sheet Export**: Generate a comprehensive CSV/Excel sheet combining DB info and verification status.
+*   **FTP Archive**: Batch download receipts for specific events (e.g., "all Robowar receipts").
 
-## 3. Technical Architecture
+## 3. Robustness & Persistence (Client-Side)
 
-### 3.1 Backend Proxy Logic
-*   The Admin platform should **not** expose FTP credentials to the browser. 
-*   An API route (e.g., `/api/admin/fetch-receipt/{id}`) should act as a proxy:
-    1.  Verify Admin Session.
-    2.  Connect to FTP.
-    3.  Stream the image back to the Admin UI.
+### 3.1 Registration Form Recovery
+*   **Draft Saving**: As the user fills the `RegisterForm`, data must be continuously saved to `localStorage`.
+*   **Session Persistence**: If the browser is closed or refreshed during payment/upload, the form should re-populate with the saved draft upon return.
+*   **Cleanup**: Clear `localStorage` only after a successful `200 OK` response from the registration API.
 
-### 3.2 Database Schema (v2.0)
-*   **Registration Model**:
-    *   `status`: (default: `pending`)
-    *   `adminNotes`: Field for rejection reasons.
-    *   `needsAccommodation`: Boolean flag for Robowar logistics.
-    *   `participant[1-4]`, `email[1-4]`, `phone[1-4]`: Comprehensive contact cluster.
-    *   `teamName`: Mandatory for all records.
+### 3.2 Upload Reliability
+*   **Base64 Pre-processing**: Ensure images are optimized/resized before conversion to prevent massive payload sizes.
+*   **Atomic Operations**: Registration is only "Complete" once both the DB record and the FTP upload are confirmed.
 
-## 4. User Experience (UX) - "The Arena Master" Theme
-*   **Aesthetic**: Maintain the Cyberpunk/Brutalist theme (Dark background, neon status lights).
-*   **Team View**: Use expandable rows or modal clusters to display additional participant details without cluttering the main grid.
-*   **Efficiency**: Enable keyboard shortcuts (e.g., `Space` to open image, `Enter` to verify).
-*   **Mobile Support**: Allow admins to verify payments from their phones while on the move at the festival venue.
+## 4. Technical Architecture & Security
 
-## 5. Security Protocols
-*   **Admin Authentication**: Protect the `/admin` route with a secure password or environment-variable based secret.
-*   **CSRF Protection**: Ensure all verification toggles are protected against unauthorized requests.
+### 4.1 Security Layers
+*   **Admin Auth**: Route protection via Next.js Middleware or Server Actions using a secure session token.
+*   **Rate Limiting**: Prevent brute-force registration or admin login attempts.
+*   **Sanitization**: All inputs (especially `transactionId` and `teamName`) must be sanitized to prevent injection.
+*   **FTP Proxy**: Never expose FTP credentials to the frontend; use Server-Side API routes to pipe binary data.
+
+### 4.2 Database Schema (Finalized)
+*   **Model Registration**:
+    *   `isAccepted`: `Int` (default 0) - The primary verification toggle.
+    *   `status`: `String` (default "pending") - Public facing status.
+    *   `transactionId`: `String` - User provided UTR.
+    *   `paymentScreenshot`: `String` - Stores the FTP status/path.
+    *   `participant[1-4]`, `email[1-4]`, `phone[1-4]`.
+
+## 5. User Experience (UX) - "The Arena Master"
+*   **Theme**: Dark-mode terminal aesthetic (Cyan/Magenta neon accents).
+*   **Verification UI**: Large image preview modal with zoom capability for reading small UTR numbers on mobile screenshots.
+*   **Write Feedback**: Use "Success" sound effects or glitch animations when a registration is successfully verified (isAccepted -> 1).
