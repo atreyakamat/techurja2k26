@@ -49,13 +49,12 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // 2. Upload to FTP if screenshot is provided
+    // 2. Upload to FTP if screenshot is provided (using a wrapper with timeout)
     let ftpStatus = "NO_SCREENSHOT";
     if (paymentScreenshot && paymentScreenshot !== "NO_SCREENSHOT") {
       try {
         const fileName = screenshotName || `transaction_${Date.now()}.jpg`;
         
-        // Flattened object for the CSV backup on FTP
         const userData = {
           registration_id: registration.id,
           event_name: eventName,
@@ -79,11 +78,17 @@ export async function POST(request: NextRequest) {
           timestamp: registration.createdAt.toISOString()
         };
 
-        await uploadToFtp(registration.id.toString(), paymentScreenshot, fileName, userData);
+        // Create a timeout promise (15 seconds) to prevent killing the function
+        const ftpWithTimeout = Promise.race([
+          uploadToFtp(registration.id.toString(), paymentScreenshot, fileName, userData),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("FTP_TIMEOUT")), 15000))
+        ]);
+
+        await ftpWithTimeout;
         ftpStatus = `UPLOADED_TO_FTP: /registrations/${registration.id}/${fileName}`;
-      } catch (ftpError) {
+      } catch (ftpError: any) {
         console.error("FTP processing error:", ftpError);
-        ftpStatus = "FTP_UPLOAD_FAILED";
+        ftpStatus = ftpError.message === "FTP_TIMEOUT" ? "FTP_TIMEOUT_STILL_UPLOAD_QUEUED" : "FTP_UPLOAD_FAILED";
       }
 
       // 3. Update DB with FTP status
@@ -94,7 +99,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ 
-      message: "Registration successful! Data transmitted to secure terminal.",
+      message: "Registration successful! Record saved to terminal.",
       id: registration.id,
       ftp: ftpStatus
     }, { status: 200 });

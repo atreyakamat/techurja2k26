@@ -4,11 +4,13 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  PRISMA_GENERATE_DATAPROXY = "false"
+  PRISMA_SKIP_POSTINSTALL_GENERATE = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["@prisma/client"]
+  external_node_modules = ["@prisma/client", "prisma"]
+  included_files = ["node_modules/.prisma/client/*.node", "prisma/schema.prisma"]
+  timeout = 26 # Increasing timeout to handle FTP uploads
