@@ -7,13 +7,16 @@ import { Readable } from "stream";
  */
 export async function registerToFtp(imageData: Buffer | string, fileName: string, userData: Record<string, any>) {
   const client = new ftp.Client();
-  client.ftp.verbose = false;
+  client.ftp.verbose = false; // Disable verbose logging for production
 
   const registrationId = `REG_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+  
+  console.log(`[FTP] Starting registration ${registrationId}`);
   
   try {
     const rawPassword = process.env.FTP_PASSWORD ? decodeURIComponent(process.env.FTP_PASSWORD) : "";
 
+    console.log(`[FTP] Connecting to ${process.env.FTP_HOST}...`);
     await client.access({
       host: process.env.FTP_HOST || "ftp.aitdgoa.edu.in",
       user: process.env.FTP_USER || "techurja_folder@aitdgoa.edu.in",
@@ -21,11 +24,14 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
       secure: false,
       port: 21, // Explicitly using port 21
     });
+    console.log(`[FTP] Connected successfully`);
 
     // 1. ENSURE BASE DIRECTORY AND NAVIGATE
     // We navigate into the folder so we can upload files using just their names.
     // This bypasses the 553 "No such file or directory" error on strict servers.
+    console.log(`[FTP] Creating directory: registrations/${registrationId}`);
     await client.ensureDir(`registrations/${registrationId}`);
+    console.log(`[FTP] Directory created and navigated`);
     // No leading slash in ensureDir for basic-ftp relative paths
 
     // 2. UPLOAD USER DATA CSV
@@ -33,13 +39,17 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
       .map(key => `"${key}","${String(userData[key]).replace(/"/g, '""')}"`)
       .join("\n");
     
+    console.log(`[FTP] Uploading CSV data...`);
     // Uploading to current directory (which is now registrations/ID)
     await client.uploadFrom(Readable.from(csvContent), "details.csv");
+    console.log(`[FTP] CSV uploaded successfully`);
 
     // 3. UPLOAD IMAGE
     if (imageData && imageData !== "NO_SCREENSHOT") {
+      console.log(`[FTP] Creating image directory...`);
       // Create and move into image subfolder
       await client.ensureDir("image");
+      console.log(`[FTP] Image directory created`);
       
       let buffer: Buffer;
       if (typeof imageData === "string") {
@@ -49,10 +59,13 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
         buffer = imageData;
       }
       
+      console.log(`[FTP] Uploading image: ${fileName} (${buffer.length} bytes)...`);
       // Uploading to current directory (registrations/ID/image)
       await client.uploadFrom(Readable.from(buffer), fileName);
+      console.log(`[FTP] Image uploaded successfully`);
     }
 
+    console.log(`[FTP] Registration ${registrationId} completed successfully`);
     return { 
       ok: true, 
       id: registrationId, 
@@ -60,9 +73,10 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
     };
 
   } catch (err) {
-    console.error("FTP PROD ERROR:", err);
+    console.error("[FTP] ERROR:", err);
     throw err;
   } finally {
+    console.log(`[FTP] Closing connection`);
     client.close();
   }
 }

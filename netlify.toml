@@ -10,3 +10,5 @@
 
 [functions]
   node_bundler = "esbuild"
+  # Note: Global 'timeout' property is not supported at the top level of [functions].
+  # Function-specific timeouts are managed via Next.js 'maxDuration' in the route handlers.

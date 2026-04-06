@@ -10,7 +10,7 @@ async function debugFtp() {
     await client.access({
       host: 'ftp.aitdgoa.edu.in',
       user: 'techurja_folder@aitdgoa.edu.in',
-      password: 'AitdTech@2026',
+      password: process.env.FTP_PASSWORD, // Use ENV var for security
       port: 21,
       secure: false
     });
@@ -34,12 +34,16 @@ async function debugFtp() {
 
     console.log("> Attempting dummy file upload...");
     const content = "test data";
-    await client.uploadFrom(Readable.from(content), `${remotePath}/test.txt`);
+    // Use relative path since we're already inside the directory
+    await client.uploadFrom(Readable.from(content), "test.txt");
     console.log("> Upload SUCCESSFUL.");
 
-    console.log("> Cleanup: deleting test file and dir...");
-    await client.remove(`${remotePath}/test.txt`);
-    // basic-ftp doesn't have a recursive rm, just checking success so far is enough
+    console.log("> Cleanup: deleting test file...");
+    await client.remove("test.txt");
+    console.log("> Navigating back to registrations folder...");
+    await client.cdup();
+    console.log("> Removing test directory...");
+    await client.removeDir(testId);
     
     console.log(">>> DIAGNOSTIC COMPLETE: FTP NODE IS FULLY FUNCTIONAL.");
   } catch (err) {

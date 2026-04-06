@@ -3,16 +3,16 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-// CONFIGURATION - Hardcoded but split to bypass simple static scanners
-$host = "119.18." . "54.49"; 
-$db   = "aitdgki7" . "_techurja";
-$user = "aitdgki7" . "_techurja";
-$pass = "AitdTech" . "@2026";
+// CONFIGURATION - Use environment variables for security
+$host = getenv('DB_HOST') ?: "localhost";
+$db   = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
 
 // FTP CONFIGURATION
-$ftp_host = "119.18." . "54.49";
-$ftp_user = "aitdgki7" . "_techurja";
-$ftp_pass = "AitdTech" . "@2026";
+$ftp_host = getenv('FTP_HOST');
+$ftp_user = getenv('FTP_USER');
+$ftp_pass = getenv('FTP_PASS');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
