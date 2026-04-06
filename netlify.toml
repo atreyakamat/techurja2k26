@@ -4,9 +4,11 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  # Force standard Prisma client
   PRISMA_GENERATE_DATAPROXY = "false"
   PRISMA_SKIP_POSTINSTALL_GENERATE = "true"
+  # These two force a standard engine generation
+  PRISMA_CLIENT_ENGINE_TYPE = "library"
+  PRISMA_CLI_QUERY_ENGINE_TYPE = "library"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
@@ -14,5 +16,5 @@
 [functions]
   node_bundler = "esbuild"
   external_node_modules = ["@prisma/client", "prisma"]
-  # Include library engines for direct MySQL connection
+  # Ensuring Netlify bundles the actual engine file
   included_files = ["node_modules/.prisma/client/*.node", "prisma/schema.prisma"]
