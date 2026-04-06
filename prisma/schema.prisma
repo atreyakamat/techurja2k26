@@ -50,6 +50,7 @@ model Registration {
   transactionId String?
   paymentScreenshot String?
   status      String   @default("pending")
+  isAccepted  Int      @default(0)
   adminNotes  String?
   needsAccommodation Boolean @default(false)
   eventId     Int?
