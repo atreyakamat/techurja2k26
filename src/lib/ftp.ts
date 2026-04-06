@@ -6,15 +6,19 @@ export async function uploadToFtp(registrationId: string, imageData: Buffer | st
   client.ftp.verbose = false;
 
   try {
+    // Decode password if it was URL encoded (e.g. %40 for @)
+    const rawPassword = process.env.FTP_PASSWORD ? decodeURIComponent(process.env.FTP_PASSWORD) : "";
+
     await client.access({
       host: process.env.FTP_HOST,
       user: process.env.FTP_USER,
-      password: process.env.FTP_PASSWORD,
+      password: rawPassword,
       secure: false, // Set to true if your FTP server supports implicit FTPS
+      port: 21,
     });
 
-    // Create directory for the registration ID
-    const remotePath = `/registrations/${registrationId}`;
+    // Use relative path for ensuring directory (removes leading slash)
+    const remotePath = `registrations/${registrationId}`;
     await client.ensureDir(remotePath);
 
     // 1. Upload the image

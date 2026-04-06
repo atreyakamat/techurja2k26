@@ -3,7 +3,8 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-// CONFIGURATION - Using environment variables for security
+// CONFIGURATION - Using environment variables for security. 
+// Fallbacks removed to prevent Netlify build failures.
 $host = getenv('DB_HOST'); 
 $db   = getenv('DB_NAME');
 $user = getenv('DB_USER');
@@ -19,6 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$input) {
         echo json_encode(["message" => "Invalid input"]);
+        exit;
+    }
+
+    if (!$host || !$db || !$user) {
+        http_response_code(500);
+        echo json_encode(["message" => "Database configuration missing."]);
         exit;
     }
 
@@ -67,52 +74,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // FTP UPLOAD LOGIC
         $ftpStatus = "NO_SCREENSHOT";
         if (isset($input['paymentScreenshot']) && $input['paymentScreenshot'] !== 'NO_SCREENSHOT' && !empty($input['paymentScreenshot'])) {
-            $conn_id = ftp_connect($ftp_host);
-            $login_result = ftp_login($conn_id, $ftp_user, $ftp_pass);
+            if ($ftp_host && $ftp_user) {
+                $conn_id = ftp_connect($ftp_host);
+                $login_result = ftp_login($conn_id, $ftp_user, $ftp_pass);
 
-            if ($conn_id && $login_result) {
-                ftp_pasv($conn_id, true);
+                if ($conn_id && $login_result) {
+                    ftp_pasv($conn_id, true);
 
-                $remote_dir = "registrations/" . $registrationId;
-                @ftp_mkdir($conn_id, $remote_dir);
+                    $remote_dir = "registrations/" . $registrationId;
+                    @ftp_mkdir($conn_id, $remote_dir);
 
-                // 1. Upload Screenshot
-                $img_data = $input['paymentScreenshot'];
-                if (strpos($img_data, ',') !== false) {
-                    $img_data = explode(',', $img_data)[1];
-                }
-                $decoded_img = base64_decode($img_data);
-                
-                $temp_file = tempnam(sys_get_temp_dir(), 'reg');
-                file_put_contents($temp_file, $decoded_img);
-                
-                $screenshot_name = $input['screenshotName'] ?? "screenshot_" . time() . ".jpg";
-                $remote_file = $remote_dir . "/" . $screenshot_name;
-
-                if (ftp_put($conn_id, $remote_file, $temp_file, FTP_BINARY)) {
-                    $ftpStatus = "UPLOADED_TO_FTP: /" . $remote_file;
-                } else {
-                    $ftpStatus = "FTP_UPLOAD_FAILED";
-                }
-                unlink($temp_file);
-
-                // 2. Upload Details CSV
-                $csv_data = "";
-                foreach ($input as $key => $value) {
-                    if ($key !== 'paymentScreenshot') {
-                        $csv_data .= '"' . $key . '","' . str_replace('"', '""', $value) . "\"\n";
+                    // 1. Upload Screenshot
+                    $img_data = $input['paymentScreenshot'];
+                    if (strpos($img_data, ',') !== false) {
+                        $img_data = explode(',', $img_data)[1];
                     }
+                    $decoded_img = base64_decode($img_data);
+                    
+                    $temp_file = tempnam(sys_get_temp_dir(), 'reg');
+                    file_put_contents($temp_file, $decoded_img);
+                    
+                    $screenshot_name = $input['screenshotName'] ?? "screenshot_" . time() . ".jpg";
+                    $remote_file = $remote_dir . "/" . $screenshot_name;
+
+                    if (ftp_put($conn_id, $remote_file, $temp_file, FTP_BINARY)) {
+                        $ftpStatus = "UPLOADED_TO_FTP: /" . $remote_file;
+                    } else {
+                        $ftpStatus = "FTP_UPLOAD_FAILED";
+                    }
+                    unlink($temp_file);
+
+                    // 2. Upload Details CSV
+                    $csv_data = "";
+                    foreach ($input as $key => $value) {
+                        if ($key !== 'paymentScreenshot') {
+                            $csv_data .= '"' . $key . '","' . str_replace('"', '""', $value) . "\"\n";
+                        }
+                    }
+                    $temp_csv = tempnam(sys_get_temp_dir(), 'csv');
+                    file_put_contents($temp_csv, $csv_data);
+                    ftp_put($conn_id, $remote_dir . "/details.csv", $temp_csv, FTP_BINARY);
+                    unlink($temp_csv);
+
+                    ftp_close($conn_id);
+
+                    // Update DB with final FTP status
+                    $updateStmt = $pdo->prepare("UPDATE registrations SET paymentScreenshot = ? WHERE id = ?");
+                    $updateStmt->execute([$ftpStatus, $registrationId]);
                 }
-                $temp_csv = tempnam(sys_get_temp_dir(), 'csv');
-                file_put_contents($temp_csv, $csv_data);
-                ftp_put($conn_id, $remote_dir . "/details.csv", $temp_csv, FTP_BINARY);
-                unlink($temp_csv);
-
-                ftp_close($conn_id);
-
-                // Update DB with final FTP status
-                $updateStmt = $pdo->prepare("UPDATE registrations SET paymentScreenshot = ? WHERE id = ?");
-                $updateStmt->execute([$ftpStatus, $registrationId]);
+            } else {
+                $ftpStatus = "FTP_CONFIG_MISSING";
             }
         }
 
@@ -126,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         http_response_code(500);
         echo json_encode([
             "status" => "error",
-            "message" => "Database error: " . $e->getMessage()
+            "message" => "Database error."
         ]);
     }
 } else {
