@@ -1,5 +1,6 @@
 import * as ftp from "basic-ftp";
 import { Readable } from "stream";
+import path from "path";
 
 /**
  * PRODUCTION-GRADE FTP HANDLER
@@ -7,6 +8,8 @@ import { Readable } from "stream";
  */
 export async function registerToFtp(imageData: Buffer | string, fileName: string, userData: Record<string, any>) {
   const client = new ftp.Client();
+  // Set a timeout to prevent hanging connections
+  client.ftp.timeout = 30000; 
   client.ftp.verbose = false; // Disable verbose logging for production
 
   const registrationId = `REG_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
@@ -31,14 +34,15 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
     });
     console.log(`[FTP] Connected successfully`);
 
-    // 1. ENSURE BASE DIRECTORY AND NAVIGATE
-    // We navigate into the folder so we can upload files using just their names.
-    // This bypasses the 553 "No such file or directory" error on strict servers.
-    console.log(`[FTP] Creating directory: registrations/${registrationId}`);
-    await client.ensureDir(`registrations/${registrationId}`);
-    console.log(`[FTP] Directory created and navigated`);
-    // No leading slash in ensureDir for basic-ftp relative paths
-
+    // 1. ENSURE BASE DIRECTORY AND NAVIGATE STEP-BY-STEP
+    // Some servers fail on multi-level ensureDir if parent doesn't exist
+    // We navigate step-by-step to be extra safe on strict cPanel/Pure-FTPd servers
+    console.log(`[FTP] Navigating to registrations folder...`);
+    await client.ensureDir("registrations");
+    
+    console.log(`[FTP] Creating/Navigating to ID folder: ${registrationId}`);
+    await client.ensureDir(registrationId);
+    
     // 2. UPLOAD USER DATA CSV
     const csvContent = Object.keys(userData)
       .map(key => `"${key}","${String(userData[key]).replace(/"/g, '""')}"`)
@@ -51,10 +55,9 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
 
     // 3. UPLOAD IMAGE
     if (imageData && imageData !== "NO_SCREENSHOT") {
-      console.log(`[FTP] Creating image directory...`);
+      console.log(`[FTP] Creating/Navigating to image directory...`);
       // Create and move into image subfolder
       await client.ensureDir("image");
-      console.log(`[FTP] Image directory created`);
       
       let buffer: Buffer;
       if (typeof imageData === "string") {
@@ -64,9 +67,14 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
         buffer = imageData;
       }
       
-      console.log(`[FTP] Uploading image: ${fileName} (${buffer.length} bytes)...`);
+      // CRITICAL: Sanitize filename to prevent 553 errors from path components
+      // Using path.basename ensures we only have the filename, not a subpath
+      // We also replace non-alphanumeric characters with underscores
+      const safeFileName = path.basename(fileName).replace(/[^a-zA-Z0-9._-]/g, '_');
+      
+      console.log(`[FTP] Uploading image: ${safeFileName} (${buffer.length} bytes)...`);
       // Uploading to current directory (registrations/ID/image)
-      await client.uploadFrom(Readable.from(buffer), fileName);
+      await client.uploadFrom(Readable.from(buffer), safeFileName);
       console.log(`[FTP] Image uploaded successfully`);
     }
 
@@ -77,8 +85,12 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
       path: `registrations/${registrationId}` 
     };
 
-  } catch (err) {
+  } catch (err: any) {
     console.error("[FTP] ERROR:", err);
+    // Enhance error message for the API response
+    if (err.code === 553) {
+      err.message = `FTP 553 Error: ${err.message} (Likely due to invalid filename or permission issue). Ensure registrations/ directory exists.`;
+    }
     throw err;
   } finally {
     console.log(`[FTP] Closing connection`);
