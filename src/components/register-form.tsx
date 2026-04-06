@@ -93,7 +93,30 @@ export function RegisterForm({ event }: { event: EventRecord }) {
       if (screenshot) {
         base64Image = await new Promise((resolve) => {
           const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result as string);
+          reader.onload = (e) => {
+            const img = new window.Image();
+            img.onload = () => {
+              const canvas = document.createElement("canvas");
+              let width = img.width;
+              let height = img.height;
+              const MAX_SIZE = 1024;
+              
+              if (width > height && width > MAX_SIZE) {
+                height *= MAX_SIZE / width;
+                width = MAX_SIZE;
+              } else if (height > MAX_SIZE) {
+                width *= MAX_SIZE / height;
+                height = MAX_SIZE;
+              }
+              
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext("2d");
+              ctx?.drawImage(img, 0, 0, width, height);
+              resolve(canvas.toDataURL("image/jpeg", 0.7));
+            };
+            img.src = e.target?.result as string;
+          };
           reader.readAsDataURL(screenshot);
         });
       }
