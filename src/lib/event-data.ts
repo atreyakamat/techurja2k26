@@ -594,15 +594,20 @@ export function getEventBySlug(slug: string): EventRecord | undefined {
   return events.find((event) => event.slug === slug);
 }
 
+import { getEventCodename } from "./registration-caps";
+
 export function getFilteredEvents(search = "", category = "all", level = "all"): EventRecord[] {
   const term = search.toLowerCase().trim();
 
   return events.filter((event) => {
+    const codename = getEventCodename(event.slug).toLowerCase();
+    
     const matchesSearch =
       term.length === 0 ||
       event.name.toLowerCase().includes(term) ||
       event.shortDescription.toLowerCase().includes(term) ||
-      (event.flair && event.flair.toLowerCase().includes(term));
+      (event.flair && event.flair.toLowerCase().includes(term)) ||
+      codename.includes(term); // New: Search by codename
 
     const matchesCategory = category === "all" || event.category === category;
     const matchesLevel = level === "all" || event.level === level;

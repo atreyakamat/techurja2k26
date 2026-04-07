@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { EventRecord } from "@/lib/event-data";
-import { MapPin, Zap, ArrowRight, Medal } from "lucide-react";
+import { MapPin, Zap, ArrowRight, Medal, Hash } from "lucide-react";
+import { getEventCodename } from "@/lib/registration-caps";
 
 const flairColors = {
   Gold: "text-yellow-400 border-yellow-400/50 bg-yellow-400/10 shadow-[0_0_10px_rgba(250,204,21,0.3)]",
@@ -14,6 +15,8 @@ const flairColors = {
 };
 
 export function EventCard({ event, index }: { event: EventRecord; index: number }) {
+  const codename = getEventCodename(event.slug);
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -45,19 +48,17 @@ export function EventCard({ event, index }: { event: EventRecord; index: number 
             </div>
           )}
 
-          {/* Flair Badge */}
-          {event.flair && (
-            <div className={`absolute top-4 left-4 z-20 border px-2 py-1 flex items-center gap-1.5 backdrop-blur-md ${flairColors[event.flair]}`}>
-              <Medal size={10} />
-              <span className="text-[8px] font-mono font-black uppercase tracking-[0.2em]">
-                {event.flair} EVENT
-              </span>
+          {/* Search Tag Badge */}
+          <div className="absolute top-4 right-4 z-20 flex flex-col items-end gap-2">
+            <div className="border border-magenta-cyber/50 bg-black/70 backdrop-blur-md px-2 py-1 flex items-center gap-1">
+              <Hash size={8} className="text-magenta-cyber" />
+              <span className="text-[8px] font-mono text-magenta-cyber font-black uppercase tracking-widest">{codename}</span>
             </div>
-          )}
-
-          {/* Category Tag */}
-          <div className="absolute top-4 right-4 z-20 border border-cyan-electric/30 bg-black/60 backdrop-blur-md px-2 py-1 text-[8px] font-mono text-cyan-electric uppercase tracking-widest">
-            {event.category}
+            
+            {/* Category Tag */}
+            <div className="border border-cyan-electric/30 bg-black/60 backdrop-blur-md px-2 py-1 text-[8px] font-mono text-cyan-electric uppercase tracking-widest">
+              {event.category}
+            </div>
           </div>
 
           {/* Level Badge */}
