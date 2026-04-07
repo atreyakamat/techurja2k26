@@ -24,7 +24,8 @@ const nextConfig: NextConfig = {
       { source: '/events/treasure-hunt/', destination: '/events/the-cypher-heist/', permanent: true },
       { source: '/events/line-follower-robot/', destination: '/events/grid-runner/', permanent: true },
       { source: '/events/virtual-cricket/', destination: '/events/cyber-smashers/', permanent: true },
-      { source: '/events/project-presentation/', destination: '/events/innovibe/', permanent: true },
+      { source: '/events/project-presentation/', destination: '/events/innovate/', permanent: true },
+      { source: '/events/innovibe/', destination: '/events/innovate/', permanent: true },
       { source: '/events/robo-tug-of-war/', destination: '/events/cyber-tug/', permanent: true },
 
       // Redirects for registration pages
@@ -43,7 +44,8 @@ const nextConfig: NextConfig = {
       { source: '/register/treasure-hunt/', destination: '/register/the-cypher-heist/', permanent: true },
       { source: '/register/line-follower-robot/', destination: '/register/grid-runner/', permanent: true },
       { source: '/register/virtual-cricket/', destination: '/register/cyber-smashers/', permanent: true },
-      { source: '/register/project-presentation/', destination: '/register/innovibe/', permanent: true },
+      { source: '/register/project-presentation/', destination: '/register/innovate/', permanent: true },
+      { source: '/register/innovibe/', destination: '/register/innovate/', permanent: true },
       { source: '/register/robo-tug-of-war/', destination: '/register/cyber-tug/', permanent: true },
     ]
   },

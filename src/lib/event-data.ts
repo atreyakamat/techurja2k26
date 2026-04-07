@@ -254,8 +254,8 @@ export const events: EventRecord[] = [
     formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
   },
   {
-    slug: "innovibe",
-    name: "INNOVIBE",
+    slug: "innovate",
+    name: "INNOVATE",
     category: "Innovation",
     level: "college",
     date: "30 April 2026",
@@ -266,13 +266,13 @@ export const events: EventRecord[] = [
     description: "Present your research or projects to a panel of experts.",
     rules: ["10-minute presentation", "Prototype demonstration"],
     registrationFee: 236,
-    prizePool: "₹20,000",
+    prizePool: "₹14,000",
     prizes: {
-      first: "₹12,000",
-      second: "₹8,000"
+      first: "₹8,000",
+      second: "₹6,000"
     },
     image: "/event-pics/Event pics/PROJECT PRESENTATION.jpg",
-    rulebookUrl: "https://drive.google.com/file/d/1f1GTzgGK7CRSUVHeIwlamDld3S0em-Xs/view?usp=drive_link",
+    rulebookUrl: "https://drive.google.com/file/d/1rqLxKC8pR_8vWyL9HmVOHNG-26AvdJoG/view?usp=drivesdk",
     coordinators: [
       { name: "Joyce Martins", phone: "8767179587" },
       { name: "Rudra Malvankar", phone: "9145450734" }
@@ -419,7 +419,7 @@ export const events: EventRecord[] = [
       { name: "Aaryan Desai", phone: "8007249603" },
       { name: "Jaydeep Rane", phone: "7498965325" }
     ],
-    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
+    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: false }
   },
   {
     slug: "clashpunk",
@@ -440,7 +440,7 @@ export const events: EventRecord[] = [
       { name: "Areeb Shaikh", phone: "9730405881" },
       { name: "Mukund Mahambrey", phone: "9405332300" }
     ],
-    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
+    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: false }
   },
   {
     slug: "the-cypher-heist",
@@ -486,7 +486,7 @@ export const events: EventRecord[] = [
       { name: "Soham Joshi", phone: "9922967609" },
       { name: "Shuban", phone: "7414993238" }
     ],
-    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
+    formConfig: { minParticipants: 1, maxParticipants: 1, hasTeamName: false }
   },
   {
     slug: "techyothon",

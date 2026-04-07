@@ -208,18 +208,20 @@ export function RegisterForm({ event }: { event: EventRecord }) {
       })}
 
       <div className="grid md:grid-cols-2 gap-6">
-        <label className="flex flex-col gap-2 text-sm text-zinc-200">
-          Team Handle
-          <input
-            required
-            placeholder="unique team identifier"
-            value={formData.teamName}
-            onChange={(e) => updateForm({ teamName: e.target.value })}
-            className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
-          />
-        </label>
+        {config.hasTeamName !== false && (
+          <label className="flex flex-col gap-2 text-sm text-zinc-200">
+            Team Handle
+            <input
+              required
+              placeholder="unique team identifier"
+              value={formData.teamName}
+              onChange={(e) => updateForm({ teamName: e.target.value })}
+              className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
+            />
+          </label>
+        )}
 
-        <label className="flex flex-col gap-2 text-sm text-zinc-200">
+        <label className={`flex flex-col gap-2 text-sm text-zinc-200 ${config.hasTeamName === false ? 'md:col-span-2' : ''}`}>
           Faction / Institution
           <input
             required
