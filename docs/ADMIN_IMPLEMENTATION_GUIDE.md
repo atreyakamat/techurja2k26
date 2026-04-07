@@ -25,10 +25,17 @@ Payment screenshots and registration CSVs are stored on a separate FTP server.
 - `NO_SCREENSHOT`: Free events or missing data.
 
 ## 2. Crucial Security & Logic
-- **Verification Proxy**: Admins need to see screenshots. Since FTP is private, create a Next.js Route Handler (e.g., `/api/admin/receipt/[id]`) that:
+- **Verification Proxy**: Admins need to see screenshots. Since FTP is private, create a Next.js Route Handler (e.g., `/api/admin/ftp/fetch`) that:
   1. Authenticates the admin session.
-  2. Pulls the screenshot from FTP.
-  3. Returns the image buffer with the correct `Content-Type`.
+  2. Connects to the FTP server using `basic-ftp`.
+  3. Navigates to `/registrations/{id}/`.
+  4. Calls `client.list()` to find the image file (handles dynamic names).
+  5. Streams the image buffer with the correct `Content-Type`.
+- **Structured Logging**: All FTP operations MUST be logged with the following prefixes for monitoring:
+  - `[FTP_CONNECT]`, `[FTP_DISCONNECT]`
+  - `[FTP_UPLOAD_INIT]`, `[FTP_UPLOAD_SUCCESS]`
+  - `[FTP_FETCH_INIT]`, `[FTP_FETCH_SUCCESS]`
+  - `[FTP_ERROR_XXX]` (where XXX is the FTP status code).
 - **Secret Access**: Use an environment variable `ADMIN_SECRET` for simple dashboard access or implement full NextAuth.
 
 ---

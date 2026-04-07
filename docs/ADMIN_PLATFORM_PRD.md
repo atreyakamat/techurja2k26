@@ -14,10 +14,14 @@ To provide a secure, high-performance dashboard for Techurja organizers to verif
 *   **Sync Mechanism**: A "REFRESH_GRID" button that re-fetches the latest data from the database.
 
 ### 2.2 Payment & ID Verification Workflow
-*   **FTP-DB Synchronization**: 
-    1.  The platform fetches a registration record with `ID`.
-    2.  The backend proxy connects to FTP and looks for the directory `/registrations/{ID}/`.
-    3.  It fetches the `paymentScreenshot` (e.g., `transaction_1740000000.jpg`) and the `details.csv` backup.
+*   **FTP-DB Synchronization (Retrieval Logic)**: 
+    1.  **Server-Side Proxy (`/api/admin/ftp/fetch`)**: The frontend NEVER connects to FTP directly. It requests files through a secure backend proxy.
+    2.  **Request Flow**:
+        - Admin selects a record (ID: `reg_123`).
+        - Frontend calls `/api/admin/ftp/fetch?id=reg_123&type=image`.
+        - Backend uses `basic-ftp` to connect via server-side credentials.
+    3.  **Discovery**: Backend navigates to `/registrations/reg_123/` and performs a `client.list()` to identify the actual screenshot filename (handles dynamic names like `screenshot_v1.png`).
+    4.  **Streaming**: Backend downloads the file into a memory buffer and streams it to the client with correct `Content-Type` headers.
 *   **Side-by-Side Verification**: 
     *   Display the user-submitted `transactionId` (UTR) from the DB next to the actual screenshot from FTP.
     *   Admins manually compare the UTR in the image with the text field.
@@ -27,6 +31,20 @@ To provide a secure, high-performance dashboard for Techurja organizers to verif
         2.  Update `status = "verified"`.
         3.  Provide immediate visual confirmation that the write was successful.
 *   **Rejection Logic**: Update `status = "rejected"` and allow adding `adminNotes` for the user/coordinator to see.
+
+### 2.4 Structured FTP Logging & Monitoring
+To ensure reliability without changing protocols, the system implements a strict logging convention for all FTP operations:
+*   **Connection Lifecycle**: 
+    - `[FTP_CONNECT]`: Logged upon successful handshake with the host.
+    - `[FTP_DISCONNECT]`: Logged when the client is closed (ensuring no hanging sockets).
+*   **Operation Logs**:
+    - `[FTP_UPLOAD_INIT]`: {regId, fileName} - Before transmission begins.
+    - `[FTP_UPLOAD_SUCCESS]`: {regId, remotePath} - Confirmed by server.
+    - `[FTP_FETCH_INIT]`: {regId, fileType} - When an admin requests a view.
+    - `[FTP_FETCH_SUCCESS]`: {regId, sizeBytes} - File successfully retrieved and piped.
+*   **Error Tracking**: 
+    - `[FTP_ERROR_XXX]`: Detailed logs including the specific FTP status code (e.g., 550: Not Found, 553: Permission Denied, 530: Auth Failure).
+    - These logs are output to the server console and can be piped to a persistent file (e.g., `ftp_audit.log`) for troubleshooting.
 
 ### 2.3 Data Export & Synchronization
 *   **Master Sheet Export**: Generate a comprehensive CSV/Excel sheet combining DB info and verification status.
