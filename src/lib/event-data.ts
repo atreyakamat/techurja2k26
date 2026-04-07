@@ -295,7 +295,7 @@ export const events: EventRecord[] = [
     feeDetails: "Re-entry: ₹177",
     prizePool: "₹10,000",
     image: "/event-pics/Event pics/ROBO MAZE SOLVER.jpg",
-    rulebookUrl: "https://drive.google.com/file/d/1x0RhL2zKUPvrOcfGfN9dYqMjHADjIfHQ/view?usp=drive_link",
+    rulebookUrl: "https://drive.google.com/file/d/122Im8XFbfyYNzLYl94K1uJHFoWxIo0xp/view",
     coordinators: [
       { name: "Deesh Naik", phone: "9146480787" },
       { name: "Shourya Dhupkar", phone: "8010909892" }
