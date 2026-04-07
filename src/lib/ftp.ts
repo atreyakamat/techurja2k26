@@ -93,3 +93,71 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
     client.close();
   }
 }
+
+/**
+ * ADMIN FETCH LOGIC: Retrieves a file from FTP for verification.
+ * Reverses the registration process to discover and download dynamic filenames.
+ */
+export async function fetchFromFtp(registrationId: string) {
+  const client = new ftp.Client();
+  client.ftp.verbose = false;
+
+  console.log(`[FTP_FETCH_INIT]: Fetching data for ${registrationId}`);
+
+  try {
+    const rawPassword = process.env.FTP_PASSWORD ? decodeURIComponent(process.env.FTP_PASSWORD) : "";
+
+    await client.access({
+      host: process.env.FTP_HOST,
+      user: process.env.FTP_USER,
+      password: rawPassword,
+      secure: false,
+      port: 21,
+    });
+    console.log(`[FTP_CONNECT]: Connected for fetch operation`);
+
+    // 1. Navigate to the registration directory
+    const remotePath = `registrations/${registrationId}/image/`;
+    console.log(`[FTP] Navigating to: ${remotePath}`);
+    
+    // Check if directory exists and list files
+    const files = await client.list(remotePath);
+    
+    if (files.length === 0) {
+      throw new Error(`[FTP_ERROR_404]: No files found in ${remotePath}`);
+    }
+
+    // 2. Identify the screenshot (first file in the image/ directory)
+    const targetFile = files[0].name;
+    const fullFilePath = `${remotePath}${targetFile}`;
+    console.log(`[FTP] Found file: ${targetFile}`);
+
+    // 3. Download to buffer
+    const buffers: Buffer[] = [];
+    await client.downloadTo(
+      {
+        write: (chunk: Buffer) => {
+          buffers.push(chunk);
+          return chunk.length;
+        },
+      } as any, 
+      fullFilePath
+    );
+
+    const completeBuffer = Buffer.concat(buffers);
+    console.log(`[FTP_FETCH_SUCCESS]: ${registrationId} (${completeBuffer.length} bytes)`);
+
+    return {
+      buffer: completeBuffer,
+      fileName: targetFile,
+      mimeType: targetFile.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg'
+    };
+
+  } catch (err: any) {
+    console.error(`[FTP_ERROR_${err.code || 'UNKNOWN'}]:`, err.message);
+    throw err;
+  } finally {
+    console.log(`[FTP_DISCONNECT]: Closing fetch connection`);
+    client.close();
+  }
+}
