@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { registerToFtp } from "@/lib/ftp";
+import { registerToFtp, getRegistrationCount, incrementRegistrationCount } from "@/lib/ftp";
 import { z } from "zod";
 import { getEventBySlug } from "@/lib/event-data";
+import { getEventCap } from "@/lib/registration-caps";
 
 export const dynamic = 'force-dynamic';
 // Increasing the limit for large image uploads (base64)
@@ -54,6 +55,22 @@ export async function POST(request: NextRequest) {
 
     const data = validation.data;
     const event = getEventBySlug(data.eventSlug);
+
+    // --- CAPACITY CHECK ---
+    try {
+      const currentCount = await getRegistrationCount(data.eventSlug);
+      const cap = getEventCap(data.eventSlug);
+      
+      if (currentCount >= cap) {
+        return NextResponse.json({ 
+          message: `Registration for ${event?.name || data.eventSlug} has reached its maximum capacity (${cap} entries).`,
+          error: "CAPACITY_REACHED"
+        }, { status: 403 });
+      }
+    } catch (capError) {
+      console.error("Cap check failed, proceeding anyway:", capError);
+    }
+    // -----------------------
 
     // 3. Context-specific validation (e.g. Screenshot check for paid events)
     if (event && event.registrationFee !== "Free") {

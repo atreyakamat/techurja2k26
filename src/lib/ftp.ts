@@ -1,5 +1,6 @@
 import * as ftp from "basic-ftp";
 import { Readable } from "stream";
+import { getEventOffset } from "./registration-caps";
 
 /**
  * PRODUCTION-GRADE FTP HANDLER
@@ -90,6 +91,88 @@ export async function registerToFtp(imageData: Buffer | string, fileName: string
     throw err;
   } finally {
     console.log(`[FTP] Closing connection`);
+    client.close();
+  }
+}
+
+/**
+ * NEW: TRACKING & COUNTING LOGIC (Separate from registrations folder)
+ * Checks the current count for a specific event slug.
+ */
+export async function getRegistrationCount(eventSlug: string): Promise<number> {
+  const client = new ftp.Client();
+  try {
+    const rawPassword = process.env.FTP_PASSWORD ? decodeURIComponent(process.env.FTP_PASSWORD) : "";
+    await client.access({
+      host: process.env.FTP_HOST,
+      user: process.env.FTP_USER,
+      password: rawPassword,
+      secure: false,
+      port: 21,
+    });
+
+    // We keep this in a separate folder so it doesn't break the admin's mapping of the registrations/ folder.
+    await client.ensureDir("_event_metadata/counts");
+    
+    const countFile = `${eventSlug}.txt`;
+    const buffers: Buffer[] = [];
+    
+    try {
+      await client.downloadTo(
+        { write: (chunk: Buffer) => { buffers.push(chunk); return chunk.length; } } as any, 
+        countFile
+      );
+      const current = parseInt(Buffer.concat(buffers).toString().trim()) || 0;
+      // Total count = Recorded on FTP + Initial Offset from code
+      return current + getEventOffset(eventSlug);
+    } catch {
+      // If file doesn't exist, count is just the offset
+      return getEventOffset(eventSlug);
+    }
+  } catch (err) {
+    console.error("[FTP_COUNT_READ_ERROR]", err);
+    return getEventOffset(eventSlug); // Default to offset on failure
+  } finally {
+    client.close();
+  }
+}
+
+/**
+ * Increment the count for a specific event slug.
+ */
+export async function incrementRegistrationCount(eventSlug: string): Promise<void> {
+  const client = new ftp.Client();
+  try {
+    const rawPassword = process.env.FTP_PASSWORD ? decodeURIComponent(process.env.FTP_PASSWORD) : "";
+    await client.access({
+      host: process.env.FTP_HOST,
+      user: process.env.FTP_USER,
+      password: rawPassword,
+      secure: false,
+      port: 21,
+    });
+
+    await client.ensureDir("_event_metadata/counts");
+    const countFile = `${eventSlug}.txt`;
+    
+    // Read existing
+    const buffers: Buffer[] = [];
+    let count = 0;
+    try {
+      await client.downloadTo(
+        { write: (chunk: Buffer) => { buffers.push(chunk); return chunk.length; } } as any, 
+        countFile
+      );
+      count = parseInt(Buffer.concat(buffers).toString().trim()) || 0;
+    } catch {}
+
+    // Increment and upload
+    const nextCount = count + 1;
+    await client.uploadFrom(Readable.from(`${nextCount}`), countFile);
+    console.log(`[FTP] Count for ${eventSlug} incremented to ${nextCount}`);
+  } catch (err) {
+    console.error("[FTP_COUNT_INC_ERROR]", err);
+  } finally {
     client.close();
   }
 }
