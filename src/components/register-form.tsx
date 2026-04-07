@@ -159,12 +159,11 @@ export function RegisterForm({ event }: { event: EventRecord }) {
         const nameField = isLead ? "name" : `participant${num}` as keyof FormState;
         const emailField = isLead ? "email" : `email${num}` as keyof FormState;
         const phoneField = isLead ? "phone" : `phone${num}` as keyof FormState;
-        const isRequired = num <= config.minParticipants;
         
         // Use generic labels unless it is Robowar
         const participantLabel = config.isRobowar 
             ? `Node Operator ${num} ${isLead ? "(Lead)" : ""}`
-            : `Participant ${num} ${isLead ? "(Team Lead)" : ""}`;
+            : `Participant ${num} ${isLead ? "(Lead)" : ""}`;
 
         return (
           <div key={num} className="space-y-4 p-4 border border-cyan-electric/10 bg-cyan-electric/5 animate-in fade-in slide-in-from-left-2 duration-300">
@@ -175,16 +174,16 @@ export function RegisterForm({ event }: { event: EventRecord }) {
                 <label className="flex flex-col gap-2 text-xs text-zinc-300">
                     Full Name
                     <input
-                    required={isRequired}
+                    required
                     value={formData[nameField] as string}
                     onChange={(e) => updateForm({ [nameField]: e.target.value })}
                     className="border border-cyan-300/40 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
                     />
                 </label>
                 <label className="flex flex-col gap-2 text-xs text-zinc-300">
-                    Email Link
+                    Email Address
                     <input
-                    required={isRequired}
+                    required
                     type="email"
                     value={formData[emailField] as string}
                     onChange={(e) => updateForm({ [emailField]: e.target.value })}
@@ -192,9 +191,12 @@ export function RegisterForm({ event }: { event: EventRecord }) {
                     />
                 </label>
                 <label className="flex flex-col gap-2 text-xs text-zinc-300">
-                    Phone Link (WhatsApp)
+                    Phone Number (10 Digits)
                     <input
-                    required={isRequired}
+                    required
+                    type="tel"
+                    pattern="[0-9]{10}"
+                    title="Please enter a 10-digit phone number"
                     value={formData[phoneField] as string}
                     onChange={(e) => updateForm({ [phoneField]: e.target.value })}
                     className="border border-cyan-300/40 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
@@ -207,7 +209,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
 
       <div className="grid md:grid-cols-2 gap-6">
         <label className="flex flex-col gap-2 text-sm text-zinc-200">
-          Team Handle (Required)
+          Team Handle
           <input
             required
             placeholder="unique team identifier"
