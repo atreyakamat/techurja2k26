@@ -11,7 +11,7 @@ export default function TeamPage() {
   const faculty = teamMembers.filter(m => m.category === "Faculty");
   const studentCouncil = teamMembers.filter(m => m.category === "Student Council");
   const otherCouncils = teamMembers.filter(m => m.category === "Council" || m.category === "MBA" || m.category === "RoboClub");
-
+  const designers = teamMembers.filter(m => m.category === "Designer");
   return (
     <main className="min-h-screen bg-deep-black">
       <Navbar />
@@ -77,6 +77,20 @@ export default function TeamPage() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {otherCouncils.map((member, i) => (
+              <TeamCard key={member.number} member={member} index={i} />
+            ))}
+          </div>
+        </section>
+        
+        {/* Designers Section */}
+        <section className="mb-20">
+          <div className="flex items-center gap-4 mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-green-400 tracking-widest uppercase">Designers</h2>
+            <div className="h-[1px] flex-grow bg-gradient-to-r from-green-400/50 to-transparent"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {designers.map((member, i) => (
               <TeamCard key={member.number} member={member} index={i} />
             ))}
           </div>

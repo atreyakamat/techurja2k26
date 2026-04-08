@@ -1,7 +1,7 @@
 export type TeamMember = {
   name: string;
   role: string;
-  category: "Faculty" | "Student Council" | "Council" | "MBA" | "RoboClub";
+  category: "Faculty" | "Student Council" | "Council" | "MBA" | "RoboClub" | "Designer";
   council?: string;
   email: string;
   number: number;
@@ -145,6 +145,17 @@ export const teamMembers: TeamMember[] = [
     email: "23ec49@aitdgoa.edu.in",
     number: 13,
     image: "/coordinator_pics/13.jpg"
+  },
+
+  // Design team
+   {
+    name: "Rahul Narvekar",
+    role: "Designer",
+    category: "Designer",
+    council: "Design Team", 
+    email: "23co36@aitdgoa.edu.in",
+    number: 25,
+    image: "/coordinator_pics/25.jpg" 
   },
 
   // Staff (Faculty)
