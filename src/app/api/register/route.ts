@@ -27,8 +27,8 @@ const registrationSchema = z.object({
   email4: z.string().email("Invalid email 4").optional().or(z.literal("")),
   phone4: z.string().regex(/^\d{10}$/, "Invalid phone 4").optional().or(z.literal("")),
   
-  teamName: z.string().min(2, "Team handle is required"),
-  institution: z.string().min(2, "Faction/Institution is required"),
+  teamName: z.string().min(2, "Team handle is required").optional().or(z.literal("")),
+  institution: z.string().min(2, "Faction/Institution is required").max(100, "Institution name is too long (max 100 chars)"),
   eventSlug: z.string().min(1, "Event slug is missing"),
   eventName: z.string().optional(),
   transactionId: z.string().optional().or(z.literal("")),
@@ -93,11 +93,11 @@ export async function POST(request: NextRequest) {
       name: data.name,
       email: data.email,
       phone: data.phone,
-      team_name: data.teamName,
+      team_name: data.teamName || "N/A",
       institution: data.institution,
       event_slug: data.eventSlug,
       event_name: data.eventName || data.eventSlug,
-      transaction_id: data.transactionId,
+      transaction_id: data.transactionId || "N/A",
       needs_accommodation: data.needsAccommodation ? "YES" : "NO",
       participant2: data.participant2 || "N/A",
       email2: data.email2 || "N/A",
@@ -117,6 +117,13 @@ export async function POST(request: NextRequest) {
       
       // We pass the data to our robust FTP handler
       const result = await registerToFtp(data.paymentScreenshot, fileName, userData);
+
+      // 5. Increment Count on Success
+      try {
+        await incrementRegistrationCount(data.eventSlug);
+      } catch (countError) {
+        console.error("Count increment failed:", countError);
+      }
 
       return NextResponse.json({ 
         message: "Registration successful. Data secured.",

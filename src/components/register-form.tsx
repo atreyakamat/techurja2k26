@@ -174,7 +174,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
                 <label className="flex flex-col gap-2 text-xs text-zinc-300">
                     Full Name
                     <input
-                    required
+                    required={num <= config.minParticipants}
                     value={formData[nameField] as string}
                     onChange={(e) => updateForm({ [nameField]: e.target.value })}
                     className="border border-cyan-300/40 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
@@ -183,7 +183,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
                 <label className="flex flex-col gap-2 text-xs text-zinc-300">
                     Email Address
                     <input
-                    required
+                    required={num <= config.minParticipants}
                     type="email"
                     value={formData[emailField] as string}
                     onChange={(e) => updateForm({ [emailField]: e.target.value })}
@@ -193,7 +193,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
                 <label className="flex flex-col gap-2 text-xs text-zinc-300">
                     Phone Number (10 Digits)
                     <input
-                    required
+                    required={num <= config.minParticipants}
                     type="tel"
                     pattern="[0-9]{10}"
                     title="Please enter a 10-digit phone number"
@@ -225,6 +225,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
           Faction / Institution
           <input
             required
+            maxLength={100}
             placeholder="e.g. AITD, Goa"
             value={formData.institution}
             onChange={(e) => updateForm({ institution: e.target.value })}
