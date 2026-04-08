@@ -222,14 +222,19 @@ export function RegisterForm({ event }: { event: EventRecord }) {
         )}
 
         <label className={`flex flex-col gap-2 text-sm text-zinc-200 ${config.hasTeamName === false ? 'md:col-span-2' : ''}`}>
-          Faction / Institution
+          <div className="flex justify-between items-center">
+            <span>Faction / Institution</span>
+            <span className={`text-[10px] font-mono ${formData.institution.length >= 100 ? 'text-magenta-cyber animate-pulse' : 'text-zinc-500'}`}>
+              {formData.institution.length}/100_CHARS
+            </span>
+          </div>
           <input
             required
             maxLength={100}
             placeholder="e.g. AITD, Goa"
             value={formData.institution}
             onChange={(e) => updateForm({ institution: e.target.value })}
-            className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
+            className={`border bg-black/70 px-3 py-2 outline-none transition-colors ${formData.institution.length >= 100 ? 'border-magenta-cyber' : 'border-cyan-300/80 focus:border-yellow-300'}`}
           />
         </label>
       </div>
