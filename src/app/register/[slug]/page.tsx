@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { RegisterForm } from "@/components/register-form";
 import { getEventBySlug, events } from "@/lib/event-data";
+import { Lock } from "lucide-react";
 
 export async function generateStaticParams() {
   return events.map((event) => ({
@@ -37,7 +38,19 @@ export default async function RegisterPage({ params }: RegisterPageProps) {
           </div>
         </section>
 
-        <RegisterForm event={event} />
+        {event.registrationClosed ? (
+          <div className="panel p-8 border-red-500/40 bg-red-500/10 flex flex-col items-center gap-6 text-center">
+            <Lock size={48} className="text-red-400" />
+            <div>
+              <h2 className="text-2xl font-black text-red-400 uppercase tracking-widest mb-3">REGISTRATION CLOSED</h2>
+              <p className="text-zinc-300 font-mono text-sm uppercase tracking-widest">
+                This event is fully booked. No new registrations are being accepted.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <RegisterForm event={event} />
+        )}
 
         <Link href={`/events/${event.slug}`} className="inline-flex w-fit border border-cyan-300 px-4 py-2 text-xs uppercase tracking-[0.12em] text-cyan-200">
           Back To Event Details

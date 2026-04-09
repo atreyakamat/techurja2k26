@@ -37,6 +37,7 @@ export type EventRecord = {
   };
   coordinators: Coordinator[];
   formConfig?: EventFormConfig;
+  registrationClosed?: boolean;
 };
 
 export const events: EventRecord[] = [
@@ -507,7 +508,8 @@ export const events: EventRecord[] = [
     coordinators: [
       { name: "Atreya Kamat", phone: "7744020601" }
     ],
-    formConfig: { minParticipants: 2, maxParticipants: 4, hasTeamName: true }
+    formConfig: { minParticipants: 2, maxParticipants: 4, hasTeamName: true },
+    registrationClosed: true
   },
   {
     slug: "symmetry-art",
