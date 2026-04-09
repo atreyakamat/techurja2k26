@@ -133,7 +133,7 @@ export default async function EventDetailsPage({ params }: EventDetailsProps) {
             </div>
 
             {/* Registration Closed Notice */}
-            {event.registrationClosed && (
+            {event.isClosed && (
               <div className="p-4 border border-red-500/50 bg-red-500/10 flex items-center gap-4 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
                 <Lock className="shrink-0" size={20} />
                 <p className="text-xs font-mono uppercase font-bold tracking-widest">
@@ -143,16 +143,9 @@ export default async function EventDetailsPage({ params }: EventDetailsProps) {
             )}
 
             <div className="flex flex-col sm:flex-row gap-4">
-<<<<<<< HEAD
               {event.isClosed ? (
                 <div className="px-10 py-5 text-center text-sm font-bold flex-1 border border-red-500/50 bg-red-500/10 text-red-500 uppercase tracking-widest shadow-[0_0_20px_rgba(239,68,68,0.1)]">
                   REGISTRATION CLOSED
-=======
-              {event.registrationClosed ? (
-                <div className="flex-1 flex items-center justify-center gap-3 px-10 py-5 border border-red-500/40 bg-red-500/10 text-red-400 font-mono text-sm font-black uppercase tracking-widest cursor-not-allowed opacity-70">
-                  <Lock size={16} />
-                  REGISTRATION_FULL
->>>>>>> 63f2e156b6926cafc859619ed9495b7e6957bc5f
                 </div>
               ) : (
                 <Link href={`/register/${event.slug}`} className="cyber-button px-10 py-5 text-center text-sm font-bold flex-1 shadow-[0_0_20px_rgba(41,244,255,0.2)]">
@@ -282,20 +275,20 @@ export default async function EventDetailsPage({ params }: EventDetailsProps) {
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-3">
                   <span className="text-zinc-500">Queue_Load</span>
-                  {event.registrationClosed ? (
+                  {event.isClosed ? (
                     <span className="text-red-500 font-bold">CAPACITY_FULL</span>
                   ) : (
                     <span className="text-yellow-nuclear font-bold">MODERATE</span>
                   )}
                 </div>
-                {event.registrationClosed && (
+                {event.isClosed && (
                   <div className="flex justify-between border-b border-white/5 pb-3">
                     <span className="text-zinc-500">Reg_Status</span>
                     <span className="text-red-500 font-bold">CLOSED</span>
                   </div>
                 )}
               </div>
-              {event.registrationClosed ? (
+              {event.isClosed ? (
                 <div className="mt-10 flex items-center justify-center gap-3 w-full py-5 border border-red-500/40 bg-red-500/10 text-red-400 font-mono text-xs font-black tracking-[0.2em] cursor-not-allowed opacity-70">
                   <Lock size={14} />
                   REGISTRATION_CLOSED

@@ -38,7 +38,7 @@ export default async function RegisterPage({ params }: RegisterPageProps) {
           </div>
         </section>
 
-        {event.registrationClosed ? (
+        {event.isClosed ? (
           <div className="panel p-8 border-red-500/40 bg-red-500/10 flex flex-col items-center gap-6 text-center">
             <Lock size={48} className="text-red-400" />
             <div>

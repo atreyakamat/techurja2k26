@@ -36,7 +36,7 @@ const registrationSchema = z.object({
   screenshotName: z.string().optional(),
   needsAccommodation: z.boolean().optional(),
   agreedToRefundPolicy: z.literal(true, {
-    errorMap: () => ({ message: "You must agree to the refund policy" })
+    error: "You must agree to the refund policy"
   }),
 });
 
@@ -59,7 +59,6 @@ export async function POST(request: NextRequest) {
     const data = validation.data;
     const event = getEventBySlug(data.eventSlug);
 
-<<<<<<< HEAD
     // --- CLOSED CHECK ---
     if (event?.isClosed) {
       return NextResponse.json({ 
@@ -67,16 +66,6 @@ export async function POST(request: NextRequest) {
         error: "REGISTRATION_CLOSED"
       }, { status: 403 });
     }
-=======
-    // --- REGISTRATION CLOSED CHECK ---
-    if (event?.registrationClosed) {
-      return NextResponse.json({
-        message: `Registration for ${event.name} is closed. This event is fully booked.`,
-        error: "REGISTRATION_CLOSED"
-      }, { status: 403 });
-    }
-    // ----------------------------------
->>>>>>> 63f2e156b6926cafc859619ed9495b7e6957bc5f
 
     // --- CAPACITY CHECK ---
     try {

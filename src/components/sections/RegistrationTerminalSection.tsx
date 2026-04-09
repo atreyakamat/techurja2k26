@@ -270,7 +270,7 @@ export function RegistrationTerminalSection() {
                     >
                       <option value="" className="bg-black">-- SELECT TARGET NODE --</option>
                       {events
-                        .filter(ev => !selectedEvents.includes(ev.slug))
+                        .filter(ev => !selectedEvents.includes(ev.slug) && !ev.isClosed)
                         .map(ev => (
                           <option key={ev.slug} value={ev.slug} className="bg-black">
                             {ev.name} (₹{ev.registrationFee})
