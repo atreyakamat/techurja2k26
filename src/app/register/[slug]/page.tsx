@@ -26,12 +26,15 @@ export default async function RegisterPage({ params }: RegisterPageProps) {
     <div>
       <Navbar />
       <main className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 pb-16 pt-8 md:px-6">
-        <section className="panel p-6">
+        <section className="panel p-6 border-magenta-cyber/30 bg-magenta-cyber/5">
           <p className="text-xs uppercase tracking-[0.16em] text-cyan-200">Registration Terminal</p>
           <h1 className="mt-2 text-4xl text-yellow-200 md:text-5xl">{event.name}</h1>
           <p className="mt-2 text-zinc-300">
             Complete this form to lock your spot. Invalid or incomplete entries are rejected automatically.
           </p>
+          <div className="mt-4 p-3 border border-magenta-cyber/30 bg-black/40 text-magenta-cyber text-[10px] font-mono uppercase tracking-widest font-bold">
+            IMPORTANT: Once registered, the money will not be returned or refunded if you decide to back out.
+          </div>
         </section>
 
         <RegisterForm event={event} />

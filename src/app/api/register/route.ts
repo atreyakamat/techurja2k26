@@ -35,6 +35,9 @@ const registrationSchema = z.object({
   paymentScreenshot: z.string().min(1, "Payment screenshot missing"),
   screenshotName: z.string().optional(),
   needsAccommodation: z.boolean().optional(),
+  agreedToRefundPolicy: z.literal(true, {
+    errorMap: () => ({ message: "You must agree to the refund policy" })
+  }),
 });
 
 export async function POST(request: NextRequest) {
