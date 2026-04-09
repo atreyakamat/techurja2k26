@@ -156,6 +156,13 @@ export function RegisterForm({ event }: { event: EventRecord }) {
     <form className="panel w-full space-y-6 p-6" onSubmit={onSubmit}>
       <p className="text-sm uppercase tracking-[0.12em] text-cyan-200">Register For {event.name}</p>
 
+      {event.isClosed && (
+        <div className="p-6 border border-red-500 bg-red-500/10 text-red-500 text-center animate-pulse">
+          <p className="text-lg font-black uppercase tracking-tighter">Access Denied // Registration Closed</p>
+          <p className="text-xs font-mono mt-2">This event node is no longer accepting new entries.</p>
+        </div>
+      )}
+
       {participantNums.map((num) => {
         const isLead = num === 1;
         const nameField = isLead ? "name" : `participant${num}` as keyof FormState;
@@ -328,8 +335,11 @@ export function RegisterForm({ event }: { event: EventRecord }) {
         </label>
       </div>
 
-      <button disabled={loading} className="cyber-button w-full px-4 py-3 text-sm disabled:opacity-60 disabled:cursor-not-allowed uppercase tracking-widest font-black">
-        {loading ? "DATA_SYNC_IN_PROGRESS..." : "INITIALIZE_REGISTRATION"}
+      <button 
+        disabled={loading || event.isClosed} 
+        className="cyber-button w-full px-4 py-3 text-sm disabled:opacity-60 disabled:cursor-not-allowed uppercase tracking-widest font-black"
+      >
+        {loading ? "DATA_SYNC_IN_PROGRESS..." : event.isClosed ? "REGISTRATION_OFFLINE" : "INITIALIZE_REGISTRATION"}
       </button>
 
       {status && (

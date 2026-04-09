@@ -133,9 +133,15 @@ export default async function EventDetailsPage({ params }: EventDetailsProps) {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href={`/register/${event.slug}`} className="cyber-button px-10 py-5 text-center text-sm font-bold flex-1 shadow-[0_0_20px_rgba(41,244,255,0.2)]">
-                INITIATE REGISTRATION
-              </Link>
+              {event.isClosed ? (
+                <div className="px-10 py-5 text-center text-sm font-bold flex-1 border border-red-500/50 bg-red-500/10 text-red-500 uppercase tracking-widest shadow-[0_0_20px_rgba(239,68,68,0.1)]">
+                  REGISTRATION CLOSED
+                </div>
+              ) : (
+                <Link href={`/register/${event.slug}`} className="cyber-button px-10 py-5 text-center text-sm font-bold flex-1 shadow-[0_0_20px_rgba(41,244,255,0.2)]">
+                  INITIATE REGISTRATION
+                </Link>
+              )}
               
               {event.rulebookUrl && (
                 <a 

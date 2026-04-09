@@ -68,6 +68,16 @@ export function EventCard({ event, index }: { event: EventRecord; index: number 
               {event.level}
             </span>
           </div>
+
+          {/* Registration Closed Overlay */}
+          {event.isClosed && (
+            <div className="absolute inset-0 z-30 bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center p-4">
+              <div className="border-2 border-red-500/50 bg-red-500/10 px-4 py-2 rotate-[-5deg] shadow-[0_0_20px_rgba(239,68,68,0.3)]">
+                <span className="text-xl font-black text-red-500 uppercase tracking-tighter drop-shadow-md">CLOSED</span>
+              </div>
+              <p className="text-[8px] font-mono text-white/50 uppercase tracking-[0.3em] mt-4 font-bold">NODE_OFFLINE</p>
+            </div>
+          )}
         </div>
 
         <div className="p-6 flex flex-col flex-grow">

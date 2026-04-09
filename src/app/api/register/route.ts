@@ -59,6 +59,14 @@ export async function POST(request: NextRequest) {
     const data = validation.data;
     const event = getEventBySlug(data.eventSlug);
 
+    // --- CLOSED CHECK ---
+    if (event?.isClosed) {
+      return NextResponse.json({ 
+        message: `Registration for ${event.name} is officially closed.`,
+        error: "REGISTRATION_CLOSED"
+      }, { status: 403 });
+    }
+
     // --- CAPACITY CHECK ---
     try {
       const currentCount = await getRegistrationCount(data.eventSlug);
