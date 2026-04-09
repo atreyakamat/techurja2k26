@@ -37,7 +37,11 @@ export type EventRecord = {
   };
   coordinators: Coordinator[];
   formConfig?: EventFormConfig;
+<<<<<<< HEAD
   isClosed?: boolean;
+=======
+  registrationClosed?: boolean;
+>>>>>>> 63f2e156b6926cafc859619ed9495b7e6957bc5f
 };
 
 export const events: EventRecord[] = [
@@ -509,7 +513,11 @@ export const events: EventRecord[] = [
       { name: "Atreya Kamat", phone: "7744020601" }
     ],
     formConfig: { minParticipants: 2, maxParticipants: 4, hasTeamName: true },
+<<<<<<< HEAD
     isClosed: true
+=======
+    registrationClosed: true
+>>>>>>> 63f2e156b6926cafc859619ed9495b7e6957bc5f
   },
   {
     slug: "symmetry-art",
