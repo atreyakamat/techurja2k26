@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "What hardware specifications are required for participation?",
-    answer: "Most technical protocols (events) provide the necessary hardware on-site. For 'CODE SIEGE' or 'CTF Hackathon', bringing your own portable computation unit (laptop) is recommended."
+    answer: "Most technical protocols (events) provide the necessary hardware on-site. For 'CODE SIEGE' or 'CTF Hackathon' (Note: registrations closed), bringing your own portable computation unit (laptop) was recommended."
   },
   {
     question: "Are there any credit (registration) fees?",
