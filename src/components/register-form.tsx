@@ -225,13 +225,19 @@ export function RegisterForm({ event, showTitle = true }: { event: EventRecord; 
       <div className="grid md:grid-cols-2 gap-6">
         {config.hasTeamName !== false && (
           <label className="flex flex-col gap-2 text-sm text-zinc-200">
-            Team Handle
+            <div className="flex justify-between items-center">
+              <span>Team Handle</span>
+              <span className={`text-[10px] font-mono ${formData.teamName.length >= 100 ? 'text-magenta-cyber animate-pulse' : 'text-zinc-500'}`}>
+                {formData.teamName.length}/100_CHARS
+              </span>
+            </div>
             <input
               required
+              maxLength={100}
               placeholder="unique team identifier"
               value={formData.teamName}
               onChange={(e) => updateForm({ teamName: e.target.value })}
-              className="border border-cyan-300/80 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
+              className={`border bg-black/70 px-3 py-2 outline-none transition-colors ${formData.teamName.length >= 100 ? 'border-magenta-cyber' : 'border-cyan-300/80 focus:border-yellow-300'}`}
             />
           </label>
         )}
