@@ -271,70 +271,71 @@ export function RegisterForm({ event, showTitle = true }: { event: EventRecord; 
         </div>
       )}
 
-      {/* Payment Section */}
-      <div className="mt-8 border border-cyan-electric/30 bg-black/40 p-5 relative">
-        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyan-electric"></div>
-        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyan-electric"></div>
-        
-        <div className="flex flex-col md:flex-row gap-6 items-center">
-          <div className="w-40 h-40 bg-white p-1 rounded flex-shrink-0">
-            <Image 
-              src="/payment-techurja.jpeg" 
-              alt="Payment QR" 
-              width={160} 
-              height={160} 
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="flex-grow space-y-4 w-full">
-            <div>
-              <p className="text-xs text-magenta-cyber font-mono uppercase tracking-widest mb-1">Fee Required</p>
-              <p className="text-3xl text-white font-black font-display tracking-tight">
-                {typeof event.registrationFee === 'number' ? `₹${event.registrationFee}` : event.registrationFee}
-              </p>
-            </div>
-            
-            <div className="space-y-2">
-              <label className="text-[10px] text-cyan-electric uppercase font-mono tracking-widest">Transaction ID / UTR</label>
-              <input
-                required={event.registrationFee !== "Free"}
-                placeholder="ENTER_12_DIGIT_ID"
-                value={formData.transactionId}
-                onChange={(e) => updateForm({ transactionId: e.target.value })}
-                className="w-full border border-cyan-electric/30 bg-black/50 px-3 py-2 text-white font-mono text-xs outline-none focus:border-cyan-electric transition-all"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-[10px] text-cyan-electric uppercase font-mono tracking-widest">Payment Screenshot</label>
-              <input
-                type="file"
-                accept="image/*"
-                required={event.registrationFee !== "Free"}
-                onChange={(e) => setScreenshot(e.target.files?.[0] || null)}
-                className="w-full text-[10px] text-zinc-400 file:mr-4 file:py-1 file:px-4 file:border-0 file:text-[10px] file:font-mono file:bg-cyan-electric/20 file:text-cyan-electric hover:file:bg-cyan-electric/30 transition-all cursor-pointer"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Refund Policy Agreement */}
+      {/* Payment Section - Only show if not Free */}
       {event.registrationFee !== "Free" && (
-        <div className="p-4 border border-magenta-cyber/30 bg-magenta-cyber/5">
-          <label className="flex items-start gap-3 cursor-pointer group">
-            <input
-              type="checkbox"
-              required
-              checked={formData.agreedToRefundPolicy}
-              onChange={(e) => updateForm({ agreedToRefundPolicy: e.target.checked })}
-              className="mt-1 w-4 h-4 border-magenta-cyber/50 bg-black text-magenta-cyber focus:ring-magenta-cyber transition-all"
-            />
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-300 group-hover:text-magenta-cyber transition-colors">
-              I understand and agree that <span className="text-magenta-cyber font-bold">once registered, the money will not be returned or refunded</span> if I decide to back out of the event.
-            </span>
-          </label>
-        </div>
+        <>
+          <div className="mt-8 border border-cyan-electric/30 bg-black/40 p-5 relative">
+            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyan-electric"></div>
+            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyan-electric"></div>
+            
+            <div className="flex flex-col md:flex-row gap-6 items-center">
+              <div className="w-40 h-40 bg-white p-1 rounded flex-shrink-0">
+                <Image 
+                  src="/payment-techurja.jpeg" 
+                  alt="Payment QR" 
+                  width={160} 
+                  height={160} 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="flex-grow space-y-4 w-full">
+                <div>
+                  <p className="text-xs text-magenta-cyber font-mono uppercase tracking-widest mb-1">Fee Required</p>
+                  <p className="text-3xl text-white font-black font-display tracking-tight">
+                    {typeof event.registrationFee === 'number' ? `₹${event.registrationFee}` : event.registrationFee}
+                  </p>
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="text-[10px] text-cyan-electric uppercase font-mono tracking-widest">Transaction ID / UTR</label>
+                  <input
+                    required
+                    placeholder="ENTER_12_DIGIT_ID"
+                    value={formData.transactionId}
+                    onChange={(e) => updateForm({ transactionId: e.target.value })}
+                    className="w-full border border-cyan-electric/30 bg-black/50 px-3 py-2 text-white font-mono text-xs outline-none focus:border-cyan-electric transition-all"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] text-cyan-electric uppercase font-mono tracking-widest">Payment Screenshot</label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    required
+                    onChange={(e) => setScreenshot(e.target.files?.[0] || null)}
+                    className="w-full text-[10px] text-zinc-400 file:mr-4 file:py-1 file:px-4 file:border-0 file:text-[10px] file:font-mono file:bg-cyan-electric/20 file:text-cyan-electric hover:file:bg-cyan-electric/30 transition-all cursor-pointer"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 border border-magenta-cyber/30 bg-magenta-cyber/5">
+            <label className="flex items-start gap-3 cursor-pointer group">
+              <input
+                type="checkbox"
+                required
+                checked={formData.agreedToRefundPolicy}
+                onChange={(e) => updateForm({ agreedToRefundPolicy: e.target.checked })}
+                className="mt-1 w-4 h-4 border-magenta-cyber/50 bg-black text-magenta-cyber focus:ring-magenta-cyber transition-all"
+              />
+              <span className="text-xs font-mono uppercase tracking-widest text-zinc-300 group-hover:text-magenta-cyber transition-colors">
+                I understand and agree that <span className="text-magenta-cyber font-bold">once registered, the money will not be returned or refunded</span> if I decide to back out of the event.
+              </span>
+            </label>
+          </div>
+        </>
       )}
 
       <button 
