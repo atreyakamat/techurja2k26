@@ -22,7 +22,7 @@ All event links follow the format: `https://techurja.aitdgoa.edu.in/events/[slug
 | **THE CYPHER HEIST** | General | https://techurja.aitdgoa.edu.in/events/the-cypher-heist |
 | **GRID RUNNER** | Robotics | https://techurja.aitdgoa.edu.in/events/grid-runner |
 | **CYBER SMASHERS** | General | https://techurja.aitdgoa.edu.in/events/cyber-smashers |
-| **INNOVATE** | Innovation | https://techurja.aitdgoa.edu.in/events/innovate |
+| **INNOVIBE** | Innovation | https://techurja.aitdgoa.edu.in/events/innovibe |
 | **CYBER TUG** | Robotics | https://techurja.aitdgoa.edu.in/events/cyber-tug |
 
 ---

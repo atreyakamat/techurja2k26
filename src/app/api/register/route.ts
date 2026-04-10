@@ -36,6 +36,7 @@ const registrationSchema = z.object({
   screenshotName: z.string().optional(),
   needsAccommodation: z.boolean().optional(),
   agreedToRefundPolicy: z.boolean().optional(),
+  testId: z.string().optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -125,7 +126,8 @@ export async function POST(request: NextRequest) {
       participant4: data.participant4 || "N/A",
       email4: data.email4 || "N/A",
       phone4: data.phone4 || "N/A",
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      test_id: data.testId || "N/A"
     };
 
     // 4. FTP Storage Execution

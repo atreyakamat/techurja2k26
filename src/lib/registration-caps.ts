@@ -6,7 +6,7 @@ export const REGISTRATION_CAPS: Record<string, number> = {
   "techyothon": 0,
   "escape-the-matrix": 3,
   "ghostgrid": 30, // Updated to 30 as requested
-  "innovate": 25, // Added for Project Expo
+  "innovibe": 25, // Added for Project Expo
   
   // Default cap for any event not listed above
   "DEFAULT": 1000 
@@ -36,7 +36,7 @@ export const EVENT_CODENAMES: Record<string, string> = {
   "santo-domingo-race": "SDR-RACE",
   "cyber-tug": "CT-TUG",
   "escape-the-matrix": "ETM-CODE",
-  "innovate": "INN-PROJ",
+  "innovibe": "INB-PROJ",
   "kabuki-roundabout": "KR-MAZE",
   "neon-span": "NS-BRIDGE",
   "ghostgrid": "CTF-HACK", // Identified as CTF

@@ -255,8 +255,8 @@ export const events: EventRecord[] = [
     formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
   },
   {
-    slug: "innovate",
-    name: "INNOVATE",
+    slug: "innovibe",
+    name: "INNOVIBE",
     category: "Innovation",
     level: "college",
     date: "30 April 2026",
