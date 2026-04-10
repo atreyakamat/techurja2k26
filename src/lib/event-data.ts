@@ -619,7 +619,3 @@ export function getFilteredEvents(search = "", category = "all", level = "all"):
   });
 }
 
-esLevel;
-  });
-}
-
