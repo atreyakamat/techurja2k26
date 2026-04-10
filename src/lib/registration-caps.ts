@@ -7,6 +7,7 @@ export const REGISTRATION_CAPS: Record<string, number> = {
   "escape-the-matrix": 50, // Increased from 3
   "ghostgrid": 30, // Updated to 30 as requested
   "innovibe": 25, // Added for Project Expo
+  "the-cypher-heist": 30, // Added per user request
   
   // Default cap for any event not listed above
   "DEFAULT": 1000 
