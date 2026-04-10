@@ -35,9 +35,7 @@ const registrationSchema = z.object({
   paymentScreenshot: z.string().min(1, "Payment screenshot missing"),
   screenshotName: z.string().optional(),
   needsAccommodation: z.boolean().optional(),
-  agreedToRefundPolicy: z.literal(true, {
-    error: "You must agree to the refund policy"
-  }),
+  agreedToRefundPolicy: z.boolean().optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -58,6 +56,14 @@ export async function POST(request: NextRequest) {
 
     const data = validation.data;
     const event = getEventBySlug(data.eventSlug);
+
+    // --- REFUND POLICY CHECK (For Paid Events) ---
+    if (event && event.registrationFee !== "Free" && !data.agreedToRefundPolicy) {
+      return NextResponse.json({ 
+        message: "You must agree to the refund policy for paid events.",
+        error: "REFUND_POLICY_AGREEMENT_REQUIRED"
+      }, { status: 400 });
+    }
 
     // --- CLOSED CHECK ---
     if (event?.isClosed) {
