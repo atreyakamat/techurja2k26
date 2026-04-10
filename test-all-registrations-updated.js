@@ -35,7 +35,7 @@ async function sendRequest(payload) {
     const options = {
       hostname: 'localhost',
       port: PORT,
-      path: '/api/register',
+      path: '/api/register/',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
