@@ -346,7 +346,7 @@ export const events: EventRecord[] = [
       { name: "Samson Sequeira", phone: "9607560849" },
       { name: "Shrish Bordekar", phone: "9356826227" }
     ],
-    formConfig: { minParticipants: 2, maxParticipants: 2, hasTeamName: true }
+    formConfig: { minParticipants: 1, maxParticipants: 2, hasTeamName: true }
   },
   {
     slug: "circuit-breach",
@@ -616,6 +616,10 @@ export function getFilteredEvents(search = "", category = "all", level = "all"):
     const matchesLevel = level === "all" || event.level === level;
 
     return matchesSearch && matchesCategory && matchesLevel;
+  });
+}
+
+esLevel;
   });
 }
 
