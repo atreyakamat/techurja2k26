@@ -72,7 +72,7 @@ export function RegistrationTerminalSection() {
                 </div>
 
                 <div className="terminal-panel p-0 border-magenta-cyber/30">
-                  <RegisterForm event={selectedEvent} />
+                  <RegisterForm event={selectedEvent} showTitle={false} />
                 </div>
               </motion.div>
             )}

@@ -45,7 +45,7 @@ const initialState: FormState = {
   agreedToRefundPolicy: false,
 };
 
-export function RegisterForm({ event }: { event: EventRecord }) {
+export function RegisterForm({ event, showTitle = true }: { event: EventRecord; showTitle?: boolean }) {
   const [formData, setFormData] = useState<FormState>(initialState);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<{ ok: boolean; message: string } | null>(null);
@@ -154,7 +154,7 @@ export function RegisterForm({ event }: { event: EventRecord }) {
 
   return (
     <form className="panel w-full space-y-6 p-6" onSubmit={onSubmit}>
-      <p className="text-sm uppercase tracking-[0.12em] text-cyan-200">Register For {event.name}</p>
+      {showTitle && <p className="text-sm uppercase tracking-[0.12em] text-cyan-200">Register For {event.name}</p>}
 
       {event.isClosed && (
         <div className="p-6 border border-red-500 bg-red-500/10 text-red-500 text-center animate-pulse">
