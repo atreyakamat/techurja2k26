@@ -134,10 +134,10 @@ export function RegisterForm({ event, showTitle = true }: { event: EventRecord; 
           screenshotName: screenshot?.name || "unknown.jpg"
         }),
       });
-      const data = (await res.json()) as { message?: string };
+      const data = (await res.json()) as { message?: string, details?: string };
 
       if (!res.ok) {
-        setStatus({ ok: false, message: data.message ?? "Registration failed." });
+        setStatus({ ok: false, message: data.details ? `${data.message} [DETAILS: ${data.details}]` : (data.message ?? "Registration failed.") });
         return;
       }
 
@@ -181,12 +181,18 @@ export function RegisterForm({ event, showTitle = true }: { event: EventRecord; 
              </p>
              <div className="grid md:grid-cols-3 gap-4">
                 <label className="flex flex-col gap-2 text-xs text-zinc-300">
-                    Full Name
+                    <div className="flex justify-between items-center">
+                      <span>Full Name</span>
+                      <span className={`text-[10px] font-mono ${(formData[nameField] as string).length >= 100 ? 'text-magenta-cyber animate-pulse' : 'text-zinc-500'}`}>
+                        {(formData[nameField] as string).length}/100_CHARS
+                      </span>
+                    </div>
                     <input
                     required={num <= config.minParticipants}
+                    maxLength={100}
                     value={formData[nameField] as string}
                     onChange={(e) => updateForm({ [nameField]: e.target.value })}
-                    className="border border-cyan-300/40 bg-black/70 px-3 py-2 outline-none focus:border-yellow-300 transition-colors"
+                    className={`border bg-black/70 px-3 py-2 outline-none transition-colors ${(formData[nameField] as string).length >= 100 ? 'border-magenta-cyber' : 'border-cyan-300/40 focus:border-yellow-300'}`}
                     />
                 </label>
                 <label className="flex flex-col gap-2 text-xs text-zinc-300">
