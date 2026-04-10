@@ -278,7 +278,7 @@ export const events: EventRecord[] = [
       { name: "Joyce Martins", phone: "8767179587" },
       { name: "Rudra Malvankar", phone: "9145450734" }
     ],
-    formConfig: { minParticipants: 4, maxParticipants: 4, hasTeamName: true }
+    formConfig: { minParticipants: 1, maxParticipants: 4, hasTeamName: true }
   },
   {
     slug: "kabuki-roundabout",
