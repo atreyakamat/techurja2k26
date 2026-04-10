@@ -3,8 +3,8 @@
  * Define the maximum number of allowed entries (teams/solo) per event.
  */
 export const REGISTRATION_CAPS: Record<string, number> = {
-  "techyothon": 0,
-  "escape-the-matrix": 3,
+  "techyothon": 50, // Increased from 0
+  "escape-the-matrix": 50, // Increased from 3
   "ghostgrid": 30, // Updated to 30 as requested
   "innovibe": 25, // Added for Project Expo
   
