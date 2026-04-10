@@ -100,12 +100,14 @@ export default async function EventDetailsPage({ params }: EventDetailsProps) {
             )}
 
             {/* Important Notice: Refund Policy */}
-            <div className="p-4 border border-magenta-cyber/30 bg-magenta-cyber/5 flex items-center gap-4 text-magenta-cyber shadow-[0_0_15px_rgba(255,0,255,0.1)]">
-              <ShieldAlert className="shrink-0" />
-              <p className="text-xs font-mono uppercase font-bold tracking-widest">
-                IMPORTANT: Once registered, the money will not be returned or refunded if you decide to back out.
-              </p>
-            </div>
+            {event.registrationFee !== "Free" && (
+              <div className="p-4 border border-magenta-cyber/30 bg-magenta-cyber/5 flex items-center gap-4 text-magenta-cyber shadow-[0_0_15px_rgba(255,0,255,0.1)]">
+                <ShieldAlert className="shrink-0" />
+                <p className="text-xs font-mono uppercase font-bold tracking-widest">
+                  IMPORTANT: Once registered, the money will not be returned or refunded if you decide to back out.
+                </p>
+              </div>
+            )}
 
             <div className="grid grid-cols-2 gap-6 py-8 border-y border-white/10 font-mono text-xs uppercase tracking-widest text-zinc-300">
               <div className="space-y-1">

@@ -33,9 +33,11 @@ export default async function RegisterPage({ params }: RegisterPageProps) {
           <p className="mt-2 text-zinc-300">
             Complete this form to lock your spot. Invalid or incomplete entries are rejected automatically.
           </p>
-          <div className="mt-4 p-3 border border-magenta-cyber/30 bg-black/40 text-magenta-cyber text-[10px] font-mono uppercase tracking-widest font-bold">
-            IMPORTANT: Once registered, the money will not be returned or refunded if you decide to back out.
-          </div>
+          {event.registrationFee !== "Free" && (
+            <div className="mt-4 p-3 border border-magenta-cyber/30 bg-black/40 text-magenta-cyber text-[10px] font-mono uppercase tracking-widest font-bold">
+              IMPORTANT: Once registered, the money will not be returned or refunded if you decide to back out.
+            </div>
+          )}
         </section>
 
         {event.isClosed ? (

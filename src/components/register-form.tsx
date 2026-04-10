@@ -320,20 +320,22 @@ export function RegisterForm({ event, showTitle = true }: { event: EventRecord; 
       </div>
 
       {/* Refund Policy Agreement */}
-      <div className="p-4 border border-magenta-cyber/30 bg-magenta-cyber/5">
-        <label className="flex items-start gap-3 cursor-pointer group">
-          <input
-            type="checkbox"
-            required
-            checked={formData.agreedToRefundPolicy}
-            onChange={(e) => updateForm({ agreedToRefundPolicy: e.target.checked })}
-            className="mt-1 w-4 h-4 border-magenta-cyber/50 bg-black text-magenta-cyber focus:ring-magenta-cyber transition-all"
-          />
-          <span className="text-xs font-mono uppercase tracking-widest text-zinc-300 group-hover:text-magenta-cyber transition-colors">
-            I understand and agree that <span className="text-magenta-cyber font-bold">once registered, the money will not be returned or refunded</span> if I decide to back out of the event.
-          </span>
-        </label>
-      </div>
+      {event.registrationFee !== "Free" && (
+        <div className="p-4 border border-magenta-cyber/30 bg-magenta-cyber/5">
+          <label className="flex items-start gap-3 cursor-pointer group">
+            <input
+              type="checkbox"
+              required
+              checked={formData.agreedToRefundPolicy}
+              onChange={(e) => updateForm({ agreedToRefundPolicy: e.target.checked })}
+              className="mt-1 w-4 h-4 border-magenta-cyber/50 bg-black text-magenta-cyber focus:ring-magenta-cyber transition-all"
+            />
+            <span className="text-xs font-mono uppercase tracking-widest text-zinc-300 group-hover:text-magenta-cyber transition-colors">
+              I understand and agree that <span className="text-magenta-cyber font-bold">once registered, the money will not be returned or refunded</span> if I decide to back out of the event.
+            </span>
+          </label>
+        </div>
+      )}
 
       <button 
         disabled={loading || event.isClosed} 
