@@ -415,6 +415,7 @@ export const events: EventRecord[] = [
     feeDetails: "Re-entry: ₹236",
     prizePool: "₹8,000",
     image: "/event-pics/Event pics/FIFA.jpg",
+    flair: "Silver",
     rulebookUrl: "https://drive.google.com/file/d/11JRb87sZshPqcO3nYzPm3Y-DXxXpPlzV/view?usp=drive_link",
     coordinators: [
       { name: "Aaryan Desai", phone: "8007249603" },
@@ -617,3 +618,4 @@ export function getFilteredEvents(search = "", category = "all", level = "all"):
     return matchesSearch && matchesCategory && matchesLevel;
   });
 }
+

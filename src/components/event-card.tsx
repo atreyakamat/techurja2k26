@@ -48,6 +48,16 @@ export function EventCard({ event, index }: { event: EventRecord; index: number 
             </div>
           )}
 
+          {/* Flair Badge */}
+          {event.flair && (
+            <div className={`absolute top-4 left-4 z-40 border px-3 py-1 flex items-center gap-2 backdrop-blur-md ${flairColors[event.flair]}`}>
+              <Medal size={10} />
+              <span className="text-[8px] font-mono font-black uppercase tracking-[0.2em]">
+                {event.flair} STATUS
+              </span>
+            </div>
+          )}
+
           {/* Search Tag Badge */}
           <div className="absolute top-4 right-4 z-20 flex flex-col items-end gap-2">
             <div className="border border-magenta-cyber/50 bg-black/70 backdrop-blur-md px-2 py-1 flex items-center gap-1">
