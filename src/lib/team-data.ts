@@ -56,6 +56,16 @@ export const teamMembers: TeamMember[] = [
     image: "/coordinator_pics/24.jpeg"
   },
 
+ {
+    name: "Rahul Narvekar",
+    role: "Designer",
+    category: "Student Council",
+    council: "Student council", 
+    email: "23co36@aitdgoa.edu.in",
+    number: 25,
+    image: "/coordinator_pics/25.jpg" 
+  },
+
   // Access Council
   {
     name: "Dia Ann Saji",
@@ -145,17 +155,6 @@ export const teamMembers: TeamMember[] = [
     email: "23ec49@aitdgoa.edu.in",
     number: 13,
     image: "/coordinator_pics/13.jpg"
-  },
-
-  // Design team
-   {
-    name: "Rahul Narvekar",
-    role: "Designer",
-    category: "Designer",
-    council: "Design Team", 
-    email: "23co36@aitdgoa.edu.in",
-    number: 25,
-    image: "/coordinator_pics/25.jpg" 
   },
 
   // Staff (Faculty)
