@@ -11,7 +11,7 @@ export default function TeamPage() {
   const faculty = teamMembers.filter(m => m.category === "Faculty");
   const studentCouncil = teamMembers.filter(m => m.category === "Student Council");
   const otherCouncils = teamMembers.filter(m => m.category === "Council" || m.category === "MBA" || m.category === "RoboClub");
-
+  const designers = teamMembers.filter(m => m.category === "Designer");
   return (
     <main className="min-h-screen bg-deep-black">
       <Navbar />
