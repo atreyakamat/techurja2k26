@@ -5,31 +5,31 @@ import { MapPin, Navigation } from "lucide-react";
 
 export function TransmissionVenueSection() {
   return (
-    <section id="venue" className="py-20 px-6 max-w-7xl mx-auto relative z-10">
-      <div className="mb-12 border-b border-cyan-electric/30 pb-4">
-        <div className="flex flex-wrap items-center gap-4 mb-2">
-          <p className="text-xs tracking-[0.2em] text-cyan-electric uppercase font-bold flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-cyan-electric animate-pulse"></span>
+    <section id="venue" className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto relative z-10">
+      <div className="mb-8 md:mb-12 border-b border-cyan-electric/30 pb-4">
+        <div className="flex flex-wrap items-center gap-3 mb-2">
+          <p className="text-[10px] md:text-xs tracking-[0.2em] text-cyan-electric uppercase font-bold flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-electric animate-pulse"></span>
             GEOLOCATION: DEPLOYMENT ZONE
           </p>
-          <span className="text-[10px] px-2 py-0.5 border border-green-500/50 text-green-500 bg-green-500/10 font-mono animate-pulse">
+          <span className="text-[8px] md:text-[10px] px-2 py-0.5 border border-green-500/50 text-green-500 bg-green-500/10 font-mono animate-pulse">
             STATUS: SIGNAL STABLE
           </span>
         </div>
         <div className="flex items-center justify-between gap-4">
           <div className="flex-1">
-            <h2 className="text-4xl md:text-5xl text-white font-black tracking-tight uppercase">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl text-white font-black tracking-tight uppercase leading-tight">
               Agnel Institute <span className="text-cyan-electric">v2.6</span>
             </h2>
-            <p className="text-xs text-ink/60 font-mono mt-1 tracking-widest">Agnel Institute of Technology and Design // ASSAGAO_GRID</p>
+            <p className="text-[10px] text-ink/60 font-mono mt-1 tracking-widest uppercase">Agnel Institute of Technology and Design // ASSAGAO_GRID</p>
           </div>
           <a 
             href="https://www.google.com/maps/place/Agnel+Institute+of+Technology+and+Design/@15.5949912,73.7950064,17z" 
             target="_blank" 
             rel="noreferrer"
-            className="flex items-center gap-2 px-4 py-3 bg-cyan-electric/10 border border-cyan-electric/30 text-cyan-electric hover:bg-cyan-electric hover:text-black transition-all group shrink-0"
+            className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-3 bg-cyan-electric/10 border border-cyan-electric/30 text-cyan-electric hover:bg-cyan-electric hover:text-black transition-all group shrink-0"
           >
-            <MapPin size={24} className="group-hover:animate-bounce" />
+            <MapPin size={20} className="md:w-6 md:h-6 group-hover:animate-bounce" />
             <span className="hidden sm:inline font-mono text-xs font-bold tracking-widest">MAPS_LOCATOR</span>
           </a>
         </div>

@@ -27,11 +27,11 @@ export function FAQSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 px-6 max-w-4xl mx-auto relative z-10">
-      <div className="mb-12 border-b border-cyan-electric/30 pb-4">
-        <p className="text-xs tracking-[0.2em] text-magenta-cyber uppercase mb-2 font-bold font-mono">DECRYPTION LOGS</p>
-        <h2 className="text-4xl md:text-5xl text-white font-black tracking-tight">Frequently Asked Packets</h2>
-        <p className="text-ink mt-2">Answers to your most queried packets regarding TECHURJA 2K26.</p>
+    <section id="faq" className="py-12 md:py-20 px-4 md:px-6 max-w-4xl mx-auto relative z-10">
+      <div className="mb-8 md:mb-12 border-b border-cyan-electric/30 pb-4">
+        <p className="text-[10px] md:text-xs tracking-[0.2em] text-magenta-cyber uppercase mb-2 font-bold font-mono">DECRYPTION LOGS</p>
+        <h2 className="text-3xl md:text-5xl text-white font-black tracking-tight uppercase">Frequently Asked Packets</h2>
+        <p className="text-xs md:text-sm text-ink mt-2">Answers to your most queried packets regarding TECHURJA 2K26.</p>
       </div>
 
       <div className="space-y-4">

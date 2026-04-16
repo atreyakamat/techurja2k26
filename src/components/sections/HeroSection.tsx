@@ -141,7 +141,7 @@ export function HeroSection() {
           </h1>
 
           {/* Countdown Timer */}
-          <div className="flex gap-4 md:gap-8 mb-8 font-display">
+          <div className="flex gap-2 sm:gap-4 md:gap-8 mb-8 font-display">
             {[
               { label: "DAYS", value: timeLeft.days },
               { label: "HRS", value: timeLeft.hours },
@@ -149,10 +149,10 @@ export function HeroSection() {
               { label: "SECS", value: timeLeft.secs },
             ].map((unit) => (
               <div key={unit.label} className="flex flex-col items-center">
-                <div className="text-2xl md:text-4xl font-black text-yellow-nuclear bg-yellow-nuclear/5 border border-yellow-nuclear/20 px-3 py-2 min-w-[60px] md:min-w-[80px] shadow-[inset_0_0_15px_rgba(249,255,59,0.1)] drop-shadow-[0_0_10px_rgba(249,255,59,0.3)]">
+                <div className="text-xl sm:text-2xl md:text-4xl font-black text-yellow-nuclear bg-yellow-nuclear/5 border border-yellow-nuclear/20 px-2 sm:px-3 py-2 min-w-[50px] sm:min-w-[60px] md:min-w-[80px] shadow-[inset_0_0_15px_rgba(249,255,59,0.1)] drop-shadow-[0_0_10px_rgba(249,255,59,0.3)]">
                   {String(unit.value).padStart(2, '0')}
                 </div>
-                <span className="text-[8px] md:text-[10px] text-cyan-electric mt-2 tracking-[0.2em] font-bold">{unit.label}</span>
+                <span className="text-[7px] sm:text-[8px] md:text-[10px] text-cyan-electric mt-2 tracking-[0.2em] font-bold">{unit.label}</span>
               </div>
             ))}
           </div>

@@ -3,19 +3,19 @@
 import { motion } from "framer-motion";
 
 const feeds = [
-  { id: "CAM-01", label: "MAIN ARENA", timestamp: "14:23:05", color: "cyan-electric" },
-  { id: "CAM-02", label: "CODE SECTOR", timestamp: "14:24:12", color: "magenta-cyber" },
-  { id: "CAM-03", label: "GRID NODE 7", timestamp: "14:22:58", color: "yellow-nuclear" },
-  { id: "CAM-04", label: "DRONE HUB", timestamp: "14:25:30", color: "cyan-electric" },
+  { id: "CAM-01", label: "MAIN ARENA", timestamp: "14:23:05", color: "bg-cyan-electric" },
+  { id: "CAM-02", label: "CODE SECTOR", timestamp: "14:24:12", color: "bg-magenta-cyber" },
+  { id: "CAM-03", label: "GRID NODE 7", timestamp: "14:22:58", color: "bg-yellow-nuclear" },
+  { id: "CAM-04", label: "DRONE HUB", timestamp: "14:25:30", color: "bg-cyan-electric" },
 ];
 
 export function OpsFeedSection() {
   return (
-    <section id="media" className="py-20 px-6 max-w-7xl mx-auto relative z-10">
-      <div className="mb-12 border-b border-cyan-electric/30 pb-4 flex justify-between items-end">
+    <section id="media" className="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto relative z-10">
+      <div className="mb-8 md:mb-12 border-b border-cyan-electric/30 pb-4 flex justify-between items-end">
         <div>
-          <p className="text-xs tracking-[0.2em] text-cyan-electric uppercase mb-2 font-bold">LIVE TRANSMISSION FEED</p>
-          <h2 className="text-4xl md:text-5xl text-white font-black tracking-tight uppercase">Operational Logs</h2>
+          <p className="text-[10px] md:text-xs tracking-[0.2em] text-cyan-electric uppercase mb-2 font-bold uppercase">LIVE TRANSMISSION FEED</p>
+          <h2 className="text-3xl md:text-5xl text-white font-black tracking-tight uppercase">Operational Logs</h2>
         </div>
         <div className="hidden md:flex items-center gap-2 text-[10px] text-zinc-500 font-mono">
           <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
@@ -23,7 +23,7 @@ export function OpsFeedSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {feeds.map((feed, i) => (
           <motion.div
             key={feed.id}
@@ -41,7 +41,7 @@ export function OpsFeedSection() {
             <div className="aspect-video relative bg-zinc-900 overflow-hidden">
               {/* Fake Media Content */}
               <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent z-10"></div>
-              <div className={`absolute inset-0 opacity-20 bg-${feed.color} z-0 transition-opacity group-hover:opacity-40`}></div>
+              <div className={`absolute inset-0 opacity-20 ${feed.color} z-0 transition-opacity group-hover:opacity-40`}></div>
               
               {/* Scanlines overlay for the feed */}
               <div className="absolute inset-0 scanline-mask opacity-30 pointer-events-none z-20"></div>

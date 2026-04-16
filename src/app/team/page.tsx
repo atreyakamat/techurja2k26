@@ -16,20 +16,20 @@ export default function TeamPage() {
     <main className="min-h-screen bg-deep-black">
       <Navbar />
       
-      <div className="mx-auto max-w-7xl px-6 pt-32 pb-24">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 pt-24 md:pt-32 pb-24">
         {/* Header Section */}
-        <header className="relative overflow-hidden terminal-panel border-magenta-cyber/30 p-8 md:p-12 mb-16">
+        <header className="relative overflow-hidden terminal-panel border-magenta-cyber/30 p-6 md:p-12 mb-12 md:mb-16">
           <div className="absolute inset-0 scanline-mask opacity-20 pointer-events-none"></div>
           
-          <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+          <div className="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
-              <div className="inline-block border border-magenta-cyber/50 bg-magenta-cyber/10 px-3 py-1 text-[10px] tracking-[0.2em] text-magenta-cyber uppercase mb-6 shadow-[0_0_10px_rgba(255,44,222,0.1)]">
+              <div className="inline-block border border-magenta-cyber/50 bg-magenta-cyber/10 px-3 py-1 text-[10px] tracking-[0.2em] text-magenta-cyber uppercase mb-4 md:mb-6 shadow-[0_0_10px_rgba(255,44,222,0.1)]">
                 CORE_ARCHITECTURE // HUMAN_RESOURCES
               </div>
-              <h1 className="text-5xl md:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter">
                 The <span className="text-magenta-cyber drop-shadow-[0_0_10px_rgba(255,44,222,0.5)]">Architects</span>
               </h1>
-              <p className="mt-8 max-w-xl text-lg text-zinc-400 leading-relaxed border-l-2 border-cyan-electric pl-4 bg-black/20 py-2">
+              <p className="mt-6 md:mt-8 max-w-xl text-sm md:text-lg text-zinc-400 leading-relaxed border-l-2 border-cyan-electric pl-4 bg-black/20 py-2 uppercase font-mono tracking-tight">
                 Meet the minds behind Techurja 2K26. From faculty mentors to student leads, 
                 this collective is responsible for maintaining the digital arena.
               </p>

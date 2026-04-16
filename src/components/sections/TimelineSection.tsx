@@ -5,21 +5,21 @@ import { Package, Clock, ShieldAlert } from "lucide-react";
 
 export function TimelineSection() {
   return (
-    <section id="schedule" className="py-24 px-6 max-w-7xl mx-auto relative z-10 overflow-hidden">
+    <section id="schedule" className="py-12 md:py-24 px-4 md:px-6 max-w-7xl mx-auto relative z-10 overflow-hidden">
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] opacity-5 pointer-events-none">
         <div className="w-full h-full bg-[radial-gradient(circle,var(--nuclear-yellow)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
       </div>
 
       <div className="relative z-10">
-        <div className="mb-16 text-center flex flex-col items-center">
-          <div className="inline-block border border-yellow-nuclear/50 bg-yellow-nuclear/10 px-4 py-1 text-[10px] tracking-[0.4em] text-yellow-nuclear uppercase mb-6 shadow-[0_0_15px_rgba(249,255,59,0.2)]">
+        <div className="mb-10 md:mb-16 text-center flex flex-col items-center">
+          <div className="inline-block border border-yellow-nuclear/50 bg-yellow-nuclear/10 px-4 py-1 text-[8px] md:text-[10px] tracking-[0.4em] text-yellow-nuclear uppercase mb-4 md:mb-6 shadow-[0_0_15px_rgba(249,255,59,0.2)]">
             SYSTEM_STATUS // PENDING_DECRYPTION
           </div>
-          <h2 className="text-5xl md:text-7xl text-white font-black tracking-tighter uppercase leading-none">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl text-white font-black tracking-tighter uppercase leading-none">
             GRID FLOW <span className="text-yellow-nuclear drop-shadow-[0_0_15px_rgba(249,255,59,0.5)]">OPERATIONS</span>
           </h2>
-          <p className="text-ink mt-8 max-w-2xl font-mono text-sm tracking-wide border-l-2 border-yellow-nuclear pl-6 py-2 bg-yellow-nuclear/5">
+          <p className="text-xs md:text-sm text-ink mt-6 md:mt-8 max-w-2xl font-mono tracking-wide border-l-2 border-yellow-nuclear pl-4 md:pl-6 py-2 bg-yellow-nuclear/5">
             {"//"} OPERATIONAL TIMELINE CURRENTLY ENCRYPTED. <br/>
             {"//"} CORE PROCESSORS ARE FINALIZING EVENT SEQUENCES.
           </p>
