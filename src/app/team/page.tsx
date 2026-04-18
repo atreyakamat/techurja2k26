@@ -144,7 +144,44 @@ const TeamCard = React.memo(function TeamCard({ member, index }: { member: TeamM
           </div>
         </div>
 
-        <div className="p-6 flex flex-col flex-grow">
+        <div className="p-6 flex flex-col flex-grow relative">
+          {member.specialMessage && (
+            <motion.div 
+              initial={{ scale: 0, rotate: -15 }}
+              animate={{ scale: 1, rotate: 5 }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 260, 
+                damping: 20,
+                delay: 0.5 
+              }}
+              className="absolute -top-12 right-4 z-30"
+            >
+              <div className="bg-yellow-nuclear text-black px-3 py-1 text-[10px] font-black uppercase tracking-tighter border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,44,222,0.8)] flex flex-col items-center">
+                <span className="leading-none">SYSTEM_UPDATE</span>
+                <span className="text-sm leading-none">{member.specialMessage}</span>
+              </div>
+              
+              {/* Animated sparkles/dots */}
+              <motion.div 
+                animate={{ 
+                  opacity: [0, 1, 0],
+                  scale: [0.5, 1.2, 0.5],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute -top-2 -right-2 w-2 h-2 bg-magenta-cyber rounded-full"
+              />
+              <motion.div 
+                animate={{ 
+                  opacity: [0, 1, 0],
+                  scale: [0.5, 1.2, 0.5],
+                }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.7 }}
+                className="absolute -bottom-2 -left-2 w-2 h-2 bg-cyan-electric rounded-full"
+              />
+            </motion.div>
+          )}
+
           <p className="text-yellow-nuclear text-xs md:text-sm font-mono uppercase tracking-[0.2em] mb-8 min-h-[3em] leading-relaxed drop-shadow-[0_0_8px_rgba(249,255,59,0.4)]">
             {member.role}
           </p>

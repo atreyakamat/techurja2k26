@@ -6,6 +6,7 @@ export type TeamMember = {
   email: string;
   number: number;
   image?: string;
+  specialMessage?: string;
 };
 
 export const teamMembers: TeamMember[] = [
@@ -60,12 +61,12 @@ export const teamMembers: TeamMember[] = [
     name: "Rahul Narvekar",
     role: "Designer",
     category: "Student Council",
-    council: "Student council", 
+    council: "Student council",
     email: "23co36@aitdgoa.edu.in",
     number: 25,
-    image: "/coordinator_pics/25.jpg" 
+    image: "/coordinator_pics/25.jpg",
+    specialMessage: "Happy Birthday!"
   },
-
   // Access Council
   {
     name: "Dia Ann Saji",
