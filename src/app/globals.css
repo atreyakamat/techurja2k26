@@ -123,6 +123,15 @@ section {
   z-index: 10;
 }
 
+@keyframes cyber-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cyber-blink {
+  animation: cyber-blink 0.8s steps(2, start) infinite;
+}
+
 @keyframes panGrid {
   0% { background-position: 0 0; }
   100% { background-position: 0 40px; }

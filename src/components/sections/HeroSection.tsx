@@ -115,7 +115,7 @@ export function HeroSection() {
             <div className="flex flex-wrap justify-center font-mono uppercase font-bold tracking-[0.15em] md:tracking-[0.3em]">
               {isMobile ? (
                 <span className="text-xs text-white/50">
-                  ENTER THE <span className="text-cyan-electric">DIGITAL ARENA</span>
+                  ENTER THE <span className="text-cyan-electric cyber-blink">DIGITAL ARENA</span>
                 </span>
               ) : (
                 "ENTER THE DIGITAL ARENA".split("").map((char, i) => (
@@ -129,7 +129,7 @@ export function HeroSection() {
                     }}
                     className={`text-[10px] sm:text-xs md:text-xl lg:text-2xl ${
                       i >= 10 // "ENTER THE " is 10 chars
-                      ? "text-cyan-electric drop-shadow-[0_0_10px_rgba(41,244,255,0.5)] animate-pulse" 
+                      ? "text-cyan-electric drop-shadow-[0_0_10px_rgba(41,244,255,0.5)] cyber-blink" 
                       : "text-white/50"
                     }`}
                   >
