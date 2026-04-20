@@ -56,6 +56,15 @@ export const teamMembers: TeamMember[] = [
     number: 24,
     image: "/coordinator_pics/24.jpeg"
   },
+  {
+    name: "Rahul Narvekar",
+    role: "Designer",
+    category: "Student Council",
+    council: "Student council",
+    email: "23co36@aitdgoa.edu.in",
+    number: 25,
+    image: "/coordinator_pics/25.jpg"
+  },
   // Access Council
   {
     name: "Dia Ann Saji",
