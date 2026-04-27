@@ -14,10 +14,10 @@ export default function Home() {
 
       <div className="flex w-full flex-col">
         <HeroSection />
+        <TimelineSection />
         <EventsSection />
         <OpsFeedSection />
         <TransmissionVenueSection />
-        <TimelineSection />
         <RegistrationTerminalSection />
         <FAQSection />
       </div>
